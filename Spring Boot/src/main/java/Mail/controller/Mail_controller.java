@@ -1,5 +1,6 @@
-package Mail;
+package Mail.controller;
 
+import Mail.pojo.Mail_Detail_pojo;
 import learning.Services.Mail_Sender_services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

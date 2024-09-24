@@ -1,4 +1,4 @@
-package Mail;
+package Mail.pojo;
 
 import lombok.Data;
 
