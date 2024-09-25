@@ -12,8 +12,5 @@ public class Start_Mail {
         SpringApplication.run(Start_Mail.class,args);
     }
 
-    @Bean
-    private JavaMailSender sender(){
-        return new JavaMailSenderImpl();
-    }
+
 }

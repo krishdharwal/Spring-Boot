@@ -1,7 +1,7 @@
 package Mail.controller;
 
 import Mail.pojo.Mail_Detail_pojo;
-import learning.Services.Mail_Sender_services;
+import Mail.services.Mail_Sender_services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ public class Mail_controller {
 //    @Autowired
 //    private Mail_Query mailQuery;
 
-    @GetMapping("/send")
+    @PostMapping("/send")
     public String send_Mail(@RequestBody Mail_Detail_pojo message){
         services.SendMail(message.to,message.subject,message.message);
         return "[---Mail--Sended--to--> " + message.to + " ]";
