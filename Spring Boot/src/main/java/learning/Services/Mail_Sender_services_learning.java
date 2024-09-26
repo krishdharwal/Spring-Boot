@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 //@Slf4j
-public class Mail_Sender_services {
+public class Mail_Sender_services_learning {
 
     @Autowired
     private JavaMailSender javaMailSender;

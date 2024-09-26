@@ -16,6 +16,6 @@ public class Mail_pojo {
     public String username;
     @NonNull
     public String password;
-
     public String mailAdress;
+    public Sentiments sentiments;
 }
