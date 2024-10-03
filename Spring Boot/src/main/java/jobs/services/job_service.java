@@ -1,5 +1,5 @@
 package jobs.services;
-
+// hello my name is kerishfij fnsodfnoskdnfgoksdngokisdngo
 import jobs.pojo.job_pojo;
 import jobs.repo.job_repo;
 import lombok.extern.slf4j.Slf4j;
@@ -41,28 +41,30 @@ public class job_service {
     }
 
     // save
-    public void save(job_pojo user){
+    public String save(job_pojo user){
         try{
             repo.save(user);
+            return "-- job added --";
         }catch (Exception e){
             log.error("-- error in save - services" + e);
+            return "-- error in save - services";
         }
     }
 
     // update
-    public void update(ObjectId id, job_pojo newUser){
-        try{
-           job_pojo userFromDB =  repo.findById(id).orElse(null);
-           if (userFromDB != null){
-               userFromDB.setJob(newUser.getJob());
-               userFromDB.setUsername(newUser.getUsername());
-               userFromDB.setLocation(newUser.getLocation());
-               repo.save(userFromDB);
-           }
-        }catch (Exception e){
-        log.error("-- error in update in job services --");
-        }
-    }
+//    public void update(ObjectId id, job_pojo newUser){
+//        try{
+//           job_pojo userFromDB =  repo.findById(id).orElse(null);
+//           if (userFromDB != null){
+//               userFromDB.setJob(newUser.getJob());
+//               userFromDB.setUsername(newUser.getUsername());
+//               userFromDB.setLocation(newUser.getLocation());
+//               repo.save(userFromDB);
+//           }
+//        }catch (Exception e){
+//        log.error("-- error in update in job services --");
+//        }
+//    }
 
     // delete
     public void delete(ObjectId id){
