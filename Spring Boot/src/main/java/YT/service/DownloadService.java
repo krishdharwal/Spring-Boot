@@ -1,71 +1,38 @@
 package YT.service;
 
-import YT.entity.Download;
+import YT.entity.linkPojo;
 import YT.repo.DownloadRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @Service
+@Slf4j
 public class DownloadService {
 
     @Autowired
     private DownloadRepository downloadRepository;
 
-    public void submitDownload(String videoUrl) {
-        Download download = new Download();
-        download.setVideoUrl(videoUrl);
-        download.setDownloadStatus("PENDING");
-        download.setRequestTime(new Date());
-        downloadRepository.save(download);
-
-        // Asynchronously start the download
-        new Thread(() -> downloadVideo(download)).start();
-    }
-
-    private void downloadVideo(Download download) {
+    public void SAveYThistory(linkPojo body){
         try {
-            download.setDownloadStatus("IN_PROGRESS");
-            downloadRepository.save(download);
-
-            // Specify the directory to save the video (Linux path as example)
-            String outputDir = "/home/jarvis/Downloads/%(title)s.%(ext)s";  // Adjust the path for your OS
-
-            // Run yt-dlp command with output path
-            ProcessBuilder builder = new ProcessBuilder(" yt-dlp " , download.getVideoUrl());
-            Process process = builder.start();
-
-            // Capture process output and errors
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);  // For debugging, or use a logger here
-            }
-
-            process.waitFor();
-
-            if (process.exitValue() == 0) {
-                // On successful download
-                download.setDownloadStatus("COMPLETED");
-                download.setFilePath(outputDir.replace("%(title)s", download.getVideoUrl())  // Just for demonstration, adjust as needed
-                        .replace("%(ext)s", "mp4")); // Assuming mp4, but you can extract actual extension
-
-                download.setCompletionTime(new Date());
-            } else {
-                // Handle non-zero exit codes
-                download.setDownloadStatus("FAILED");
-            }
-
-            downloadRepository.save(download);
-
-        } catch (Exception e) {
-            // Log the exception and mark as failed
-            e.printStackTrace();
-            download.setDownloadStatus("FAILED");
-            downloadRepository.save(download);
+            body.setDateTime(LocalDateTime.now());
+            downloadRepository.save(body);
+        }catch (Exception e){
+            log.error(" error in save history service layer");
         }
     }
+
+    public List<linkPojo> SHowAllHistory(){
+        try{
+           return downloadRepository.findAll();
+        }catch (Exception e){
+            log.error("error in showAllHistory in service layer ");
+            return null;
+        }
+    }
+
 }
