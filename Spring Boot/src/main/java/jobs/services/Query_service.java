@@ -23,14 +23,14 @@ public class Query_service {
 
     // job queries
 
-    public job_pojo findByUserName(String name){
+    public job_pojo findByJobName(String name){
         try {
             Query query = new Query();
-            query.addCriteria(Criteria.where(name).exists(true));
+            query.addCriteria(Criteria.where("jobTitle").is(name));
             List<job_pojo> userFromDb = mongoTemplate.find(query, job_pojo.class);
             return userFromDb.get(0);
         } catch (Exception e){
-            log.error("-- error in findByUsername in Quer_service");
+            log.error("-- error in findByJobName in Quer_service");
             return null;
         }
     }
@@ -38,7 +38,6 @@ public class Query_service {
 
 
     // company queries
-
     public List<company_pojo> findByCompanyName(String name,String type){
         Query query = new Query();
         query.addCriteria(Criteria.where("companyName").is(name));
