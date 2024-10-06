@@ -1,0 +1,32 @@
+spring:
+  data:
+    mongodb:
+      database: SpringBootDB
+      auto-index-creation: true
+      uri: mongodb+srv://knightkrish:rmtDzoQ5nk7aCwX9@cluster0.jepfx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0spring.data.mongodb.auto-index-creation=true
+      authentication-database: admin
+      host: localhost
+      port: 27017
+
+  security:
+    user:
+      name: kd
+      password: kd
+
+  mail:
+    password: knny eldx nfzr ktuw
+    username: experiment47171@gmail.com
+    port: 587
+    host: smtp.gmail.com
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+
+
+
+weather_API: c0781bb02d2bf3150d5c03538ff75dc8
+
+
