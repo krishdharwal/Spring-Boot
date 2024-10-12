@@ -4,13 +4,17 @@ import JobsService.DTO.Job_DTO;
 import JobsService.pojo.job_pojo;
 import JobsService.services.job_service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/job")
+@Slf4j
 public class job_controller {
 
     @Autowired
@@ -57,6 +61,18 @@ public class job_controller {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("--error occurred in save job  --");
         }
     }
+
+    @GetMapping("/findJobs/{id}")
+    public List<job_pojo> findCompanyJobs(@PathVariable Long id){
+        try{
+            return service.findCompanyJobs(id);
+        }catch (Exception e){
+            log.error(" -- errorr in findCompanyJobs -- ");
+            return null;
+        }
+    }
+
+
 
 
 //    @PutMapping("/update/{id}")

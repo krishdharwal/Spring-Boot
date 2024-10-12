@@ -7,9 +7,12 @@ import com.thoughtworks.xstream.mapper.Mapper;
 import company.pojo.company_pojo;
 
 import company.DTO.Job_DTO;
+import company.pojo.job_pojo_in_company;
 import company.repo.company_repo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -26,23 +29,6 @@ public class company_service {
 
     @Autowired
     private company_repo companyRepo;
-
-
-
-    @Autowired
-    private RestTemplate RestTemplatE;
-
-
-
-//    @Autowired
-//    private Query_service queryService;
-//
-//    @Autowired
-//    private review_service reviewService;
-//
-//    @Autowired
-//    private job_service jobService;
-
 
 
 //    @Transactional
@@ -161,6 +147,22 @@ public class company_service {
         } catch (Exception  e){
             log.error("--- error in company services ---");
             return "-- kuch toh galat hai --";
+        }
+    }
+
+    public List<?> findJobOfCompany(Long id) {
+        try{
+            RestTemplate restTemplate = new RestTemplate();
+            ResponseEntity<List<?>> response = restTemplate.exchange(
+                    "http://localhost:8092/job/findJobs/"+ id,
+                    HttpMethod.GET,
+                    null,
+                    new ParameterizedTypeReference<List<?>>() {}
+            );
+            return response.getBody();
+        }catch (Exception e){
+            log.error(" -- error in findJobOfCompany ");
+            return null;
         }
     }
 

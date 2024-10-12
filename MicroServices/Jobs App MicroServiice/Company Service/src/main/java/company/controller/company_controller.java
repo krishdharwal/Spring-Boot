@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import company.DTO.Job_DTO;
 import company.pojo.company_pojo;
 
+import company.pojo.job_pojo_in_company;
 import company.services.company_service;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,9 +21,6 @@ import java.util.List;
 @Slf4j
 public class company_controller {
 
-
-    //    @Autowired
-//    private Query_service queryService;
     @Autowired
     private company_service service;
 
@@ -31,27 +29,26 @@ public class company_controller {
         service.save(body);
         return "saved";
     }
-//
+
 //    @PostMapping("/rating/{companyName}")
 //    public String saveRating(@RequestBody reviews_pojo review,@PathVariable String companyName){
 //         String saved = service.saveRating(review,companyName);
 //        return saved;
 //    }
-//
+
     @PostMapping("/job/{id}")
     public String saveJob(@RequestBody Job_DTO jobBody, @PathVariable Long id) throws JsonProcessingException {
-
         return service.SaveJobInCompany(id, jobBody);
     }
 
 
-    @GetMapping("/find/{name}/{type}")
-    public company_pojo findBYname(@PathVariable String name, @PathVariable String type) {
+    @GetMapping("/find/{id}")
+    public ResponseEntity<?> findJobOfCompany(@PathVariable Long id) {
         try {
-            return service.findByCompanyName(name, type);
+            return new ResponseEntity<>(service.findJobOfCompany(id),HttpStatus.OK);
         } catch (Exception e) {
             log.error("error in findby name controller");
-            return null;
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -67,7 +64,7 @@ public class company_controller {
 }
 
 
-    // update part
+// update part
 //    @PutMapping("/update/job/{companyName}/{id}")
 //    public ResponseEntity<?> updateJOB(@PathVariable String companyName, @PathVariable Long id, @RequestBody job_pojo job){
 //        try{
@@ -80,7 +77,7 @@ public class company_controller {
 //    }
 
 
-    // delete controllers
+// delete controllers
 //    @DeleteMapping("/review/{companyName}/{id}")
 //    public void deleteReview(@PathVariable String companyName,@PathVariable Long id){
 //        service.DeleteReview(companyName,id);

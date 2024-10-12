@@ -3,9 +3,12 @@ import JobsService.pojo.job_pojo;
 import JobsService.repo.job_repo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -75,4 +78,22 @@ public class job_service {
     }
 
 
+    public List<job_pojo> findCompanyJobs(Long id) {
+        try {
+            List<job_pojo> jobsList =  repo.findAll();
+            List<job_pojo> sending = new ArrayList<>();
+            if (!jobsList.isEmpty()) {
+                for (job_pojo job : jobsList) {
+                    if (Objects.equals(job.getCompanyId(), id)) {
+                        sending.add(job);
+                    }
+                }
+            }
+            return sending;
+
+        }catch (Exception e){
+            log.error("-- error in findCompanyJobs job serices --");
+            return null;
+        }
+    }
 }

@@ -26,7 +26,7 @@ public class company_pojo {
     @Column(name = "Type", nullable = false)
     private String type;
 
-//    @OneToMany(mappedBy = "companyPojo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //    @OneToMany(mappedBy = "companyPojo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<UUID> jobsList = new ArrayList<>();
 
     public void addJobId(UUID jobId) {
