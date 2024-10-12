@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -141,40 +142,26 @@ public class company_service {
 
     // Ultimate Shit
     @Transactional
-    public String SaveJobInCompany(Long companyId, Job_DTO jobDtoo) throws JsonProcessingException {
-        company_pojo companyPojoDB = companyRepo.findById(companyId).orElse(null);
+    public String SaveJobInCompany(Long companyId, Job_DTO jobDtoo) {
+        try {
+            company_pojo companyPojoDB = companyRepo.findById(companyId).orElse(null);
 
-        if (companyPojoDB != null) {
-            Long linkedId = (long) (jobDtoo.getJobTitle().length() + 1);
+            if (companyPojoDB != null) {
+                UUID UniqueId = UUID.randomUUID();
+                companyPojoDB.addJobId(UniqueId);
+                jobDtoo.setLinkedId(UniqueId);
+                jobDtoo.setCompanyId(companyPojoDB.getId());
+                RestTemplate restTemplate = new RestTemplate();
+                ResponseEntity<String> response = restTemplate.postForEntity(
+                        "http://localhost:8092/job/save", jobDtoo, String.class);
 
-            // Set the linkedId in the companyPojoDB and Job_DTO
-            companyPojoDB.addJobId(linkedId);
-            jobDtoo.setLinkedId(linkedId);
-            jobDtoo.setCompanyId(companyPojoDB.getId());
-
-            // Save company first
-//            companyRepo.save(companyPojoDB);
-
-            // Sending the request to Job service to add job
-            RestTemplate restTemplate = new RestTemplate();
-
-            // Post the jobDto and log the response
-            // Post the jobDto and receive response as String
-            ResponseEntity<String> response = restTemplate.postForEntity("http://localhost:8092/job/save", jobDtoo, String.class);
-
-            companyRepo.save(companyPojoDB);
-// Inspect response status
-            if (response.getStatusCode() == HttpStatus.OK) {
-                // Convert the response body to Job_DTO only if it's valid JSON
-                ObjectMapper objectMapper = new ObjectMapper();
-                Job_DTO jobResponse = objectMapper.readValue(response.getBody(), Job_DTO.class);
-                System.out.println("Job added: " + jobResponse);
-            } else {
-                // Handle error response
-                System.out.println("Error from job service: " + response.getBody());
+                companyRepo.save(companyPojoDB);
             }
+            return "--- job saved ---";
+        } catch (Exception  e){
+            log.error("--- error in company services ---");
+            return "-- kuch toh galat hai --";
         }
-        return "--- idk ---";
     }
 
 

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "Jobs_Table")
 @Data
@@ -17,8 +19,7 @@ public class job_pojo {
     private Long CompanyId;
 
     @Column(name = "LinkedId", nullable = false)
-    private Long LinkedId;
-
+    public UUID LinkedId;
 
     @Column(name = "jobTitle", nullable = false)
     public String jobTitle;

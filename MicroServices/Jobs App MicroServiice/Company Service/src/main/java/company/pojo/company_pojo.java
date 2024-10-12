@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.UUID;
 
 
 @Entity
@@ -27,9 +27,9 @@ public class company_pojo {
     private String type;
 
 //    @OneToMany(mappedBy = "companyPojo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Long> jobsList = new ArrayList<>();
+    private List<UUID> jobsList = new ArrayList<>();
 
-    public void addJobId(Long jobId) {
+    public void addJobId(UUID jobId) {
         jobsList.add(jobId);
     }
 }
