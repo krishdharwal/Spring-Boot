@@ -12,6 +12,11 @@ spring:
      ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     open-in-view: false
+# config server
+  config:
+    import: optional:configserver:http://localhost:8080
+  profiles:
+    active: default
 #  security:
 #    user:
 #      name: kd
@@ -26,3 +31,9 @@ eureka:
 
 server:
   port: 8091
+
+#zipkin
+management:
+  tracing:
+    sampling:
+      probability: 1.0

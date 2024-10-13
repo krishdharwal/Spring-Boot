@@ -10,6 +10,7 @@
         <module name="Spring-Cloud" />
         <module name="dockerhive" />
         <module name="companyApp" />
+        <module name="Config-Server" />
         <module name="jobApp" />
       </profile>
     </annotationProcessing>
@@ -19,6 +20,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Config-Server" options="-parameters" />
       <module name="Spring-Cloud" options="-parameters" />
       <module name="companyApp" options="-parameters" />
       <module name="dockerhive" options="-parameters" />

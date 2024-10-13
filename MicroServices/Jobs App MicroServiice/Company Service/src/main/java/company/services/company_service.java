@@ -4,6 +4,7 @@ import JobsService.repo.job_repo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.thoughtworks.xstream.mapper.Mapper;
+import company.clients.Job_client;
 import company.pojo.company_pojo;
 
 import company.DTO.Job_DTO;
@@ -29,6 +30,9 @@ public class company_service {
 
     @Autowired
     private company_repo companyRepo;
+
+    @Autowired
+    private Job_client jobClient;
 
 
 //    @Transactional
@@ -137,9 +141,12 @@ public class company_service {
                 companyPojoDB.addJobId(UniqueId);
                 jobDtoo.setLinkedId(UniqueId);
                 jobDtoo.setCompanyId(companyPojoDB.getId());
-                RestTemplate restTemplate = new RestTemplate();
-                ResponseEntity<String> response = restTemplate.postForEntity(
-                        "http://localhost:8092/job/save", jobDtoo, String.class);
+//                RestTemplate restTemplate = new RestTemplate();
+//
+//                ResponseEntity<String> response = restTemplate.postForEntity(
+//                        "http://localhost:8092/job/save", jobDtoo, String.class);
+
+                jobClient.SaveJob(jobDtoo);
 
                 companyRepo.save(companyPojoDB);
             }
@@ -150,16 +157,20 @@ public class company_service {
         }
     }
 
+
+    // Dopamine
     public List<?> findJobOfCompany(Long id) {
         try{
-            RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<List<?>> response = restTemplate.exchange(
-                    "http://localhost:8092/job/findJobs/"+ id,
-                    HttpMethod.GET,
-                    null,
-                    new ParameterizedTypeReference<List<?>>() {}
-            );
-            return response.getBody();
+//            RestTemplate restTemplate = new RestTemplate();
+//            ResponseEntity<List<?>> response = restTemplate.exchange(
+//                    "http://localhost:8092/job/findJobs/"+ id,
+//                    HttpMethod.GET,
+//                    null,
+//                    new ParameterizedTypeReference<List<?>>() {}
+//            );
+//            return response.getBody();
+
+            return jobClient.GetJob(id);
         }catch (Exception e){
             log.error(" -- error in findJobOfCompany ");
             return null;
@@ -167,20 +178,5 @@ public class company_service {
     }
 
 
-//    public List<JobAndCompanyDto> findAll(){
-//        List<job_pojo> jobList = jobRepo.findAll();
-//        List<JobAndCompanyDto> jobAndCompanyDtosO = new ArrayList<>();
-//
-//        RestTemplate restTemplatE = new RestTemplate();
-//        for(job_pojo job : jobList){
-//
-//
-//
-//            JobAndCompanyDto jobAndCompanyDtoL = new JobAndCompanyDto();
-//            jobAndCompanyDtoL.setJobPojo(job);
-//            company_pojo company = restTemplatE.getForObject("localhost:8092" + job.getId(), company_pojo.class);
-//            jobAndCompanyDtoL.setCompanyPojo(company);
-//        }
-//        return jobAndCompanyDtosO;
-//    }
+
 }

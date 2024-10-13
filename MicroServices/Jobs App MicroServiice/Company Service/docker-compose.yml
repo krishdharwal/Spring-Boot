@@ -1,5 +1,6 @@
 version: '3'
-
+# images -> Postgres DB , Pg admin , ZipKin
+# network -> postgres
 services:
   postgres:
     container_name: postgres_container
@@ -30,6 +31,14 @@ services:
     networks:
       - postgres
     restart: unless-stopped
+  zipkin:
+   image: openzipkin/zipkin
+   container_name: zipkin
+   ports:
+    - 9411:9411
+   networks:
+    - postgres
+
 
 networks:
   postgres:

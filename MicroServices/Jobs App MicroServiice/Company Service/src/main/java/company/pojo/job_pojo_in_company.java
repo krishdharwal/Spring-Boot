@@ -12,9 +12,8 @@ import java.util.UUID;
 public class job_pojo_in_company {
 @Id
     private Long JobId;
-
     private Long CompanyId;
-
+    public UUID LinkedId;
     public String jobTitle;
     private int posts;
     public String location;
