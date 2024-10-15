@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/../Spring-Cloud/pom.xml" />
         <option value="$PROJECT_DIR$/../Jobs Service/pom.xml" />
         <option value="$PROJECT_DIR$/../Config-Server/pom.xml" />
+        <option value="$PROJECT_DIR$/../GateWay/pom.xml" />
       </list>
     </option>
   </component>

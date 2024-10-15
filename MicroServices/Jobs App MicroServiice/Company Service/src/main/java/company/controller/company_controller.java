@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import company.DTO.Job_DTO;
 import company.pojo.company_pojo;
 
-import company.pojo.job_pojo_in_company;
 import company.services.company_service;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,7 +29,14 @@ public class company_controller {
         return "saved";
     }
 
-//    @PostMapping("/rating/{companyName}")
+
+    @GetMapping("/health")
+    public String health(){
+        return "-- company app is running --";
+    }
+
+
+    //    @PostMapping("/rating/{companyName}")
 //    public String saveRating(@RequestBody reviews_pojo review,@PathVariable String companyName){
 //         String saved = service.saveRating(review,companyName);
 //        return saved;

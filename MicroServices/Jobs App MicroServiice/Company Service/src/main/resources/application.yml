@@ -1,6 +1,6 @@
 spring:
   application:
-    name: companyApp
+    name: company-service
   datasource:
     url: jdbc:postgresql://localhost:5432/CompanyAppDB
     username: kd

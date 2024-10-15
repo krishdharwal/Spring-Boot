@@ -1,6 +1,6 @@
 spring:
   application:
-    name: JobApp
+    name: job-service
   datasource:
     url: jdbc:postgresql://localhost:5432/JobAppDB
     username: kd
