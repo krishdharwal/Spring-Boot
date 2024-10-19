@@ -1,16 +1,15 @@
 package company.DTO;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 public class Job_DTO {
- public Long JobId;
+ public ObjectId JobId;
  public Long CompanyId;
 
  public UUID LinkedId;

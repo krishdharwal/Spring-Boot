@@ -10,7 +10,7 @@ public class Health_Controller {
 
     @GetMapping
     public String health(){
-        return " -- jarvis -> job app is ready sir ! --";
+        return " -- jarvis -> company app is ready sir ! --";
     }
 
 }

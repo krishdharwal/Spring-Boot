@@ -1,0 +1,36 @@
+spring:
+  main:
+   web-application-type: reactive
+   allow-bean-definition-overriding: true
+  application:
+    name: CompanyMicroService
+  data:
+    mongodb:
+      database: MicroServiceDB
+      auto-index-creation: true
+      uri: mongodb+srv://knightkrish:rmtDzoQ5nk7aCwX9@cluster0.jepfx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0spring.data.mongodb.auto-index-creation=true
+      authentication-database: admin
+      host: localhost
+      port: 27017
+
+#  security:
+#    user:
+#      name: kd
+#      password: kd
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+server:
+  port: 8091
+
+# Zipkin Tracing
+management:
+  tracing:
+    sampling:
+      probability: 1.0

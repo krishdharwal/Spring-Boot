@@ -6,18 +6,23 @@ server:
 spring:
   application:
     name: api-gateway
+  #secrity
+#  security:
+#    user:
+#      name: kd
+#      password: kd
   # cloud
   cloud:
     gateway:
       routes:
            # company MS
         - id: company-service
-          uri: lb://company-service
+          uri: lb://COMPANYMICROSERVICE
           predicates:
             - Path=/company/**
           # job MS
         - id: job-service
-          uri: lb://job-service
+          uri: lb://JOBMICROSERVICE
           predicates:
             - Path=/job/**
           # eureka server

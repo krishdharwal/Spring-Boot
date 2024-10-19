@@ -2,13 +2,13 @@ package company.clients;
 
 
 import company.DTO.Job_DTO;
+import org.bson.types.ObjectId;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @FeignClient(name = "jobClientService" , url = "http://localhost:8092/job")
 public interface Job_client {
@@ -17,6 +17,9 @@ public interface Job_client {
     public void SaveJob(@RequestBody Job_DTO jobDto);
 
     @GetMapping("/findJobs/{id}")
-    public List<?> GetJob(@PathVariable Long id);
+    public List<?> GetJob(@PathVariable ObjectId id);
 
-}
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@RequestBody Job_DTO jobDto, @PathVariable ObjectId id);
+
+    }

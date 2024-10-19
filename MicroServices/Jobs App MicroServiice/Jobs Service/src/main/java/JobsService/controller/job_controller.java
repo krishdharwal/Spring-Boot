@@ -5,12 +5,14 @@ import JobsService.pojo.job_pojo;
 import JobsService.services.job_service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/job")
@@ -26,7 +28,7 @@ public class job_controller {
     }
 
     @GetMapping("/details/{id}")
-    public ResponseEntity<?> details(@PathVariable Long id){
+    public ResponseEntity<?> details(@PathVariable ObjectId id){
         try {
             return new ResponseEntity<>(service.findById(id), HttpStatus.ACCEPTED);
         }catch (Exception e){
@@ -63,7 +65,7 @@ public class job_controller {
     }
 
     @GetMapping("/findJobs/{id}")
-    public List<job_pojo> findCompanyJobs(@PathVariable Long id){
+    public List<job_pojo> findCompanyJobs(@PathVariable ObjectId id){
         try{
             return service.findCompanyJobs(id);
         }catch (Exception e){
@@ -75,18 +77,18 @@ public class job_controller {
 
 
 
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<?> update(@RequestBody job_pojo body,@PathVariable ObjectId id){
-//        try {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@RequestBody Job_DTO jobDto,@PathVariable UUID id){
+        try {
 //            service.update(id,body);
-//            return new ResponseEntity<>("--updated--", HttpStatus.ACCEPTED);
-//        }catch (Exception e){
-//            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
-//        }
-//    }
+            return new ResponseEntity<>("--updated--", HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+        }
+    }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable ObjectId id){
         try {
             service.delete(id);
             return new ResponseEntity<>("---deleted---" , HttpStatus.ACCEPTED);

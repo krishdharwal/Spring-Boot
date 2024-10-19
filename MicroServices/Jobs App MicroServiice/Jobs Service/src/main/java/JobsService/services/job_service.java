@@ -2,6 +2,7 @@ package JobsService.services;
 import JobsService.pojo.job_pojo;
 import JobsService.repo.job_repo;
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class job_service {
     }
 
     // get by id
-    public job_pojo findById(Long id){
+    public job_pojo findById(ObjectId id){
         try {
             job_pojo users = repo.findById(id).orElse(null);
             if (users  != null) {
@@ -68,7 +69,7 @@ public class job_service {
 //    }
 
     // delete
-    public void delete(Long id){
+    public void delete(ObjectId id){
         try {
             repo.deleteById(id);
         }catch (Exception e){
@@ -78,7 +79,7 @@ public class job_service {
     }
 
 
-    public List<job_pojo> findCompanyJobs(Long id) {
+    public List<job_pojo> findCompanyJobs(ObjectId id) {
         try {
             List<job_pojo> jobsList =  repo.findAll();
             List<job_pojo> sending = new ArrayList<>();

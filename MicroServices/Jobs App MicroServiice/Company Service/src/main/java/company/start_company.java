@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-@SpringBootApplication(exclude = { LoadBalancerAutoConfiguration.class })
+@SpringBootApplication
 @EnableFeignClients
 public class start_company {
 

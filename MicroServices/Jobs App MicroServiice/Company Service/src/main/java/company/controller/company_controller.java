@@ -7,12 +7,14 @@ import company.pojo.company_pojo;
 import company.services.company_service;
 import lombok.extern.slf4j.Slf4j;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -31,27 +33,21 @@ public class company_controller {
 
 
     @GetMapping("/health")
-    public String health(){
+    public String health() {
         return "-- company app is running --";
     }
 
 
-    //    @PostMapping("/rating/{companyName}")
-//    public String saveRating(@RequestBody reviews_pojo review,@PathVariable String companyName){
-//         String saved = service.saveRating(review,companyName);
-//        return saved;
-//    }
-
     @PostMapping("/job/{id}")
-    public String saveJob(@RequestBody Job_DTO jobBody, @PathVariable Long id) throws JsonProcessingException {
+    public String saveJob(@RequestBody Job_DTO jobBody, @PathVariable ObjectId id) throws JsonProcessingException {
         return service.SaveJobInCompany(id, jobBody);
     }
 
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<?> findJobOfCompany(@PathVariable Long id) {
+    public ResponseEntity<?> findJobsOfCompany(@PathVariable ObjectId id) {
         try {
-            return new ResponseEntity<>(service.findJobOfCompany(id),HttpStatus.OK);
+            return new ResponseEntity<>(service.findJobOfCompany(id), HttpStatus.OK);
         } catch (Exception e) {
             log.error("error in findby name controller");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -59,7 +55,7 @@ public class company_controller {
     }
 
     @GetMapping("/type/{type}")
-    public List<company_pojo> findByType(@PathVariable String type) {
+    public List<company_pojo> findByCompanyType(@PathVariable String type) {
         try {
             return service.ShowCompanyOfType(type);
         } catch (Exception e) {
@@ -67,30 +63,32 @@ public class company_controller {
             return null;
         }
     }
-}
 
 
-// update part
-//    @PutMapping("/update/job/{companyName}/{id}")
-//    public ResponseEntity<?> updateJOB(@PathVariable String companyName, @PathVariable Long id, @RequestBody job_pojo job){
-//        try{
-//            service.updateJob(companyName,id,job);
-//            return new ResponseEntity<>( HttpStatus.ACCEPTED);
-//        }catch (Exception e){
-//            log.error("--error in updateJOB in controller");
-//            return null;
-//        }
-//    }
+    // update part
+
+    @PutMapping("/update/job/{id}")
+    public ResponseEntity<?> updateJOB(@RequestBody Job_DTO jobDto,@PathVariable ObjectId id) {
+        try {
+            service.updateJob(jobDto,id);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            log.error("--error in updateJOB in controller");
+            return null;
+        }
+
+    }
 
 
-// delete controllers
-//    @DeleteMapping("/review/{companyName}/{id}")
-//    public void deleteReview(@PathVariable String companyName,@PathVariable Long id){
-//        service.DeleteReview(companyName,id);
-//    }
+// delete part
 
 //    @DeleteMapping("/job/{companyName}/{id}")
 //    public void deleteJob(@PathVariable String companyName,@PathVariable Long id){
 //        service.DeleteJob(companyName,id);
 //    }
 //}
+
+
+
+
+} // end

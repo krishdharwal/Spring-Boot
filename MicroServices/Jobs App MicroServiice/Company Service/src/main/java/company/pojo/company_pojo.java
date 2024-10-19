@@ -1,35 +1,28 @@
 package company.pojo;
 
 import JobsService.pojo.job_pojo;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 
-@Entity
-@Table(name = "Company_Table")
+@Document(collection = "Company MS")
 @Data
 @NoArgsConstructor
 public class company_pojo {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "Companies" , nullable = false)
+    private ObjectId id;
+    @NonNull
     private String companyName;
-
-    @Column(name = "Type", nullable = false)
+    @NonNull
     private String type;
+    private List<job_pojo> JobsList = new ArrayList<>();
 
-    //    @OneToMany(mappedBy = "companyPojo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<UUID> jobsList = new ArrayList<>();
-
-    public void addJobId(UUID jobId) {
-        jobsList.add(jobId);
-    }
 }
