@@ -2,8 +2,10 @@ spring:
   main:
    web-application-type: reactive
    allow-bean-definition-overriding: true
+  # app name
   application:
     name: CompanyMicroService
+  # Mongo DB
   data:
     mongodb:
       database: MicroServiceDB
@@ -18,7 +20,7 @@ spring:
 #      name: kd
 #      password: kd
 
-
+#Eureka
 eureka:
   client:
     serviceUrl:
@@ -34,3 +36,42 @@ management:
   tracing:
     sampling:
       probability: 1.0
+  #Actuator ( to access it -> localhost:8091/actuator/health )
+  health:
+    circuitbreakers:
+          enabled: true
+  endpoints:
+    web:
+      exposure:
+         include: health
+  endpoint:
+    health:
+      show-details: always
+
+
+# Resilience4j
+resilience4j:
+  circuitbreaker:
+    instances:
+      #name of the instance
+      companyBreaker:
+        #circuit breaker
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        register-health-indicator: true
+        automatic-transition-from-open-to-half-open-enabled: true
+        sliding-window-type: count_based
+        #Retry
+        max-attempts: 5
+        wait-duration: 2s
+  # Rate limiter
+  ratelimiter:
+    instance:
+      companyBreaker:
+        timeout-duration: 0
+        limit-refresh-period: 4
+        limit-for-period: 2

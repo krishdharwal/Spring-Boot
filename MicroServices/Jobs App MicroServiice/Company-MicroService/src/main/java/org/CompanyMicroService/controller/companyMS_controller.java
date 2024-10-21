@@ -41,7 +41,7 @@ public class companyMS_controller {
         try {
             return queryService.findByCompanyName(name,type);
         }catch (Exception e){
-            log.error("error in findby name controller");
+            log.error("error in find by name controller");
             return null;
         }
     }
@@ -55,6 +55,7 @@ public class companyMS_controller {
             return null;
         }
     }
+
 
     @GetMapping("/findAll")
     public List<companyMS_pojo> FindAll(){
@@ -74,9 +75,7 @@ public class companyMS_controller {
 //    }
 
 
-    // delete controllers
-
-
+    // delete controllersjob
 //    @DeleteMapping("/job/{companyName}/{id}")
 //    public void deleteJob(@PathVariable String companyName,@PathVariable ObjectId id){
 //        service.DeleteJob(companyName,id);

@@ -1,5 +1,8 @@
 package org.CompanyMicroService.services;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.CompanyMicroService.Clients.JobMicroServiceClient;
 import org.CompanyMicroService.DTOs.JobMsDTO;
 import org.CompanyMicroService.pojo.companyMS_pojo;
@@ -9,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,11 +33,21 @@ public class companyMS_service {
     @Autowired
     private ModelMapper modelMapper;
 
+    // rate limiter is used to limit the rate of calls
+    @RateLimiter(name = "companyBreaker" , fallbackMethod = "DenialOfService")
     public void save(companyMS_pojo body) {
         repo.save(body);
     }
 
+    public String DenialOfService(Exception e){
+        return "So many Attempts to create a account";
+    }
 
+
+    // Retry is used to retry the request as many times as defined in properties file
+    // if request is not accepted it will try that many times.
+    @Transactional
+    @Retry(name = "companyBreaker" , fallbackMethod = "Retring")
     public companyMS_pojo saveJob(jobMS_pojo jobBody, String companyName) {
         try{
             //saving job in job's db
@@ -52,10 +66,21 @@ public class companyMS_service {
         }
     }
 
+    public String Retring(){
+        return "-- Retring to save Job -- ";
+    }
+
+
+
+    @CircuitBreaker(name = "companyBreaker", fallbackMethod = "findAllFallBack")
     public List<companyMS_pojo> findAll() {
        return repo.findAll();
     }
 
+    // fall back mechanism if the findAll method fails
+    public String findAllFallBack(Exception e){
+        return "Circuit Breaker ->> findAll method is not working ";
+    }
 
 
     // mapping

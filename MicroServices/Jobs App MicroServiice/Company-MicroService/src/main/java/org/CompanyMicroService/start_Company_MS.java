@@ -16,8 +16,5 @@ public class start_Company_MS {
         SpringApplication.run(start_Company_MS.class,args);
     }
 
-    @Bean
-    public PlatformTransactionManager transactionManager(MongoDatabaseFactory factory){
-        return new MongoTransactionManager(factory);
-    }
+
 }
