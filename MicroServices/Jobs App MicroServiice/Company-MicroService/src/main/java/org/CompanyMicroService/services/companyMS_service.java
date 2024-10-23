@@ -1,10 +1,13 @@
 package org.CompanyMicroService.services;
 
+import ReviewsMS.pojo.reviews_pojo;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.CompanyMicroService.Clients.JobMicroServiceClient;
+import org.CompanyMicroService.Clients.ReviewMsClient;
 import org.CompanyMicroService.DTOs.JobMsDTO;
+import org.CompanyMicroService.DTOs.review_DTo;
 import org.CompanyMicroService.pojo.companyMS_pojo;
 import org.CompanyMicroService.repo.companyMS_repo;
 import jet.jobMicroService.pojojob.jobMS_pojo;
@@ -31,7 +34,12 @@ public class companyMS_service {
     private JobMicroServiceClient jobClient;
 
     @Autowired
+    private ReviewMsClient reviewClient;
+
+    @Autowired
     private ModelMapper modelMapper;
+
+
 
     // rate limiter is used to limit the rate of calls
     @RateLimiter(name = "companyBreaker" , fallbackMethod = "DenialOfService")
@@ -63,6 +71,8 @@ public class companyMS_service {
         }catch (Exception e){
             log.error(" -- error in saveJOB in company service --" + e );
             return null;
+
+
         }
     }
 
@@ -83,15 +93,44 @@ public class companyMS_service {
     }
 
 
-    // mapping
+    // mappers algo's
     public jobMS_pojo toJOB(JobMsDTO dto){
         assert dto != null;
         return modelMapper.map(dto, jobMS_pojo.class);
     }
 
-    public JobMsDTO toDTO(jobMS_pojo job){
+    public JobMsDTO toJobDTO(jobMS_pojo job){
         assert job != null;
         return modelMapper.map(job,JobMsDTO.class);
     }
 
+    public reviews_pojo toReview(review_DTo reviewDTo){
+        assert reviewDTo != null;
+        return modelMapper.map(reviewDTo, reviews_pojo.class);
+
+    }
+
+
+    public review_DTo toReviewDTO(reviews_pojo reviewsPojo){
+        assert reviewsPojo != null;
+        return modelMapper.map(reviewsPojo,review_DTo.class);
+    }
+
+
+
+    // Reviews Algo's
+    public String saveReview(reviews_pojo review, String companyName){
+        try {
+            companyMS_pojo company = queryService.findByCompanyName(companyName);
+            assert company != null;
+            // add review in company
+            company.getReviewList().add(review);
+            // send review to review MS
+            reviewClient.save(toReviewDTO(review));
+            return "-- Review Saved Successfully --";
+        }catch (Exception e){
+            log.error("--- error in  saveReview in COmpany Services ---");
+            return "-- cant save --";
+        }
+    }
 }

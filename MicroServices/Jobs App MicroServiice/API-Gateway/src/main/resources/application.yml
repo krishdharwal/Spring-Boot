@@ -25,6 +25,11 @@ spring:
           uri: lb://JOBMICROSERVICE
           predicates:
             - Path=/job/**
+          # Review MS
+        - id: job-service
+          uri: lb://REVIEWSMICROSERVICE
+          predicates:
+                - Path=/reviews/**
           # eureka server
         - id: eureka-server
           uri: http://localhost:8761

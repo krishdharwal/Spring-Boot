@@ -4,7 +4,7 @@ spring:
    allow-bean-definition-overriding: true
   # app name
   application:
-    name: CompanyMicroService
+    name: ReviewsMicroService
   # Mongo DB
   data:
     mongodb:
@@ -35,7 +35,7 @@ eureka:
     fetch-registry: true
 
 server:
-  port: 8091
+  port: 8093
 
 # Zipkin Tracing
 management:
@@ -87,7 +87,5 @@ resilience4j:
 
                             #HardCode
 FeignClient:
-  Job:
-    url: http://localhost:8092/job
-  review:
-    url: http://localhost:8993/reviews
+  company:
+    url: http://localhost:8091/company

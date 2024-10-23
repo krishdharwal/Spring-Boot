@@ -12,7 +12,11 @@ spring:
       authentication-database: admin
       host: localhost
       port: 27017
-
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: kd
+    password: kd
 #  security:
 #    user:
 #      name: kd

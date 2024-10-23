@@ -1,5 +1,6 @@
 package org.CompanyMicroService.controller;
 
+import ReviewsMS.pojo.reviews_pojo;
 import org.CompanyMicroService.pojo.companyMS_pojo;
 import org.CompanyMicroService.services.Query_service;
 import org.CompanyMicroService.services.companyMS_service;
@@ -7,6 +8,8 @@ import jet.jobMicroService.pojojob.jobMS_pojo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -80,4 +83,19 @@ public class companyMS_controller {
 //    public void deleteJob(@PathVariable String companyName,@PathVariable ObjectId id){
 //        service.DeleteJob(companyName,id);
 //    }
+
+
+
+
+    // Review Algo's
+    @PostMapping("review/{companyName}")
+    public ResponseEntity<?> SaveReview(@RequestBody reviews_pojo review_Body, @PathVariable String CompanyName){
+        try {
+            String s = service.saveReview(review_Body, CompanyName);
+            return new ResponseEntity<>( s , HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            log.error("cannot able to save review");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }

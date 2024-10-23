@@ -5,10 +5,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/../jobs Micro Service/pom.xml" />
-        <option value="$PROJECT_DIR$/../API-Gateway/pom.xml" />
-        <option value="$PROJECT_DIR$/../Spring-Cloud/pom.xml" />
-        <option value="$PROJECT_DIR$/../Reviews-MicroService/pom.xml" />
       </list>
     </option>
   </component>

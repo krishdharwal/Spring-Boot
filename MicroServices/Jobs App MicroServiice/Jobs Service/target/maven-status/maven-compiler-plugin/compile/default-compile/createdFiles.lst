@@ -1,8 +1,0 @@
-JobsService/DTO/Job_DTO.class
-JobsService/controller/Health_Controller.class
-JobsService/controller/job_controller.class
-JobsService/repo/job_repo.class
-JobsService/services/job_service.class
-JobsService/pojo/job_pojo.class
-JobsService/start_job.class
-JobsService/config/AppConfig.class
