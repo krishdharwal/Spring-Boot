@@ -1,12 +1,14 @@
 package org.CompanyMicroService.controller;
 
 import ReviewsMS.pojo.reviews_pojo;
+import org.CompanyMicroService.DTOs.JobMsDTO;
 import org.CompanyMicroService.pojo.companyMS_pojo;
 import org.CompanyMicroService.services.Query_service;
 import org.CompanyMicroService.services.companyMS_service;
 import jet.jobMicroService.pojojob.jobMS_pojo;
 
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,25 +21,17 @@ import java.util.List;
 @Slf4j
 public class companyMS_controller {
 
-
     @Autowired
     private Query_service queryService;
     @Autowired
     private companyMS_service service;
 
+                                // Company MS Algo's
     @PostMapping
     public String saveCompany(@RequestBody companyMS_pojo body){
         service.save(body);
         return "saved";
     }
-
-
-
-    @PostMapping("/job/{companyName}")
-    public companyMS_pojo saveJob(@RequestBody jobMS_pojo jobBody, @PathVariable String companyName){
-        return service.saveJob(jobBody,companyName);
-    }
-
 
     @GetMapping("/find/{name}/{type}")
     public List<companyMS_pojo> findBYname(@PathVariable String name, @PathVariable String type){
@@ -84,10 +78,43 @@ public class companyMS_controller {
 //        service.DeleteJob(companyName,id);
 //    }
 
+                                         // JOB MS Algo's
+
+    @PostMapping("/job/{companyName}")
+    public companyMS_pojo saveJob(@RequestBody jobMS_pojo jobBody, @PathVariable String companyName){
+        return service.saveJob(jobBody,companyName);
+    }
+
+    @GetMapping("/details/{id}")
+    public ResponseEntity<?> details(@PathVariable ObjectId id){
+
+    }
+
+    @GetMapping("/show-all")
+    public ResponseEntity<?> showAll(){
+
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@RequestBody JobMsDTO body, @PathVariable ObjectId id){
+
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable ObjectId id){
+
+    }
 
 
 
-    // Review Algo's
+
+
+
+
+
+
+
+                                        // Review MS Algo's
     @PostMapping("review/{companyName}")
     public ResponseEntity<?> SaveReview(@RequestBody reviews_pojo review_Body, @PathVariable String CompanyName){
         try {

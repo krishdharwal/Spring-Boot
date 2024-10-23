@@ -2,14 +2,27 @@ package org.CompanyMicroService.Clients;
 
 import org.CompanyMicroService.DTOs.JobMsDTO;
 
-import jet.jobMicroService.pojojob.jobMS_pojo;
+import org.bson.types.ObjectId;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "JobMicroServiceClient" , url = "${FeignClient.Job.url}")
 public interface JobMicroServiceClient {
 
     @PostMapping("/save")
-    JobMsDTO SaveJob(@RequestBody jobMS_pojo job);
+     void SaveJob(@RequestBody JobMsDTO job);
+
+    @GetMapping("/details/{id}")
+     void details(@PathVariable ObjectId id);
+
+    @GetMapping("/show-all")
+     void showAll();
+
+    @PutMapping("/update/{id}")
+     void update(@RequestBody JobMsDTO body, @PathVariable ObjectId id);
+
+    @DeleteMapping("/{id}")
+     void delete(@PathVariable ObjectId id);
 }
+

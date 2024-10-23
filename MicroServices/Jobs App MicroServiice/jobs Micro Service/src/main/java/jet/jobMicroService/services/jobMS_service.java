@@ -3,22 +3,22 @@ package jet.jobMicroService.services;
 import jet.jobMicroService.DTOs.JobMsDTO;
 import jet.jobMicroService.pojojob.jobMS_pojo;
 import jet.jobMicroService.repo.jobMS_repo;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-//@Slf4j
+@Slf4j
 public class jobMS_service {
-
-    private static final Logger log = LoggerFactory.getLogger(jobMS_service.class);
-
     @Autowired
     private jobMS_repo repo;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     // show all
     public List<jobMS_pojo> findAll(){
@@ -45,37 +45,36 @@ public class jobMS_service {
     }
 
     // save
-    public JobMsDTO save(jobMS_pojo Provided_job){
+    public void save(JobMsDTO Provided_job){
         try{
-            jobMS_pojo SavedJob = repo.save(Provided_job);
-            JobMsDTO jobMsDTO = new JobMsDTO();
-
-//            jobMsDTO.setId(Provided_job.getId());
-//            jobMsDTO.setJobTitle(Provided_job.getJobTitle());
-//            jobMsDTO.setLocation(Provided_job.getLocation());
-//            jobMsDTO.setPosts(Provided_job.getPosts());
-
-            return jobMsDTO;
+             repo.save(toJOB(Provided_job));
         }catch (Exception e){
             log.error("-- error in save - services" + e);
-            return null;
         }
     }
 
     // update
-//    public void update(ObjectId id, jobMS_pojo newUser){
-//        try{
-//           jobMS_pojo userFromDB =  repo.findById(id).orElse(null);
-//           if (userFromDB != null){
-//               userFromDB.setJob(newUser.getJob());
-//               userFromDB.setUsername(newUser.getUsername());
-//               userFromDB.setLocation(newUser.getLocation());
-//               repo.save(userFromDB);
-//           }
-//        }catch (Exception e){
-//        log.error("-- error in update in job services --");
-//        }
-//    }
+    public void update(ObjectId id, JobMsDTO newJOb){
+        try {
+            // 1st method
+            // finding the job
+            jobMS_pojo jobFromDB = repo.findById(id).orElseThrow(
+                    () -> new RuntimeException("error while finding job")
+            );
+            assert jobFromDB != null;
+            jobFromDB.setJobTitle(newJOb.getJobTitle());
+            jobFromDB.setLocation(newJOb.getLocation());
+            jobFromDB.setPosts(newJOb.getPosts());
+
+            repo.save(jobFromDB);
+
+            // 2nd method (Testing)
+//            repo.save(toJOB(newJOb));
+
+        }catch (Exception e){
+        log.error("-- error in update in job services --");
+        }
+    }
 
     // delete
     public void delete(ObjectId id){
@@ -84,5 +83,16 @@ public class jobMS_service {
         }catch (Exception e){
             log.error("-- error in delete in job serices --");
         }
+    }
+
+    // mapper
+    public jobMS_pojo toJOB(JobMsDTO jobMsDTO){
+        assert jobMsDTO != null;
+        return modelMapper.map(jobMsDTO, jobMS_pojo.class);
+    }
+
+    public JobMsDTO toJobDTO(jobMS_pojo jobMSPojo){
+        assert jobMSPojo != null;
+        return modelMapper.map(jobMSPojo, JobMsDTO.class);
     }
 }

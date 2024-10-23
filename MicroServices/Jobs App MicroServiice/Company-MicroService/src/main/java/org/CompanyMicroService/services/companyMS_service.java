@@ -59,20 +59,17 @@ public class companyMS_service {
     public companyMS_pojo saveJob(jobMS_pojo jobBody, String companyName) {
         try{
             //saving job in job's db
-             JobMsDTO jobMsDTO = jobClient.SaveJob(jobBody);
+            // transferring through DTO
+            jobClient.SaveJob(toJobDTO(jobBody));
              // find company
             companyMS_pojo company = queryService.findByCompanyName(companyName);
             assert company != null;
-            // map jobDto to job
-            jobMS_pojo jobMSPojo = toJOB(jobMsDTO);
-            company.getJobsList().add(jobMSPojo);
+            // save job
+            company.getJobsList().add(jobBody);
             return repo.save(company);
-
         }catch (Exception e){
             log.error(" -- error in saveJOB in company service --" + e );
             return null;
-
-
         }
     }
 

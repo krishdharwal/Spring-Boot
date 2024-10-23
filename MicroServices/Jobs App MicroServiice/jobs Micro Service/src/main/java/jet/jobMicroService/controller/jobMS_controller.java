@@ -7,6 +7,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -40,26 +41,26 @@ public class jobMS_controller {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody jobMS_pojo body){
+    public ResponseEntity<?> save(@RequestBody JobMsDTO body){
         try {
-             JobMsDTO jobMsDTO = service.save(body);
-            return new ResponseEntity<>(jobMsDTO, HttpStatus.ACCEPTED);
+             service.save(body);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
         }
     }
 
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<?> update(@RequestBody jobMS_pojo body,@PathVariable ObjectId id){
-//        try {
-//            service.update(id,body);
-//            return new ResponseEntity<>("--updated--", HttpStatus.ACCEPTED);
-//        }catch (Exception e){
-//            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
-//        }
-//    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@RequestBody JobMsDTO body, @PathVariable ObjectId id){
+        try {
+            service.update(id,body);
+            return new ResponseEntity<>("--updated--", HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+        }
+    }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable ObjectId id){
         try {
             service.delete(id);
