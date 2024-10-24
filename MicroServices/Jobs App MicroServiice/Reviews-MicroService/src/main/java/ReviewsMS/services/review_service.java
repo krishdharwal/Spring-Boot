@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.support.NotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -48,11 +49,15 @@ public class review_service {
     }
 
     // delete
-    public void delete(ObjectId id){
+    public String delete(ObjectId id){
         try {
-            repo.deleteById(id);
+            reviews_pojo reviewsPojo = repo.findById(id).orElseThrow(
+                    () -> new RuntimeException("error while finding review by id"));
+                    repo.deleteById(id);
+            return reviewsPojo.getCompanyName();
         }catch (Exception e){
             log.error("-- error in delete in review serices --");
+            return null;
         }
     }
 
@@ -73,7 +78,8 @@ public class review_service {
 
 
     // update
-    public void update(review_DTo reviewDTo) {
+    @Transactional
+    public String update(review_DTo reviewDTo) {
         try{
             reviews_pojo reviewsPojo = repo.findById(
                          reviewDTo.getId())
@@ -82,8 +88,10 @@ public class review_service {
             reviewsPojo.setRating(reviewDTo.getRating());
             reviewsPojo.setReview(reviewDTo.getReview());
             repo.save(reviewsPojo);
+            return reviewsPojo.getCompanyName();
         }catch (Exception e){
             log.error("-- error while updatating the review --");
+            return null;
         }
     }
 }

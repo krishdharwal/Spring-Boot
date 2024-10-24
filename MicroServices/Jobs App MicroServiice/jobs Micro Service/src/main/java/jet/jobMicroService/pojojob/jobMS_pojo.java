@@ -17,4 +17,6 @@ public class jobMS_pojo {
     public String jobTitle;
     private int posts;
     public String location;
+    @NonNull
+    String companyName;
 }

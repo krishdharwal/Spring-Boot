@@ -41,12 +41,13 @@ public class jobMS_controller {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody JobMsDTO body){
+    public ObjectId save(@RequestBody JobMsDTO body){
         try {
-             service.save(body);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+             return service.save(body);
+//            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+//            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+            return null;
         }
     }
 
@@ -63,8 +64,8 @@ public class jobMS_controller {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable ObjectId id){
         try {
-            service.delete(id);
-            return new ResponseEntity<>("---deleted---" , HttpStatus.ACCEPTED);
+             String companyName = service.delete(id);
+            return new ResponseEntity<>(companyName , HttpStatus.ACCEPTED);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
         }

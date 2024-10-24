@@ -1,7 +1,7 @@
 package org.CompanyMicroService.controller;
 
+
 import ReviewsMS.pojo.reviews_pojo;
-import org.CompanyMicroService.DTOs.JobMsDTO;
 import org.CompanyMicroService.pojo.companyMS_pojo;
 import org.CompanyMicroService.services.Query_service;
 import org.CompanyMicroService.services.companyMS_service;
@@ -44,7 +44,7 @@ public class companyMS_controller {
     }
 
     @GetMapping("/type/{type}")
-    public List<?> findByType(@PathVariable String type){
+    public List<?> findByCompanyType(@PathVariable String type){
         try{
             return queryService.ShowAllCompanyOfType(type);
         }catch (Exception e){
@@ -55,29 +55,9 @@ public class companyMS_controller {
 
 
     @GetMapping("/findAll")
-    public List<companyMS_pojo> FindAll(){
+    public List<companyMS_pojo> FindAllCompanies(){
         return service.findAll();
     }
-
-    // update part
-//    @PutMapping("/update/job/{companyName}/{id}")
-//    public ResponseEntity<?> updateJOB(@PathVariable String companyName, @PathVariable ObjectId id, @RequestBody jobMS_pojo job){
-//        try{
-//            service.updateJob(companyName,id,job);
-//            return new ResponseEntity<>( HttpStatus.ACCEPTED);
-//        }catch (Exception e){
-//            log.error("--error in updateJOB in controller");
-//            return null;
-//        }
-//    }
-
-
-    // delete controllersjob
-//    @DeleteMapping("/job/{companyName}/{id}")
-//    public void deleteJob(@PathVariable String companyName,@PathVariable ObjectId id){
-//        service.DeleteJob(companyName,id);
-//    }
-
                                          // JOB MS Algo's
 
     @PostMapping("/job/{companyName}")
@@ -85,44 +65,60 @@ public class companyMS_controller {
         return service.saveJob(jobBody,companyName);
     }
 
-    @GetMapping("/details/{id}")
-    public ResponseEntity<?> details(@PathVariable ObjectId id){
 
+    @PutMapping("/job/update/{id}")
+    public ResponseEntity<?> updateJOb(@RequestBody jobMS_pojo body, @PathVariable ObjectId JObid){
+        try{
+            assert body != null;
+            service.updateJOb(body,JObid);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+           return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
-    @GetMapping("/show-all")
-    public ResponseEntity<?> showAll(){
-
+    @DeleteMapping("/job/{id}")
+    public ResponseEntity<?> deleteJOb(@PathVariable ObjectId JobId){
+        try{
+            service.deleteJOb(JobId);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
-
-    @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@RequestBody JobMsDTO body, @PathVariable ObjectId id){
-
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable ObjectId id){
-
-    }
-
-
-
-
-
-
-
-
 
 
                                         // Review MS Algo's
-    @PostMapping("review/{companyName}")
-    public ResponseEntity<?> SaveReview(@RequestBody reviews_pojo review_Body, @PathVariable String CompanyName){
+    @PostMapping("/review/{companyName}")
+    public ResponseEntity<?> SaveReview(@RequestBody reviews_pojo review_Body, @PathVariable String companyName){
         try {
-            String s = service.saveReview(review_Body, CompanyName);
+            String s = service.saveReview(review_Body, companyName);
             return new ResponseEntity<>( s , HttpStatus.ACCEPTED);
         }catch (Exception e){
             log.error("cannot able to save review");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+
+    @PutMapping("/review/update")
+    public ResponseEntity<?> updateReview(@RequestBody reviews_pojo review, @PathVariable ObjectId reviewID){
+        try{
+            service.updateReview(review , reviewID);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/review/delete")
+    public ResponseEntity<?> deleteReview(ObjectId ReviewId){
+        try{
+            service.deleteReview(ReviewId);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
 }

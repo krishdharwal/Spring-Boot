@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.*;
 public interface JobMicroServiceClient {
 
     @PostMapping("/save")
-     void SaveJob(@RequestBody JobMsDTO job);
+    ObjectId SaveJob(@RequestBody JobMsDTO job);
 
     @GetMapping("/details/{id}")
-     void details(@PathVariable ObjectId id);
+    ResponseEntity<?> details(@PathVariable ObjectId id);
 
     @GetMapping("/show-all")
-     void showAll();
+    ResponseEntity<?> showAll();
 
     @PutMapping("/update/{id}")
-     void update(@RequestBody JobMsDTO body, @PathVariable ObjectId id);
+     ResponseEntity<String> update(@RequestBody JobMsDTO body, @PathVariable ObjectId id);
 
     @DeleteMapping("/{id}")
-     void delete(@PathVariable ObjectId id);
+     ResponseEntity<String> delete(@PathVariable ObjectId id);
 }
 

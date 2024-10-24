@@ -1,8 +1,9 @@
 package ReviewsMS.pojo;
 
-import com.mongodb.lang.NonNull;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,4 +17,6 @@ public class reviews_pojo {
     private String review;
     @NonNull
     private int rating;
+    @NonNull
+    String companyName;
     }

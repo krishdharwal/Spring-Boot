@@ -10,9 +10,9 @@
     </parent>
     <groupId>ReviewsMS</groupId>
     <artifactId>Reviews-MicroService</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <name>Company-MicroService</name>
-    <description> Company-MicroService description</description>
+    <version>1.9-SNAPSHOT</version>
+    <name>Review-MicroService</name>
+    <description> Review-MicroService description</description>
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
@@ -135,6 +135,8 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
+
+
     </dependencies>
 
     <dependencyManagement>
@@ -158,7 +160,7 @@
 
                 <configuration>
                     <image>
-                        <name>CompanyMicroService</name> <!-- Use lowercase letters and valid characters -->
+                        <name>ReviewMicroService</name> <!-- Use lowercase letters and valid characters -->
                     </image>
                 </configuration>
 

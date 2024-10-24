@@ -45,11 +45,13 @@ public class jobMS_service {
     }
 
     // save
-    public void save(JobMsDTO Provided_job){
+    public ObjectId save(JobMsDTO Provided_job){
         try{
              repo.save(toJOB(Provided_job));
+             return Provided_job.getId();
         }catch (Exception e){
             log.error("-- error in save - services" + e);
+            return null;
         }
     }
 
@@ -77,11 +79,16 @@ public class jobMS_service {
     }
 
     // delete
-    public void delete(ObjectId id){
+    public String delete(ObjectId id){
         try {
+            jobMS_pojo jobMSPojo = repo.findById(id).orElse(null);
+            assert jobMSPojo != null;
+            String companyName = jobMSPojo.getCompanyName();
             repo.deleteById(id);
+            return companyName;
         }catch (Exception e){
             log.error("-- error in delete in job serices --");
+            return null;
         }
     }
 

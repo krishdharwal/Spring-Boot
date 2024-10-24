@@ -10,4 +10,5 @@ public class review_DTo {
     ObjectId id;
     String review;
     int rating;
+    String companyName;
 }

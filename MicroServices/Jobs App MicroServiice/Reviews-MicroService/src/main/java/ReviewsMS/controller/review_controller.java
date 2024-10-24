@@ -31,15 +31,15 @@ public class review_controller {
     @Autowired
     private Query_service_reviews queryService;
 
-    @PostMapping
-    public ResponseEntity<?> save(@RequestBody review_DTo body) {
+    @PostMapping("/save")
+    public void save(@RequestBody review_DTo body) {
         try {
             assert body != null;
             service.save(body);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+//            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }catch (Exception e){
-            log.error("-- error in ");
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            log.error("-- error in save in review controller ----------- ");
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -53,20 +53,20 @@ public class review_controller {
     }
 
     @PutMapping
-    public ResponseEntity<?> update(@RequestBody review_DTo reviewDTo){
+    public ResponseEntity<String> update(@RequestBody review_DTo reviewDTo){
         try{
-            service.update(reviewDTo);
-            return new ResponseEntity<>(HttpStatus.OK);
+            String companyName = service.update(reviewDTo);
+            return new ResponseEntity<>(companyName , HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @DeleteMapping
-    public ResponseEntity<?> delete(ObjectId id){
+    public ResponseEntity<String> delete(ObjectId id){
         try{
-            service.delete(id);
-            return new ResponseEntity<>(HttpStatus.OK);
+             String companyName = service.delete(id);
+            return new ResponseEntity<>(companyName , HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

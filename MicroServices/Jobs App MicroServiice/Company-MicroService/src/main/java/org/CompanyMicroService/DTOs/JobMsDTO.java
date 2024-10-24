@@ -8,7 +8,8 @@ import org.bson.types.ObjectId;
 @NoArgsConstructor
 public class JobMsDTO {
     ObjectId id;
-    public String jobTitle;
-    public int posts;
-    public String location;
+    String jobTitle;
+    int posts;
+    String location;
+    String companyName;
 }

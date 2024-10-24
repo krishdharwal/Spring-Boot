@@ -1,8 +1,6 @@
-package org.CompanyMicroService.config;
+package ReviewsMS.Config;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -35,11 +33,6 @@ public class App_config {
     @Bean
     public PlatformTransactionManager transactionManager(MongoDatabaseFactory factory){
         return new MongoTransactionManager(factory);
-    }
-
-    @Bean
-    public MessageConverter messageConverter(){
-        return new Jackson2JsonMessageConverter();
     }
 
     @Bean

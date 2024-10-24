@@ -90,4 +90,8 @@ FeignClient:
   Job:
     url: http://localhost:8092/job
   review:
-    url: http://localhost:8993/reviews
+    url: http://localhost:8093/reviews
+
+feign:
+ codec:
+  enable-default=true:

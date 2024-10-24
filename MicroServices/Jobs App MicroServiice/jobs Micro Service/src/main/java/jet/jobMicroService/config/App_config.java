@@ -1,4 +1,4 @@
-package org.CompanyMicroService.config;
+package jet.jobMicroService.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;

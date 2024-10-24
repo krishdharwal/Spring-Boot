@@ -8,20 +8,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-@FeignClient(name = "Reviews Client" , url = "${FeignClients.review.url}")
+@FeignClient(name = "ReviewsClient", url = "${FeignClient.review.url}")
 public interface ReviewMsClient {
 
     @GetMapping("/showAll")
-    public ResponseEntity<List<reviews_pojo>> showALlReviews();
+    ResponseEntity<List<reviews_pojo>> showALlReviews();
 
-    @PostMapping
-    void save(@RequestBody review_DTo review);
+    @PostMapping("/save")
+     void save(@RequestBody review_DTo body);
 
-    @PutMapping
-    public ResponseEntity<?> update(@RequestBody ReviewsMS.DTOs.review_DTo reviewDTo);
+    @PutMapping("/update/{reviewID}")
+    String update(@RequestBody review_DTo reviewDTo, @PathVariable("reviewID") ObjectId reviewID);
 
-    @DeleteMapping
-    public ResponseEntity<?> delete(ObjectId id);
-
+    @DeleteMapping("/delete/{id}")
+    ResponseEntity<String> delete(@PathVariable("id") ObjectId id);
 }
+
