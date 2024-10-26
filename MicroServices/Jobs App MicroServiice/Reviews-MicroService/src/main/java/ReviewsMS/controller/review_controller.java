@@ -32,13 +32,14 @@ public class review_controller {
     private Query_service_reviews queryService;
 
     @PostMapping("/save")
-    public void save(@RequestBody review_DTo body) {
+    public ObjectId save(@RequestBody review_DTo body) {
         try {
             assert body != null;
-            service.save(body);
+            return service.save(body);
 //            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }catch (Exception e){
             log.error("-- error in save in review controller ----------- ");
+            return null;
 //            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

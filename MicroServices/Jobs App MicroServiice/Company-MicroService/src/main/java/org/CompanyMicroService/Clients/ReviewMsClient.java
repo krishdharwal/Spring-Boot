@@ -15,7 +15,7 @@ public interface ReviewMsClient {
     ResponseEntity<List<reviews_pojo>> showALlReviews();
 
     @PostMapping("/save")
-     void save(@RequestBody review_DTo body);
+     ObjectId save(@RequestBody review_DTo body);
 
     @PutMapping("/update/{reviewID}")
     String update(@RequestBody review_DTo reviewDTo, @PathVariable("reviewID") ObjectId reviewID);

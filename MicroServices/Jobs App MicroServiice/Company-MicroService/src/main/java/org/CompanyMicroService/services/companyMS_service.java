@@ -131,11 +131,11 @@ public class companyMS_service {
         try {
             companyMS_pojo company = queryService.findByCompanyName(companyName);
             assert company != null;
-            // add review in company
             review.setCompanyName(companyName);
+            ObjectId reviewId = reviewClient.save(toReviewDTO(review));
+            review.setId(reviewId);
             company.getReviewList().add(review);
-            // send review to review MS
-            reviewClient.save(toReviewDTO(review));
+            repo.save(company);
             return "-- Review Saved Successfully --";
         }catch (Exception e){
             log.error("--- error in  saveReview in COmpany Services ---");

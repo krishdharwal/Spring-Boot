@@ -26,12 +26,14 @@ public class review_service {
 
 
     // save
-    public void save(review_DTo reviewDTo){
+    public ObjectId save(review_DTo reviewDTo){
         try{
         assert reviewDTo != null;
-        repo.save(toReview(reviewDTo));
+         reviews_pojo pojo =  repo.save(toReview(reviewDTo));
+         return pojo.getId();
         }catch (Exception e) {
             log.error("error in save in review services ");
+            return null;
         }
     }
 
