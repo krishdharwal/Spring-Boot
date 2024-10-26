@@ -18,6 +18,9 @@ public class jobMS_service {
     private jobMS_repo repo;
 
     @Autowired
+    private Query_service queryService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     // show all
@@ -45,38 +48,39 @@ public class jobMS_service {
     }
 
     // save
-    public ObjectId save(JobMsDTO Provided_job){
+    public JobMsDTO save(JobMsDTO Provided_job){
         try{
              jobMS_pojo pojo = repo.save(toJOB(Provided_job));
-             return pojo.getId();
+             return toJobDTO(pojo);
+
         }catch (Exception e){
             log.error("-- error in save - services" + e);
             return null;
         }
     }
 
+
     // update
-    public void update(ObjectId id, JobMsDTO newJOb){
+    public String update(ObjectId id, JobMsDTO newJOb){
         try {
             // 1st method
             // finding the job
-            jobMS_pojo jobFromDB = repo.findById(id).orElseThrow(
-                    () -> new RuntimeException("error while finding job")
-            );
+            jobMS_pojo jobFromDB = repo.findById(id).orElse(null);
+//
             assert jobFromDB != null;
             jobFromDB.setJobTitle(newJOb.getJobTitle());
             jobFromDB.setLocation(newJOb.getLocation());
             jobFromDB.setPosts(newJOb.getPosts());
-
             repo.save(jobFromDB);
-
+            return jobFromDB.getCompanyName();
             // 2nd method (Testing)
 //            repo.save(toJOB(newJOb));
-
         }catch (Exception e){
         log.error("-- error in update in job services --");
+        return null;
         }
     }
+
 
     // delete
     public String delete(ObjectId id){
@@ -91,6 +95,7 @@ public class jobMS_service {
             return null;
         }
     }
+
 
     // mapper
     public jobMS_pojo toJOB(JobMsDTO jobMsDTO){

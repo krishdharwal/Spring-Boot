@@ -27,6 +27,7 @@ public class jobMS_controller {
         try {
             return new ResponseEntity<>(service.findById(id), HttpStatus.ACCEPTED);
         }catch (Exception e){
+
             return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
         }
     }
@@ -41,7 +42,7 @@ public class jobMS_controller {
     }
 
     @PostMapping("/save")
-    public ObjectId save(@RequestBody JobMsDTO body){
+    public JobMsDTO save(@RequestBody JobMsDTO body){
         try {
              return service.save(body);
 //            return new ResponseEntity<>(HttpStatus.ACCEPTED);
@@ -52,12 +53,13 @@ public class jobMS_controller {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@RequestBody JobMsDTO body, @PathVariable ObjectId id){
+    public String update(@RequestBody JobMsDTO body, @PathVariable ObjectId id){
         try {
-            service.update(id,body);
-            return new ResponseEntity<>("--updated--", HttpStatus.ACCEPTED);
+            return service.update(id, body);
+//            return new ResponseEntity<>("--updated--", HttpStatus.ACCEPTED);
         }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+            return null;
+//            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
         }
     }
 

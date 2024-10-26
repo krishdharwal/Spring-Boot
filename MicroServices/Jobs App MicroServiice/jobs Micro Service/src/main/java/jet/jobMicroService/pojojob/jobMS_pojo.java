@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @NoArgsConstructor
 public class jobMS_pojo {
     @Id
-    ObjectId id;
+     private ObjectId id;
     @NonNull
     public String jobTitle;
     private int posts;

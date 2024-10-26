@@ -17,8 +17,8 @@ public interface ReviewMsClient {
     @PostMapping("/save")
      ObjectId save(@RequestBody review_DTo body);
 
-    @PutMapping("/update/{reviewID}")
-    String update(@RequestBody review_DTo reviewDTo, @PathVariable("reviewID") ObjectId reviewID);
+    @PutMapping("/update/{id}")
+    String update(@RequestBody review_DTo reviewDTo, @PathVariable ObjectId id);
 
     @DeleteMapping("/delete/{id}")
     ResponseEntity<String> delete(@PathVariable("id") ObjectId id);

@@ -67,10 +67,10 @@ public class companyMS_controller {
 
 
     @PutMapping("/job/update/{id}")
-    public ResponseEntity<?> updateJOb(@RequestBody jobMS_pojo body, @PathVariable ObjectId JObid){
+    public ResponseEntity<?> updateJOb(@RequestBody jobMS_pojo body, @PathVariable ObjectId id){
         try{
             assert body != null;
-            service.updateJOb(body,JObid);
+            service.updateJOb(body,id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -78,9 +78,9 @@ public class companyMS_controller {
     }
 
     @DeleteMapping("/job/{id}")
-    public ResponseEntity<?> deleteJOb(@PathVariable ObjectId JobId){
+    public ResponseEntity<?> deleteJOb(@PathVariable ObjectId id){
         try{
-            service.deleteJOb(JobId);
+            service.deleteJOb(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -101,20 +101,20 @@ public class companyMS_controller {
     }
 
 
-    @PutMapping("/review/update")
-    public ResponseEntity<?> updateReview(@RequestBody reviews_pojo review, @PathVariable ObjectId reviewID){
+    @PutMapping("/review/update/{id}")
+    public ResponseEntity<?> updateReview(@RequestBody reviews_pojo review, @PathVariable ObjectId id){
         try{
-            service.updateReview(review , reviewID);
+            service.updateReview(review , id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @DeleteMapping("/review/delete")
-    public ResponseEntity<?> deleteReview(ObjectId ReviewId){
+    @DeleteMapping("/review/delete/{id}")
+    public ResponseEntity<?> deleteReview(ObjectId id){
         try{
-            service.deleteReview(ReviewId);
+            service.deleteReview(id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -73,13 +73,21 @@ public class companyMS_service {
             //saving job in job's db
             // transferring through DTO
             jobBody.setCompanyName(companyName);
-            ObjectId jobId = jobClient.SaveJob(toJobDTO(jobBody));
+            JobMsDTO jobMsDTO = jobClient.SaveJob(toJobDTO(jobBody));
              // find company
             companyMS_pojo company = queryService.findByCompanyName(companyName);
             assert company != null;
             // save job
-            jobBody.setId(jobId);
-            company.getJobsList().add(jobBody);
+
+            jobMS_pojo job = new jobMS_pojo();
+            job.setId(jobMsDTO.getId());
+            job.setCompanyName(jobMsDTO.getCompanyName());
+            job.setJobTitle(jobMsDTO.getJobTitle());
+            job.setLocation(jobMsDTO.getLocation());
+            job.setPosts(jobMsDTO.getPosts());
+            
+
+            company.getJobsList().add(job);
             return repo.save(company);
         }catch (Exception e){
             log.error(" -- error in saveJOB in company service --" + e );
@@ -94,10 +102,11 @@ public class companyMS_service {
     public void updateJOb(jobMS_pojo jobMSPojo, ObjectId id) {
         try {
             assert jobMSPojo != null;
-            String CompanyName = jobClient.update(toJobDTO(jobMSPojo),id).toString();
+            String CompanyName = jobClient.update(toJobDTO(jobMSPojo),id);
             // find company by name
             companyMS_pojo company = queryService.findByCompanyName(CompanyName);
             // find review in company via its id
+            assert company != null;
             jobMS_pojo job = company.getJobsList().stream().filter(r -> r.getId().equals(id)).findAny()
                     .orElseThrow(() -> new RuntimeException("-- error in update job"));
             // update job

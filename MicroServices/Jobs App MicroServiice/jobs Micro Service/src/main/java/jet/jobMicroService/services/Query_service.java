@@ -1,5 +1,6 @@
 package jet.jobMicroService.services;
 import jet.jobMicroService.pojojob.jobMS_pojo;
+import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,11 @@ public class Query_service {
     }
 
 
+    public jobMS_pojo findByJobId(ObjectId id){
+        Query query = new Query();
+        query.addCriteria(Criteria.where("id").is(id));
+        List<jobMS_pojo> userFromDb = mongoTemplate.find(query, jobMS_pojo.class);
+        return userFromDb.get(0);
+    }
 
 }
