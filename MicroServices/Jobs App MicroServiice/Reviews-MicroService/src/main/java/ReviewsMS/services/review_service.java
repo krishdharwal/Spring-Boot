@@ -26,14 +26,14 @@ public class review_service {
 
 
     // save
-    public ObjectId save(review_DTo reviewDTo){
+    public void save(review_DTo reviewDTo,ObjectId id){
         try{
-        assert reviewDTo != null;
-         reviews_pojo pojo =  repo.save(toReview(reviewDTo));
-         return pojo.getId();
+            reviewDTo.setId(id);
+        repo.save(toReview(reviewDTo));
+
         }catch (Exception e) {
             log.error("error in save in review services ");
-            return null;
+
         }
     }
 
@@ -53,8 +53,8 @@ public class review_service {
     // delete
     public String delete(ObjectId id){
         try {
-            reviews_pojo reviewsPojo = repo.findById(id).orElseThrow(
-                    () -> new RuntimeException("error while finding review by id"));
+            reviews_pojo reviewsPojo = repo.findById(id)
+                    .orElseThrow(() -> new RuntimeException("error while finding review by id"));
                     repo.deleteById(id);
             return reviewsPojo.getCompanyName();
         }catch (Exception e){
@@ -81,10 +81,9 @@ public class review_service {
 
     // update
     @Transactional
-    public String update(review_DTo reviewDTo) {
+    public String update(review_DTo reviewDTo, ObjectId id) {
         try{
-            reviews_pojo reviewsPojo = repo.findById(
-                         reviewDTo.getId())
+            reviews_pojo reviewsPojo = repo.findById(id)
                          .orElseThrow(() -> new NotFoundException("Review not found")
                          );
             reviewsPojo.setRating(reviewDTo.getRating());

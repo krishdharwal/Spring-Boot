@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -72,22 +73,19 @@ public class companyMS_service {
         try{
             //saving job in job's db
             // transferring through DTO
+
+            ObjectId GenerateId = new ObjectId();
+            jobBody.setId(GenerateId);
             jobBody.setCompanyName(companyName);
-            JobMsDTO jobMsDTO = jobClient.SaveJob(toJobDTO(jobBody));
+            // send the request to JOb MS
+            jobClient.SaveJob(toJobDTO(jobBody), GenerateId);
              // find company
             companyMS_pojo company = queryService.findByCompanyName(companyName);
             assert company != null;
             // save job
-
-            jobMS_pojo job = new jobMS_pojo();
-            job.setId(jobMsDTO.getId());
-            job.setCompanyName(jobMsDTO.getCompanyName());
-            job.setJobTitle(jobMsDTO.getJobTitle());
-            job.setLocation(jobMsDTO.getLocation());
-            job.setPosts(jobMsDTO.getPosts());
-            
-
-            company.getJobsList().add(job);
+            System.out.println(jobBody.getId());
+            System.out.println(jobBody);
+            company.getJobsList().add(jobBody);
             return repo.save(company);
         }catch (Exception e){
             log.error(" -- error in saveJOB in company service --" + e );
@@ -123,11 +121,13 @@ public class companyMS_service {
     public void deleteJOb(ObjectId jobId) {
         try{
             // find company name from job
-            String companyName = jobClient.delete(jobId).toString();
+            String companyName = jobClient.delete(jobId);
             // find company
             companyMS_pojo company = queryService.findByCompanyName(companyName);
             // delete job
+            assert company != null;
             company.getJobsList().removeIf(r -> r.getId().equals(jobId));
+            repo.save(company);
         }catch (Exception e){
             log.error("-- error in delete job job");
         }
@@ -138,11 +138,15 @@ public class companyMS_service {
     @Transactional
     public String saveReview(reviews_pojo review, String companyName){
         try {
+            ObjectId GenerateId = new ObjectId();
             companyMS_pojo company = queryService.findByCompanyName(companyName);
+
             assert company != null;
+
             review.setCompanyName(companyName);
-            ObjectId reviewId = reviewClient.save(toReviewDTO(review));
-            review.setId(reviewId);
+            review.setId(GenerateId);
+            reviewClient.save(toReviewDTO(review),GenerateId);
+
             company.getReviewList().add(review);
             repo.save(company);
             return "-- Review Saved Successfully --";
@@ -156,7 +160,6 @@ public class companyMS_service {
         try {
             assert reviewsPojo != null;
             // find company Name
-
             String CompanyName = reviewClient.update(toReviewDTO(reviewsPojo),reviewID);
             // find company by name
             companyMS_pojo company = queryService.findByCompanyName(CompanyName);
@@ -175,9 +178,11 @@ public class companyMS_service {
 
     public void deleteReview(ObjectId reviewId) {
         try{
-            String companyName = reviewClient.delete(reviewId).toString();
+            String companyName = reviewClient.delete(reviewId);
             companyMS_pojo company = queryService.findByCompanyName(companyName);
+            assert company != null;
             company.getReviewList().removeIf(r -> r.getId().equals(reviewId));
+            repo.save(company);
         }catch (Exception e){
             log.error("-- error in deleteReview job job");
         }

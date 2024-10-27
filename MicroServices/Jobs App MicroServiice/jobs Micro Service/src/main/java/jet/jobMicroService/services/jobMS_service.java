@@ -48,14 +48,12 @@ public class jobMS_service {
     }
 
     // save
-    public JobMsDTO save(JobMsDTO Provided_job){
+    public void save(JobMsDTO Provided_job, ObjectId generateId){
         try{
-             jobMS_pojo pojo = repo.save(toJOB(Provided_job));
-             return toJobDTO(pojo);
-
+            Provided_job.setId(generateId);
+            repo.save(toJOB(Provided_job));
         }catch (Exception e){
             log.error("-- error in save - services" + e);
-            return null;
         }
     }
 

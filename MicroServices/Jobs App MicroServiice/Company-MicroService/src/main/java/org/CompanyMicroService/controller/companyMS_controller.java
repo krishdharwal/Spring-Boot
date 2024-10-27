@@ -112,7 +112,7 @@ public class companyMS_controller {
     }
 
     @DeleteMapping("/review/delete/{id}")
-    public ResponseEntity<?> deleteReview(ObjectId id){
+    public ResponseEntity<?> deleteReview(@PathVariable ObjectId id){
         try{
             service.deleteReview(id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
@@ -120,5 +120,6 @@ public class companyMS_controller {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
 
 }

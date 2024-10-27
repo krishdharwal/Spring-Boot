@@ -14,13 +14,13 @@ public interface ReviewMsClient {
     @GetMapping("/showAll")
     ResponseEntity<List<reviews_pojo>> showALlReviews();
 
-    @PostMapping("/save")
-     ObjectId save(@RequestBody review_DTo body);
+    @PostMapping("/save/{id}")
+     void save(@RequestBody review_DTo body, @PathVariable ObjectId id);
 
     @PutMapping("/update/{id}")
     String update(@RequestBody review_DTo reviewDTo, @PathVariable ObjectId id);
 
     @DeleteMapping("/delete/{id}")
-    ResponseEntity<String> delete(@PathVariable("id") ObjectId id);
+    String delete(@PathVariable ObjectId id);
 }
 

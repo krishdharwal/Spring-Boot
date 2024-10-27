@@ -31,15 +31,13 @@ public class review_controller {
     @Autowired
     private Query_service_reviews queryService;
 
-    @PostMapping("/save")
-    public ObjectId save(@RequestBody review_DTo body) {
+    @PostMapping("/save/{id}")
+    public void save(@RequestBody review_DTo body, @PathVariable ObjectId id) {
         try {
-            assert body != null;
-            return service.save(body);
+             service.save(body,id);
 //            return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }catch (Exception e){
             log.error("-- error in save in review controller ----------- ");
-            return null;
 //            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -53,23 +51,25 @@ public class review_controller {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<String> update(@RequestBody review_DTo reviewDTo){
+    @PutMapping("/update/{id}")
+    String update(@RequestBody review_DTo reviewDTo, @PathVariable ObjectId id){
         try{
-            String companyName = service.update(reviewDTo);
-            return new ResponseEntity<>(companyName , HttpStatus.OK);
+            return service.update(reviewDTo,id);
+//            return new ResponseEntity<>(companyName , HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return null;
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> delete(ObjectId id){
+    @DeleteMapping("/delete/{id}")
+     public String delete(@PathVariable ObjectId id){
         try{
-             String companyName = service.delete(id);
-            return new ResponseEntity<>(companyName , HttpStatus.OK);
+             return service.delete(id);
+//            return new ResponseEntity<>(companyName , HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return null;
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 }

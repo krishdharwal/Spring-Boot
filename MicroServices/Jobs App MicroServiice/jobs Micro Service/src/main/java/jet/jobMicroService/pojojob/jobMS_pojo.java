@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 public class jobMS_pojo {
+
     @Id
      private ObjectId id;
     @NonNull
