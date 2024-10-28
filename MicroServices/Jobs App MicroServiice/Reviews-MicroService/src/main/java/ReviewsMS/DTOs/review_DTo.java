@@ -9,6 +9,6 @@ import org.bson.types.ObjectId;
 public class review_DTo {
     ObjectId id;
     String review;
-    int rating;
+    Double rating;
     String companyName;
 }

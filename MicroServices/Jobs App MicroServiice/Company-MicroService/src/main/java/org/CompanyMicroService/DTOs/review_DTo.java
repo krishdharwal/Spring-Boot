@@ -1,5 +1,6 @@
 package org.CompanyMicroService.DTOs;
 
+import ReviewsMS.pojo.reviews_pojo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
@@ -9,6 +10,6 @@ import org.bson.types.ObjectId;
 public class review_DTo {
     ObjectId id;
     String review;
-    int rating;
+    Double rating;
     String companyName;
 }

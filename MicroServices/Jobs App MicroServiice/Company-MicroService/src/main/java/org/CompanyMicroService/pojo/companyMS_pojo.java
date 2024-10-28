@@ -23,6 +23,7 @@ public class companyMS_pojo {
     @NonNull
     private String companyName;
     private String type;
+    private Double averageRating;
     private List<jobMS_pojo> jobsList = new ArrayList<>();
     private List<reviews_pojo> reviewList = new ArrayList<>();
 }

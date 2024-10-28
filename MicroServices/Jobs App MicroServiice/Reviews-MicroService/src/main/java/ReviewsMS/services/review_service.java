@@ -2,6 +2,7 @@ package ReviewsMS.services;
 
 
 import ReviewsMS.DTOs.review_DTo;
+import ReviewsMS.Producer.ReviewMessageProducer;
 import ReviewsMS.pojo.reviews_pojo;
 import ReviewsMS.repo.review_repo;
 import lombok.extern.slf4j.Slf4j;
@@ -24,13 +25,15 @@ public class review_service {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private ReviewMessageProducer reviewMessageProducer;
 
     // save
     public void save(review_DTo reviewDTo,ObjectId id){
         try{
             reviewDTo.setId(id);
-        repo.save(toReview(reviewDTo));
-
+            repo.save(toReview(reviewDTo));
+            reviewMessageProducer.SendMessage(reviewDTo);
         }catch (Exception e) {
             log.error("error in save in review services ");
 
@@ -68,6 +71,10 @@ public class review_service {
     public reviews_pojo toReview(review_DTo reviewDTo){
         assert reviewDTo != null;
         return modelMapper.map(reviewDTo, reviews_pojo.class);
+    }
+    public review_DTo toDto(reviews_pojo reviewsPojo){
+        assert reviewsPojo != null;
+        return modelMapper.map(reviewsPojo, review_DTo.class);
     }
 
     public List<reviews_pojo> findAll() {

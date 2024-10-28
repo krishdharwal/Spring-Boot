@@ -16,7 +16,7 @@ public class reviews_pojo {
     private ObjectId id;
     private String review;
     @NonNull
-    private int rating;
+    private Double rating;
     @NonNull
     String companyName;
     }

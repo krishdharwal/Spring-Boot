@@ -12,6 +12,7 @@ import org.CompanyMicroService.pojo.companyMS_pojo;
 import org.CompanyMicroService.repo.companyMS_repo;
 import jet.jobMicroService.pojojob.jobMS_pojo;
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.math.ec.ECConstants;
 import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -211,4 +212,16 @@ public class companyMS_service {
         return modelMapper.map(reviewsPojo,review_DTo.class);
     }
 
+    public void updateCompanyReviewSetAverage(review_DTo reviewDTo) {
+        // update the average number in company
+        try {
+            assert reviewDTo != null;
+            companyMS_pojo companyMSPojo = queryService.findByCompanyName(reviewDTo.getCompanyName());
+            double avg = companyMSPojo.getReviewList().stream().mapToDouble(reviews_pojo::getRating).average().orElse(0.0);
+            companyMSPojo.setAverageRating(avg);
+            repo.save(companyMSPojo);
+        }catch (Exception e){
+            log.error("--- error in updateCompanyReviewSetAverage in company ms service --- ");
+      }
+    }
 }
