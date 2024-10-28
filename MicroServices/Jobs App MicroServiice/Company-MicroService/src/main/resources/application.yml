@@ -1,7 +1,4 @@
 spring:
-  main:
-   web-application-type: reactive
-   allow-bean-definition-overriding: true
   # app name
   application:
     name: CompanyMicroService
@@ -92,6 +89,3 @@ FeignClient:
   review:
     url: http://localhost:8093/reviews
 
-feign:
- codec:
-  enable-default=true:

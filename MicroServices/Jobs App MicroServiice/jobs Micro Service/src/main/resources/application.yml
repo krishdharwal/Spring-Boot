@@ -1,7 +1,4 @@
 spring:
-  main:
-    web-application-type: reactive
-    allow-bean-definition-overriding: true
   application:
     name: JobMicroService
   data:
@@ -37,3 +34,9 @@ management:
   tracing:
     sampling:
       probability: 1.0
+
+  springdoc:
+   api-docs:
+    enabled: true
+   swagger-ui:
+    enabled: true

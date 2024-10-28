@@ -28,18 +28,10 @@ public class App_config {
         return new ModelMapper();
     }
 
-    @Bean
-    public ServerCodecConfigurer serverCodecConfigurer() {
-        return ServerCodecConfigurer.create();
-    }
+
     @Bean
     public PlatformTransactionManager transactionManager(MongoDatabaseFactory factory){
         return new MongoTransactionManager(factory);
-    }
-
-    @Bean
-    public MessageConverter messageConverter(){
-        return new Jackson2JsonMessageConverter();
     }
 
     @Bean
