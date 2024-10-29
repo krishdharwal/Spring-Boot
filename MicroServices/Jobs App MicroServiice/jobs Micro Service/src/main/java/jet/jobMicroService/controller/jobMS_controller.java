@@ -23,7 +23,7 @@ public class jobMS_controller {
     }
 
     @GetMapping("/details/{id}")
-    public ResponseEntity<?> details(@PathVariable ObjectId id){
+    public ResponseEntity<?> details(@PathVariable String id){
         try {
             return new ResponseEntity<>(service.findById(id), HttpStatus.ACCEPTED);
         }catch (Exception e){
@@ -42,7 +42,7 @@ public class jobMS_controller {
     }
 
     @PostMapping("/save/{id}")
-    public void save(@RequestBody JobMsDTO body, @PathVariable  ObjectId id){
+    public void save(@RequestBody JobMsDTO body, @PathVariable String id){
         try {
               service.save(body,id);
 //            return new ResponseEntity<>(HttpStatus.ACCEPTED);
@@ -52,7 +52,7 @@ public class jobMS_controller {
     }
 
     @PutMapping("/update/{id}")
-    public String update(@RequestBody JobMsDTO body, @PathVariable ObjectId id){
+    public String update(@RequestBody JobMsDTO body, @PathVariable String id){
         try {
             return service.update(id, body);
 //            return new ResponseEntity<>("--updated--", HttpStatus.ACCEPTED);
@@ -63,7 +63,7 @@ public class jobMS_controller {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable ObjectId id){
+    public String delete(@PathVariable String id){
         try {
              return service.delete(id);
 //            return new ResponseEntity<>(companyName , HttpStatus.ACCEPTED);

@@ -6,6 +6,7 @@ import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.CompanyMicroService.Clients.JobMicroServiceClient;
 import org.CompanyMicroService.Clients.ReviewMsClient;
+import org.CompanyMicroService.DTOs.CompanyMsDTO;
 import org.CompanyMicroService.DTOs.JobMsDTO;
 import org.CompanyMicroService.DTOs.review_DTo;
 import org.CompanyMicroService.pojo.companyMS_pojo;
@@ -48,8 +49,8 @@ public class companyMS_service {
 
     // rate limiter is used to limit the rate of calls
     @RateLimiter(name = "companyBreaker" , fallbackMethod = "DenialOfService")
-    public void save(companyMS_pojo body) {
-        repo.save(body);
+    public void save(CompanyMsDTO body) {
+        repo.save(toCompany(body));
     }
 
     public String DenialOfService(Exception e){
@@ -72,23 +73,21 @@ public class companyMS_service {
     // if request is not accepted it will try that many times.
     @Transactional
     @Retry(name = "companyBreaker" , fallbackMethod = "Retring")
-    public companyMS_pojo saveJob(jobMS_pojo jobBody, String companyName) {
+    public companyMS_pojo saveJob(JobMsDTO jobMsDTO, String companyName) {
         try{
             //saving job in job's db
             // transferring through DTO
 
             ObjectId GenerateId = new ObjectId();
-            jobBody.setId(GenerateId);
-            jobBody.setCompanyName(companyName);
+            jobMsDTO.setId(GenerateId);
+            jobMsDTO.setCompanyName(companyName);
             // send the request to JOb MS
-            jobClient.SaveJob(toJobDTO(jobBody), GenerateId);
+            jobClient.SaveJob(jobMsDTO, GenerateId);
              // find company
             companyMS_pojo company = queryService.findByCompanyName(companyName);
             assert company != null;
             // save job
-            System.out.println(jobBody.getId());
-            System.out.println(jobBody);
-            company.getJobsList().add(jobBody);
+            company.getJobsList().add(toJOB(jobMsDTO));
             return repo.save(company);
         }catch (Exception e){
             log.error(" -- error in saveJOB in company service --" + e );
@@ -100,20 +99,22 @@ public class companyMS_service {
         return "-- Retring to save Job -- ";
     }
 
-    public void updateJOb(jobMS_pojo jobMSPojo, ObjectId id) {
+    public void updateJOb(JobMsDTO jobMsDTO, String id) {
         try {
-            assert jobMSPojo != null;
-            String CompanyName = jobClient.update(toJobDTO(jobMSPojo),id);
+            ObjectId newID = new ObjectId(id);
+
+            assert jobMsDTO != null;
+            String CompanyName = jobClient.update(jobMsDTO,newID);
             // find company by name
             companyMS_pojo company = queryService.findByCompanyName(CompanyName);
             // find review in company via its id
             assert company != null;
-            jobMS_pojo job = company.getJobsList().stream().filter(r -> r.getId().equals(id)).findAny()
+            jobMS_pojo job = company.getJobsList().stream().filter(r -> r.getId().equals(newID)).findAny()
                     .orElseThrow(() -> new RuntimeException("-- error in update job"));
             // update job
-            job.setPosts(jobMSPojo.getPosts());
-            job.setLocation(jobMSPojo.getLocation());
-            job.setJobTitle(jobMSPojo.getJobTitle());
+            job.setPosts(jobMsDTO.getPosts());
+            job.setLocation(jobMsDTO.getLocation());
+            job.setJobTitle(jobMsDTO.getJobTitle());
             // save it
             repo.save(company);
         }catch (Exception e){
@@ -121,10 +122,11 @@ public class companyMS_service {
         }
     }
 
-    public void deleteJOb(ObjectId jobId) {
+    public void deleteJOb(String jobId) {
         try{
             // find company name from job
-            String companyName = jobClient.delete(jobId);
+            ObjectId id = new ObjectId(jobId);
+            String companyName = jobClient.delete(id);
             // find company
             companyMS_pojo company = queryService.findByCompanyName(companyName);
             // delete job
@@ -139,7 +141,7 @@ public class companyMS_service {
 
     // Reviews Algo's
     @Retryable(value = TransientDataAccessException.class, maxAttempts = 3)
-    public companyMS_pojo saveReview(reviews_pojo review, String companyName){
+    public companyMS_pojo saveReview(review_DTo review, String companyName){
         try {
             ObjectId GenerateId = new ObjectId();
             companyMS_pojo company = queryService.findByCompanyName(companyName);
@@ -147,9 +149,9 @@ public class companyMS_service {
             assert company != null;
             review.setCompanyName(companyName);
             review.setId(GenerateId);
-            reviewClient.save(toReviewDTO(review),GenerateId);
+            reviewClient.save(review,GenerateId);
 
-            company.getReviewList().add(review);
+            company.getReviewList().add(toReview(review));
             repo.save(company);
             return company;
         }catch (Exception e){
@@ -158,19 +160,20 @@ public class companyMS_service {
         }
     }
 
-    public void updateReview(reviews_pojo reviewsPojo, ObjectId reviewID) {
+    public void updateReview(review_DTo reviewDTo, String reviewID) {
         try {
-            assert reviewsPojo != null;
+            assert reviewDTo != null;
+            ObjectId id = new ObjectId(reviewID);
             // find company Name
-            String CompanyName = reviewClient.update(toReviewDTO(reviewsPojo),reviewID);
+            String CompanyName = reviewClient.update(reviewDTo,id);
             // find company by name
             companyMS_pojo company = queryService.findByCompanyName(CompanyName);
             // find review in company via its id
-            reviews_pojo review = company.getReviewList().stream().filter(r -> r.getId().equals(reviewID)).findAny()
+            reviews_pojo review = company.getReviewList().stream().filter(r -> r.getId().equals(id)).findAny()
                     .orElseThrow(() -> new RuntimeException("-- error in update job"));
             // update review
-            review.setRating(reviewsPojo.getRating());
-            review.setReview(reviewsPojo.getReview());
+            review.setRating(reviewDTo.getRating());
+            review.setReview(reviewDTo.getReview());
             // save it
             repo.save(company);
         }catch (Exception e){
@@ -178,12 +181,13 @@ public class companyMS_service {
         }
     }
 
-    public void deleteReview(ObjectId reviewId) {
+    public void deleteReview(String reviewId) {
         try{
-            String companyName = reviewClient.delete(reviewId);
+            ObjectId id = new ObjectId(reviewId);
+            String companyName = reviewClient.delete(id);
             companyMS_pojo company = queryService.findByCompanyName(companyName);
             assert company != null;
-            company.getReviewList().removeIf(r -> r.getId().equals(reviewId));
+            company.getReviewList().removeIf(r -> r.getId().equals(id));
             repo.save(company);
         }catch (Exception e){
             log.error("-- error in deleteReview job job");
@@ -192,6 +196,15 @@ public class companyMS_service {
 
 
                          // mappers algo's
+    public companyMS_pojo toCompany(CompanyMsDTO companyMsDTO){
+        assert companyMsDTO != null;
+        return modelMapper.map(companyMsDTO, companyMS_pojo.class);
+    }
+    public CompanyMsDTO toCompanyDTO(companyMS_pojo companyMSPojo){
+        assert companyMSPojo != null;
+        return modelMapper.map(companyMSPojo, CompanyMsDTO.class);
+    }
+
     public jobMS_pojo toJOB(JobMsDTO dto){
         assert dto != null;
         return modelMapper.map(dto, jobMS_pojo.class);
@@ -213,6 +226,7 @@ public class companyMS_service {
         return modelMapper.map(reviewsPojo,review_DTo.class);
     }
 
+                                    // rabbit mq algos
     public void updateCompanyReviewSetAverage(review_DTo reviewDTo) {
         // update the average number in company
         try {

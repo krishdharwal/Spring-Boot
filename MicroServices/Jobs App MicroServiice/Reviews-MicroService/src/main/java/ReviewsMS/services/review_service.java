@@ -29,8 +29,9 @@ public class review_service {
     private ReviewMessageProducer reviewMessageProducer;
 
     // save
-    public void save(review_DTo reviewDTo,ObjectId id){
+    public void save(review_DTo reviewDTo,String ID){
         try{
+            ObjectId id  = new ObjectId(ID);
             reviewDTo.setId(id);
             repo.save(toReview(reviewDTo));
             reviewMessageProducer.SendMessage(reviewDTo);
@@ -40,8 +41,9 @@ public class review_service {
         }
     }
 
-    public reviews_pojo findById(ObjectId id){
+    public reviews_pojo findById(String ID){
         try {
+            ObjectId id  = new ObjectId(ID);
             reviews_pojo users = repo.findById(id).orElse(null);
             if (users  != null) {
                 return users;
@@ -54,8 +56,9 @@ public class review_service {
     }
 
     // delete
-    public String delete(ObjectId id){
+    public String delete(String ID){
         try {
+            ObjectId id  = new ObjectId(ID);
             reviews_pojo reviewsPojo = repo.findById(id)
                     .orElseThrow(() -> new RuntimeException("error while finding review by id"));
                     repo.deleteById(id);
@@ -88,8 +91,9 @@ public class review_service {
 
     // update
     @Transactional
-    public String update(review_DTo reviewDTo, ObjectId id) {
+    public String update(review_DTo reviewDTo, String ID) {
         try{
+            ObjectId id  = new ObjectId(ID);
             reviews_pojo reviewsPojo = repo.findById(id)
                          .orElseThrow(() -> new NotFoundException("Review not found")
                          );

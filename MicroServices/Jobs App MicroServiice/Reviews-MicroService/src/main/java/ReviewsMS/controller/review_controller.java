@@ -32,7 +32,7 @@ public class review_controller {
     private Query_service_reviews queryService;
 
     @PostMapping("/save/{id}")
-    public void save(@RequestBody review_DTo body, @PathVariable ObjectId id) {
+    public void save(@RequestBody review_DTo body, @PathVariable String  id) {
         try {
              service.save(body,id);
 //            return new ResponseEntity<>(HttpStatus.ACCEPTED);
@@ -52,7 +52,7 @@ public class review_controller {
     }
 
     @PutMapping("/update/{id}")
-    String update(@RequestBody review_DTo reviewDTo, @PathVariable ObjectId id){
+    String update(@RequestBody review_DTo reviewDTo, @PathVariable String id){
         try{
             return service.update(reviewDTo,id);
 //            return new ResponseEntity<>(companyName , HttpStatus.OK);
@@ -63,7 +63,7 @@ public class review_controller {
     }
 
     @DeleteMapping("/delete/{id}")
-     public String delete(@PathVariable ObjectId id){
+     public String delete(@PathVariable String id){
         try{
              return service.delete(id);
 //            return new ResponseEntity<>(companyName , HttpStatus.OK);

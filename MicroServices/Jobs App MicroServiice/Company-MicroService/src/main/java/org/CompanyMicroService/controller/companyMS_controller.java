@@ -1,14 +1,12 @@
 package org.CompanyMicroService.controller;
 
-
-import ReviewsMS.pojo.reviews_pojo;
+import org.CompanyMicroService.DTOs.CompanyMsDTO;
+import org.CompanyMicroService.DTOs.JobMsDTO;
+import org.CompanyMicroService.DTOs.review_DTo;
 import org.CompanyMicroService.pojo.companyMS_pojo;
 import org.CompanyMicroService.services.Query_service;
 import org.CompanyMicroService.services.companyMS_service;
-import jet.jobMicroService.pojojob.jobMS_pojo;
-
 import lombok.extern.slf4j.Slf4j;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +26,7 @@ public class companyMS_controller {
 
                                 // Company MS Algo's
     @PostMapping
-    public String saveCompany(@RequestBody companyMS_pojo body){
+    public String saveCompany(@RequestBody CompanyMsDTO body){
         service.save(body);
         return "saved";
     }
@@ -61,13 +59,13 @@ public class companyMS_controller {
                                          // JOB MS Algo's
 
     @PostMapping("/job/{companyName}")
-    public companyMS_pojo saveJob(@RequestBody jobMS_pojo jobBody, @PathVariable String companyName){
+    public companyMS_pojo saveJob(@RequestBody JobMsDTO jobBody, @PathVariable String companyName){
         return service.saveJob(jobBody,companyName);
     }
 
 
     @PutMapping("/job/update/{id}")
-    public ResponseEntity<?> updateJOb(@RequestBody jobMS_pojo body, @PathVariable ObjectId id){
+    public ResponseEntity<?> updateJOb(@RequestBody JobMsDTO body, @PathVariable String id){
         try{
             assert body != null;
             service.updateJOb(body,id);
@@ -78,7 +76,7 @@ public class companyMS_controller {
     }
 
     @DeleteMapping("/job/{id}")
-    public ResponseEntity<?> deleteJOb(@PathVariable ObjectId id){
+    public ResponseEntity<?> deleteJOb(@PathVariable String id){
         try{
             service.deleteJOb(id);
             return new ResponseEntity<>(HttpStatus.OK);
@@ -90,7 +88,7 @@ public class companyMS_controller {
 
                                         // Review MS Algo's
     @PostMapping("/review/{companyName}")
-    public ResponseEntity<?> SaveReview(@RequestBody reviews_pojo review_Body, @PathVariable String companyName){
+    public ResponseEntity<?> SaveReview(@RequestBody review_DTo review_Body, @PathVariable String companyName){
         try {
             companyMS_pojo companyMSPojo =  service.saveReview(review_Body, companyName);
             return new ResponseEntity<>( companyMSPojo , HttpStatus.ACCEPTED);
@@ -102,7 +100,7 @@ public class companyMS_controller {
 
 
     @PutMapping("/review/update/{id}")
-    public ResponseEntity<?> updateReview(@RequestBody reviews_pojo review, @PathVariable ObjectId id){
+    public ResponseEntity<?> updateReview(@RequestBody review_DTo review, @PathVariable String id){
         try{
             service.updateReview(review , id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
@@ -112,7 +110,7 @@ public class companyMS_controller {
     }
 
     @DeleteMapping("/review/delete/{id}")
-    public ResponseEntity<?> deleteReview(@PathVariable ObjectId id){
+    public ResponseEntity<?> deleteReview(@PathVariable String id){
         try{
             service.deleteReview(id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);

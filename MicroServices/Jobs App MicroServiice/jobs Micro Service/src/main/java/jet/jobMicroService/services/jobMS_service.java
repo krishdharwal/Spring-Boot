@@ -34,8 +34,9 @@ public class jobMS_service {
     }
 
     // get by id
-    public jobMS_pojo findById(ObjectId id){
+    public jobMS_pojo findById(String ID){
         try {
+            ObjectId id  = new ObjectId(ID);
             jobMS_pojo users = repo.findById(id).orElse(null);
             if (users  != null) {
                 return users;
@@ -48,9 +49,10 @@ public class jobMS_service {
     }
 
     // save
-    public void save(JobMsDTO Provided_job, ObjectId generateId){
+    public void save(JobMsDTO Provided_job, String ID){
         try{
-            Provided_job.setId(generateId);
+            ObjectId id  = new ObjectId(ID);
+            Provided_job.setId(id);
             repo.save(toJOB(Provided_job));
         }catch (Exception e){
             log.error("-- error in save - services" + e);
@@ -59,10 +61,11 @@ public class jobMS_service {
 
 
     // update
-    public String update(ObjectId id, JobMsDTO newJOb){
+    public String update(String ID, JobMsDTO newJOb){
         try {
             // 1st method
             // finding the job
+            ObjectId id  = new ObjectId(ID);
             jobMS_pojo jobFromDB = repo.findById(id).orElse(null);
 //
             assert jobFromDB != null;
@@ -81,8 +84,9 @@ public class jobMS_service {
 
 
     // delete
-    public String delete(ObjectId id){
+    public String delete(String ID){
         try {
+            ObjectId id  = new ObjectId(ID);
             jobMS_pojo jobMSPojo = repo.findById(id).orElse(null);
             assert jobMSPojo != null;
             String companyName = jobMSPojo.getCompanyName();
