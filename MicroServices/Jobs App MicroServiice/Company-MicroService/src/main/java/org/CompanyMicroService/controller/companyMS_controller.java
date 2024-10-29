@@ -92,8 +92,8 @@ public class companyMS_controller {
     @PostMapping("/review/{companyName}")
     public ResponseEntity<?> SaveReview(@RequestBody reviews_pojo review_Body, @PathVariable String companyName){
         try {
-            String s = service.saveReview(review_Body, companyName);
-            return new ResponseEntity<>( s , HttpStatus.ACCEPTED);
+            companyMS_pojo companyMSPojo =  service.saveReview(review_Body, companyName);
+            return new ResponseEntity<>( companyMSPojo , HttpStatus.ACCEPTED);
         }catch (Exception e){
             log.error("cannot able to save review");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

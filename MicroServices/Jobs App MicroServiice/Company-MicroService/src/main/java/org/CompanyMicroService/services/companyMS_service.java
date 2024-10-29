@@ -16,7 +16,9 @@ import org.bouncycastle.math.ec.ECConstants;
 import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.TransientDataAccessException;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -135,25 +137,24 @@ public class companyMS_service {
     }
 
 
-                          // Reviews Algo's
-    @Transactional
-    public String saveReview(reviews_pojo review, String companyName){
+    // Reviews Algo's
+    @Retryable(value = TransientDataAccessException.class, maxAttempts = 3)
+    public companyMS_pojo saveReview(reviews_pojo review, String companyName){
         try {
             ObjectId GenerateId = new ObjectId();
             companyMS_pojo company = queryService.findByCompanyName(companyName);
 
             assert company != null;
-
             review.setCompanyName(companyName);
             review.setId(GenerateId);
             reviewClient.save(toReviewDTO(review),GenerateId);
 
             company.getReviewList().add(review);
             repo.save(company);
-            return "-- Review Saved Successfully --";
+            return company;
         }catch (Exception e){
             log.error("--- error in  saveReview in COmpany Services ---");
-            return "-- cant save --";
+            return null;
         }
     }
 

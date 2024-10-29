@@ -15,21 +15,17 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class App_config {
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate(){
-        return new RestTemplate();
-    }
+//    @Bean
+//    @LoadBalanced
+//    public RestTemplate restTemplate(){
+//        return new RestTemplate();
+//    }
 
     @Bean
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
 
-    @Bean
-    public ServerCodecConfigurer serverCodecConfigurer() {
-        return ServerCodecConfigurer.create();
-    }
     @Bean
     public PlatformTransactionManager transactionManager(MongoDatabaseFactory factory){
         return new MongoTransactionManager(factory);

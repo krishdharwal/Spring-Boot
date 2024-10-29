@@ -15,10 +15,9 @@ public class ReviewMessageProducer {
     @Autowired
     private ModelMapper modelMapper;
 
-    public void SendMessage(review_DTo reviewsPojo){
-        assert reviewsPojo != null;
-        rabbitTemplate.convertAndSend("CompanyRatingQueue", reviewsPojo );
-
+    public void SendMessage(review_DTo reviewsDTo ){
+        assert reviewsDTo  != null;
+        rabbitTemplate.convertAndSend("CompanyRatingQueue", reviewsDTo );
     }
 
     public review_DTo toDto(reviews_pojo reviewsPojo){

@@ -9,22 +9,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class RabbitMQ_config {
+public class RabbitMQConfig {
 
     @Bean
-    public Queue companyRatingQueue(){
-        return new Queue("CompanyRatingQueue");
+    public Queue companyRatingQueue() {
+        return new Queue("CompanyRatingQueue", true); // Making the queue durable
     }
 
     @Bean
-    public MessageConverter JsonFileConvertor(){
+    public MessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();
     }
 
     @Bean
-    public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory){
+    public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(JsonFileConvertor());
+        rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
     }
 }
