@@ -19,7 +19,6 @@ public class user_service {
     @Autowired
    private user_repo repo;
 
-
     @Autowired
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -45,8 +44,6 @@ public class user_service {
     public void save_simple(user body){
         repo.save(body);
     }
-
-
 
     public user findByname(String name){
         return repo.findByUsername(name);

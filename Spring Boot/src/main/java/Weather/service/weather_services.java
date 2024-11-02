@@ -36,7 +36,8 @@ public class weather_services {
                 ResponseEntity<pojo_weather> response = restTemplate.exchange(apiFromCache, HttpMethod.GET, null, pojo_weather.class);
                 pojo_weather body = response.getBody();
                 if (body != null) {
-                    redisService.save("weather_of_"+ city, body, 300L);
+                    // save in redis #########
+                    redisService.set("weather_of_"+ city, body, 300L);
                     return body;
                 }
             }
@@ -51,5 +52,6 @@ public class weather_services {
 
 
 // stored in db
+// website - weather stack
 //    private static final String API = "https://api.weatherstack.com/current?access_key=API_KEY&query=CITY";
 

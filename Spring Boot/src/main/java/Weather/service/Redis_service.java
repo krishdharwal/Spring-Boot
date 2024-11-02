@@ -29,7 +29,7 @@ public class Redis_service {
         }
     }
 
-    public void save(String key,Object body,Long time){
+    public void set(String key,Object body,Long time){
         try {
                 ObjectMapper objectMapper = new ObjectMapper();
                 String jsonValue = objectMapper.writeValueAsString(body);
@@ -40,11 +40,5 @@ public class Redis_service {
         }
 
     }
-
-//    public static void main(String[] args) {
-//        Redis_service redis = new Redis_service();
-//       Object ans = redis.redisTemplate.opsForValue().get("weathermandi");
-//        System.out.println(ans);
-//        }
 
 }

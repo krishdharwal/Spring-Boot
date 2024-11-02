@@ -1,4 +1,4 @@
-package Weather.cofig;
+package org.CompanyMicroService.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,12 +7,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
-public class Redis_config_weather {
-    @Bean
-    public RedisTemplate redisTemplate(RedisConnectionFactory factory){
-        RedisTemplate redisTemplate = new RedisTemplate<>();
+public class Redis_config {
 
-        redisTemplate.setConnectionFactory(factory);
+    @Bean
+    public RedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory){
+        RedisTemplate redisTemplate = new RedisTemplate();
+
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new StringRedisSerializer());
 
