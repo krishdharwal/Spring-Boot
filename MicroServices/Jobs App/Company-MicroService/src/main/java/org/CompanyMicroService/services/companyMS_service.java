@@ -44,10 +44,6 @@ public class companyMS_service {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Autowired
-    private Redis_service_company redisServiceCompany;
-
-
 
                                 // company algo's
 
@@ -55,20 +51,6 @@ public class companyMS_service {
     @RateLimiter(name = "companyBreaker" , fallbackMethod = "DenialOfService")
     public void save(CompanyMsDTO body) {
         repo.save(toCompany(body));
-    }
-
-    public List<companyMS_pojo> findByName(String CompanyName){
-        try {
-            companyMS_pojo company = redisServiceCompany.get(CompanyName, companyMS_pojo.class);
-            if (company == null) {
-                company = queryService.findByCompanyName(CompanyName);
-                //also save it there
-                redisServiceCompany.set(company.getCompanyName,company)
-            }
-            return company;
-        }catch (Exception e){
-            return null;
-        }
     }
 
     public String DenialOfService(Exception e){
