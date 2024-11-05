@@ -1,0 +1,43 @@
+spring:
+  # app name
+  application:
+    name: ScreenMicroService
+  # Mongo DB
+  data:
+    mongodb:
+      database: BookMyShowDB
+      auto-index-creation: true
+      uri: mongodb+srv://knightkrish:rmtDzoQ5nk7aCwX9@cluster0.jepfx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0spring.data.mongodb.auto-index-creation=true
+      authentication-database: admin
+      host: localhost
+      port: 27017
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+
+
+
+#  security:
+#    user:
+#      name: kd
+#      password: kd
+
+#Eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+server:
+  port: 9092
+                            #HardCode
+FeignClient:
+  screen:
+    url: http://localhost:9092/screen
+  review:
+    url: http://localhost:8093/reviews
+

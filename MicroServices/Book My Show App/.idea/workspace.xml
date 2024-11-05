@@ -5,235 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Book My show/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Book My show/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Book My show/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Book My show/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Book My show/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Book My show/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Docker Hive" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/.idea/Jobs App MicroServiice.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/src/main/java/org/example/ApiGateWayApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/src/main/java/org/example/Swagger_config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/API-Gateway/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/SpringBoot.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/journalApp-24-10-19_17-32.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/Clients/JobMicroServiceClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/Clients/ReviewMsClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/Consumer/ReviewMessageConsumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/DTOs/CompanyMsDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/DTOs/JobMsDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/DTOs/review_DTo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/config/App_config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/config/RabbitMQConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/config/Redis_config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/config/SpringSecurity_CMS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/config/swagger_congig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/controller/Health_Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/controller/companyMS_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/pojo/companyMS_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/repo/companyMS_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/services/Query_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/services/Redis_service_company.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/services/companyMS_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/java/org/CompanyMicroService/start_Company_MS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Company-MicroService/src/main/resources/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Config-Server/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Config-Server/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Config-Server/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Config-Server/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Config-Server/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Config-Server/src/main/java/Config/Server/ConfigServerApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Config-Server/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Config-Server/src/test/java/Config/Server/ConfigServerApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/Config/App_config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/Config/RabbitMQConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/Config/SpringSecurity_job.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/DTOs/review_DTo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/Producer/ReviewMessageProducer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/Start_ReviewMS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/controller/Health_Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/controller/review_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/pojo/reviews_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/repo/review_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/services/Query_service_reviews.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/java/ReviewsMS/services/review_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Reviews-MicroService/src/main/resources/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/src/main/java/Eureka/Spring/Cloud/AppCOnfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/src/main/java/Eureka/Spring/Cloud/SpringCloudApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/Spring-Cloud/src/test/java/Eureka/Spring/Cloud/SpringCloudApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/Clients/JobMicroServiceClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/DTOs/CompanyMsDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/DTOs/JobMsDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/config/App_config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/config/SpringSecurity_job.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/controller/Health_Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/controller/jobMS_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/pojojob/jobMS_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/repo/jobMS_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/services/Query_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/services/jobMS_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/java/jet/jobMicroService/start_jobMicroService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs Micro Service/src/main/resources/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/config/SpringSecurity_job.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/controller/Health_Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/controller/company_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/controller/job_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/controller/review_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/pojo/company_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/pojo/job_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/pojo/reviews_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/repo/company_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/repo/job_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/repo/review_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/services/Query_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/services/company_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/services/job_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/services/review_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App MicroServiice/jobs/start_job.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/Clients/JobMicroServiceClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/Clients/ReviewMsClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/Consumer/ReviewMessageConsumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/DTOs/CompanyMsDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/DTOs/JobMsDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/DTOs/review_DTo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/config/App_config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/config/RabbitMQConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/config/Redis_config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/config/SpringSecurity_CMS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/config/swagger_congig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/controller/Health_Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/controller/companyMS_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/pojo/companyMS_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/repo/companyMS_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/services/Query_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/services/Redis_service_company.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/services/companyMS_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/java/org/CompanyMicroService/start_Company_MS.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Jobs App/Company-MicroService/src/main/resources/logback.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Experiments/SpringSecurity_exp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Experiments/health.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Experiments/start_experiments.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/Start_Mail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/config/SpringSecurity_mail.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/controller/Mail_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/pojo/Mail_Detail_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/pojo/Mail_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/pojo/Sentiments.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/repo/Mail_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/services/Mail_Query.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Mail/services/Mail_Sender_services.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/cofig/Redis_config_weather.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/cofig/SpringSecurity_weather.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/controller/weather_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/pojo/API_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/pojo/pojo_weather.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/repo/repoWeather.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/service/AppCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/service/Redis_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/service/weather_services.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/Weather/start_weather.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/YT/config/SpringSecurity_yt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/YT/controller/DownloadController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/YT/entity/linkPojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/YT/repo/DownloadRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/YT/service/DownloadService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/YT/start_yt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/config/SpringSecurity_job.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/controller/Health_Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/controller/company_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/controller/job_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/controller/review_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/pojo/company_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/pojo/job_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/pojo/reviews_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/repo/company_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/repo/job_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/repo/review_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/services/Query_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/services/company_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/services/job_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/services/review_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/jobs/start_job.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Configuration/Redis_config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Configuration/SpringSecurity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Controllers/Admin_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Controllers/Health_check.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Controllers/public_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Controllers/user_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Controllers/user_info_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Exercise/arraylist.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Mongo_Repositories/Query_s_criteria.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Mongo_Repositories/user_info_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Mongo_Repositories/user_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/POJO/user.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/POJO/user_info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Services/Mail_Sender_services_learning.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Services/UserDetailsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Services/user_info_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/Services/user_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/filter/JwtFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/start_learning.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/java/learning/utilis/JwtUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring Boot/src/main/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/Mail/Start_Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/Mail/Start_Mail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CINEMA-HALL-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CINEMA-HALL-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CINEMA-HALL-MS/src/main/java/cinema/pojo/cinema_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/CINEMA-HALL-MS/src/main/java/cinema/pojo/cinema_pojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PLACES-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PLACES-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCREENS-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/resources/application.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,9 +32,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2oMwyfvjqBpb37igi1CYgkKIHR0" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -264,11 +53,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Movies_START.executor": "Run",
+    "Application.SpringCloudApplication.executor": "Run",
+    "Application.movie_service.executor": "Run",
+    "Application.screen_service.executor": "Run",
+    "Maven.MoviesMs-MicroService [clean].executor": "Run",
+    "Maven.MoviesMs-MicroService [package].executor": "Run",
+    "Maven.MoviesMs-MicroService [verify].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "springboot",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/jarvis/Documents/Spring-Boot/MicroServices/Book My Show App/CINEMA-HALL-MS/src/main/java/cinema",
-    "project.structure.last.edited": "Project",
+    "last_opened_file_path": "/home/jarvis/Documents/Spring-Boot/MicroServices/Book My Show App/Spring-Cloud",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -276,11 +72,81 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/SCREENS-MS/src/main/resources" />
+      <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/CINEMA-HALL-MS/src/main/java/cinema" />
       <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies" />
       <recent name="$PROJECT_DIR$/PLACES-MS/src/main/java/places" />
-      <recent name="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="Application" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Movies_START">
+    <configuration name="Movies_START" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="movies.Movies_START" />
+      <module name="MoviesMs-MicroService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="movies.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringCloudApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Eureka.Spring.Cloud.SpringCloudApplication" />
+      <module name="Spring-Cloud" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Eureka.Spring.Cloud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="movie_service" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="movies.service.movie_service" />
+      <module name="MoviesMs-MicroService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="movies.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="screen_service" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="screen.service.screen_service" />
+      <module name="ScreenMS-MicroService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="screen.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Movies_START" />
+        <item itemvalue="Application.SpringCloudApplication" />
+        <item itemvalue="Application.screen_service" />
+        <item itemvalue="Application.movie_service" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

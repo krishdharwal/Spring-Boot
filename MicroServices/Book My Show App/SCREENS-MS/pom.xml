@@ -8,10 +8,10 @@
 		<version>3.3.4</version>
 		<relativePath/>
 	</parent>
-	<groupId>org.ScreenMS</groupId>
-	<artifactId>ScreenMS-MicroService</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<name>Places-MicroService</name>
+	<groupId>screen</groupId>
+	<artifactId>ScreenMicroService</artifactId>
+	<version>1.9.9.0-SNAPSHOT</version>
+	<name>ScreenMicroService</name>
 	<description> ScreenMS-MicroService description</description>
 	<properties>
 		<java.version>17</java.version>

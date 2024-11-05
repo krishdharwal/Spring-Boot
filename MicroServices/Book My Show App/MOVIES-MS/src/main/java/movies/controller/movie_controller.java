@@ -1,0 +1,43 @@
+package movies.controller;
+
+import movies.Dto.movie_DTO;
+import movies.service.movie_service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/movie")
+public class movie_controller {
+
+    @Autowired
+    private movie_service service;
+
+    @GetMapping("/health")
+    public String health(){
+        return "--- Movie-MS is UP ---";
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<?> save(@RequestBody movie_DTO movie_data){
+        try {
+            service.save(movie_data);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/book/{movieName}")
+    public ResponseEntity<?> book_Ticket(@PathVariable("movieName") String movieName){
+        try{
+            service.Search_Movie(movieName);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+    }
+
+}

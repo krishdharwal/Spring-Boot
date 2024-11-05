@@ -7,8 +7,9 @@
         <option value="$PROJECT_DIR$/PLACES-MS/pom.xml" />
         <option value="$PROJECT_DIR$/CINEMA-HALL-MS/pom.xml" />
         <option value="$PROJECT_DIR$/MOVIES-MS/pom.xml" />
-        <option value="$PROJECT_DIR$/SCREENS-MS/pom.xml" />
         <option value="$PROJECT_DIR$/USER-MS/pom.xml" />
+        <option value="$PROJECT_DIR$/SCREENS-MS/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring-Cloud/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,37 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE project [
-		<!ELEMENT project (modelVersion|parent|groupId|artifactId|version|name|description|properties|dependencies|dependencyManagement|build)*>
-		<!ATTLIST project
-				xmlns CDATA #REQUIRED
-				xmlns:xsi CDATA #REQUIRED
-				xsi:schemaLocation CDATA #REQUIRED>
-		<!ELEMENT modelVersion (#PCDATA)>
-		<!ELEMENT parent (groupId|artifactId|version|relativePath)*>
-		<!ELEMENT groupId (#PCDATA)>
-		<!ELEMENT artifactId (#PCDATA)>
-		<!ELEMENT version (#PCDATA)>
-		<!ELEMENT relativePath (#PCDATA)>
-		<!ELEMENT name (#PCDATA)>
-		<!ELEMENT description (#PCDATA)>
-		<!ELEMENT properties (java.version|spring-cloud.version|maven.compiler.source|maven.compiler.target|project.build.sourceEncoding)*>
-		<!ELEMENT java.version (#PCDATA)>
-		<!ELEMENT spring-cloud.version (#PCDATA)>
-		<!ELEMENT maven.compiler.source (#PCDATA)>
-		<!ELEMENT maven.compiler.target (#PCDATA)>
-		<!ELEMENT project.build.sourceEncoding (#PCDATA)>
-		<!ELEMENT dependencies (dependency)*>
-		<!ELEMENT dependency (groupId|artifactId|exclusions|scope|version|type)*>
-		<!ELEMENT exclusions (exclusion)*>
-		<!ELEMENT exclusion (groupId|artifactId)*>
-		<!ELEMENT scope (#PCDATA)>
-		<!ELEMENT dependencyManagement (dependencies)*>
-		<!ELEMENT type (#PCDATA)>
-		<!ELEMENT build (plugins)*>
-		<!ELEMENT plugins (plugin)*>
-		<!ELEMENT plugin (groupId|artifactId|configuration)*>
-		<!ELEMENT configuration (image)*>
-		<!ELEMENT image (name)*>
-		]>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -179,7 +146,7 @@
 			<version>1.8.0</version>
 		</dependency>
 
-	</dependencies>
+    </dependencies>
 
 	<dependencyManagement>
 		<dependencies>

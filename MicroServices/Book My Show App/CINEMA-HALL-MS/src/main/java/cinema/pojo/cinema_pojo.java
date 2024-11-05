@@ -2,17 +2,18 @@ package cinema.pojo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 public class cinema_pojo {
     @Id
     ObjectId id;
+    @NonNull
     String name;
-    int screens;
-//    List
+    @NonNull
+    String address;
+    int totalScreens;
 }
