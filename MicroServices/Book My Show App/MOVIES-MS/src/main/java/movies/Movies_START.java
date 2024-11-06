@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableFeignClients
 @EnableTransactionManagement
 @SpringBootApplication
-public class Movies_START {
+public class  Movies_START {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Movies_START.class, args);

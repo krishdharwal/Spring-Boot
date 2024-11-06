@@ -1,11 +1,9 @@
 package movies.clients;
 
 import movies.Dto.updateSeat_DTO;
-import org.bson.types.ObjectId;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+import screen.Dto.screen_DTO;
 
 import java.util.List;
 
@@ -17,4 +15,7 @@ public interface screen_client {
 
     @PutMapping("/update-hall-seatsList")
     List<Boolean> updateSeats(@RequestBody updateSeat_DTO body);
+
+    @PostMapping("/save")
+    void Save_Hall(@RequestBody screen_DTO screenDto);
 }

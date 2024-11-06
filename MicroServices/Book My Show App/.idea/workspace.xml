@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/Mail/Start_Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/Mail/Start_Mail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CINEMA-HALL-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CINEMA-HALL-MS/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CINEMA-HALL-MS/src/main/java/cinema/pojo/cinema_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/CINEMA-HALL-MS/src/main/java/cinema/pojo/cinema_pojo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PLACES-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PLACES-MS/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCREENS-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/movie_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/movie_DTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/screen_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/screen_DTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Movies_START.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Movies_START.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/screen_client.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/screen_client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/config/Movie_config.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/config/Movie_config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/Dto/screen_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/Dto/screen_DTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/controller/screen_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/controller/screen_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/pojo/screen_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/pojo/screen_pojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/service/screen_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/service/screen_service.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,8 +55,9 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.Movies_START.executor": "Run",
+    "Application.Screen_START.executor": "Run",
     "Application.SpringCloudApplication.executor": "Run",
-    "Application.movie_service.executor": "Run",
+    "Application.movie_service.executor": "Debug",
     "Application.screen_service.executor": "Run",
     "Maven.MoviesMs-MicroService [clean].executor": "Run",
     "Maven.MoviesMs-MicroService [package].executor": "Run",
@@ -78,6 +80,9 @@
       <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies" />
       <recent name="$PROJECT_DIR$/PLACES-MS/src/main/java/places" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="movies.Dto" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
@@ -85,14 +90,39 @@
         <option value="Application" />
       </set>
     </option>
+    <option name="hiddenConfigurations">
+      <map>
+        <entry key="Application">
+          <value>
+            <set>
+              <option value="movie_service" />
+              <option value="screen_service" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="RunManager" selected="Application.Movies_START">
+  <component name="RunManager" selected="Application.movie_service">
     <configuration name="Movies_START" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="movies.Movies_START" />
       <module name="MoviesMs-MicroService" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="movies.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Screen_START" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="screen.Screen_START" />
+      <module name="ScreenMS-MicroService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="screen.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -142,9 +172,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Movies_START" />
-        <item itemvalue="Application.SpringCloudApplication" />
-        <item itemvalue="Application.screen_service" />
         <item itemvalue="Application.movie_service" />
+        <item itemvalue="Application.SpringCloudApplication" />
+        <item itemvalue="Application.Screen_START" />
+        <item itemvalue="Application.screen_service" />
       </list>
     </recent_temporary>
   </component>
@@ -158,5 +189,56 @@
       <updated>1730693008732</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java</url>
+          <line>182</line>
+          <properties class="movies.service.movie_service" method="set_hall_in_movie">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java</url>
+          <line>33</line>
+          <properties class="movies.controller.movie_controller" method="setHAll">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java</url>
+          <line>43</line>
+          <properties class="movies.controller.movie_controller" method="book_Ticket">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java</url>
+          <line>81</line>
+          <properties class="movies.service.movie_service" method="BookTicket">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java</url>
+          <line>56</line>
+          <properties class="movies.service.movie_service" method="Search_Movie">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

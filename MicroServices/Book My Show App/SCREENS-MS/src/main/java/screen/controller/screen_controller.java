@@ -3,12 +3,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import screen.Dto.screen_DTO;
 import screen.service.screen_service;
 
 import java.util.List;
 
 
-@RestController("/screen")
+@RestController
+@RequestMapping("/screen")
 @Slf4j
 public class screen_controller {
 
@@ -32,6 +34,15 @@ public class screen_controller {
         } catch (Exception e) {
             log.error(" -- error in update seatsList in screen_controller --  ");
             return null;
+        }
+    }
+
+    @PostMapping("/save")
+    public void Save_Hall(@RequestBody screen_DTO screenDto){
+        try{
+            service.save(screenDto);
+        }catch (Exception e){
+            log.error(" -- error in save in screen_controller -- ");
         }
     }
 

@@ -2,6 +2,7 @@ package movies.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import movies.Dto.movie_DTO;
 import movies.Dto.updateSeat_DTO;
 import movies.clients.screen_client;
@@ -14,15 +15,18 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import screen.Dto.screen_DTO;
 import screen.pojo.screen_pojo;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.SocketHandler;
 
 @Service
+@Slf4j
 public class movie_service {
 
     @Autowired
@@ -49,6 +53,7 @@ public class movie_service {
     }
 
     // Movie Search Algo
+    @Transactional
     public void Search_Movie(String movieName) throws JsonProcessingException {
         Scanner in = new Scanner(System.in);
 
@@ -173,23 +178,45 @@ public class movie_service {
     }
 
 
+
+    @Transactional
+    public void set_hall_in_movie(screen_DTO screen, String movieName) {
+        try {
+            assert screen != null;
+            screen.setSeatsList(Collections.nCopies(screen.getTotalSeats(),false));
+
+            movie_pojo movie = movieQuery.find_Movie_By_Name(movieName);
+            assert movie != null;
+            screenClient.Save_Hall(screen);
+            movie.getHall().add(toScreen(screen));
+            repo.save(movie);
+        } catch (Exception e) {
+            log.error(" -- error in set_hall_in_movie -- ;");
+        }
+    }
+
+
     // mapper
     private movie_pojo toMovie(movie_DTO movieDto){
         assert movieDto != null;
         return mapper.map(movieDto,movie_pojo.class);
     }
 
+    private screen_pojo toScreen(screen_DTO screenDto){
+        assert screenDto != null;
+        return mapper.map(screenDto,screen_pojo.class);
+    }
 
 
 
 //    public static void main(String[] args) {
 //        Scanner in = new Scanner(System.in);
-//        List<Integer> seatNo = new ArrayList<>();
-//        int sno = 0;
-//        while (!(sno < 0)) {
-//            sno = in.nextInt();
-//            seatNo.add(sno);
-//        }
+//        List<Boolean> seatNo = new ArrayList<>(Collections.nCopies(10,false));
+////        int sno = 0;
+////        while (!(sno < 0)) {
+////            sno = in.nextInt();
+////            seatNo.add(sno);
+////        }
 //        System.out.println(seatNo);
 //    }
 

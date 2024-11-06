@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import screen.Dto.screen_DTO;
 
 @RestController
 @RequestMapping("/movie")
@@ -29,6 +30,16 @@ public class movie_controller {
         }
     }
 
+    @PostMapping("/InHall/{movieName}")
+    public ResponseEntity<?> setHAll(@RequestBody screen_DTO screen,@PathVariable("movieName") String movieName){
+        try {
+            service.set_hall_in_movie(screen,movieName);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping("/book/{movieName}")
     public ResponseEntity<?> book_Ticket(@PathVariable("movieName") String movieName){
         try{
@@ -37,7 +48,8 @@ public class movie_controller {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
     }
+
+
 
 }

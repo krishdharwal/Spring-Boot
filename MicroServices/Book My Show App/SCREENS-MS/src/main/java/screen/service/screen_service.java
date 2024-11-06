@@ -2,8 +2,10 @@ package screen.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import screen.Dto.screen_DTO;
 import screen.pojo.screen_pojo;
 import screen.repo.screen_repo;
 
@@ -17,6 +19,10 @@ public class screen_service {
 
     @Autowired
     private screen_repo repo;
+
+    @Autowired
+    private ModelMapper mapper;
+
 
     public List<Integer> Book_Seats(List<Boolean> Current_Seats){
         System.out.println("<--- ENTER SEAT'S NUMBER TO BOOK & ENTER -1 TO CONFIRM --->");
@@ -58,6 +64,19 @@ public class screen_service {
             log.error(" -- error in update_Reserved_seets_of_hall in screen service --");
             return null;
         }
+    }
+
+    public void save(screen_DTO screenDto) {
+        try{
+            repo.save(toScreen(screenDto));
+        }catch (Exception e){
+            log.error(" -- error in save screen in  screen service --  ",e);
+        }
+    }
+
+    private screen_pojo toScreen(screen_DTO screenDto){
+        assert screenDto != null;
+        return mapper.map(screenDto,screen_pojo.class);
     }
 
 }

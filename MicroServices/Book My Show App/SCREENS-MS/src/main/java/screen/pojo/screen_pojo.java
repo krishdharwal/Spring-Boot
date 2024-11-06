@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -15,12 +16,11 @@ import java.util.List;
 @Document("Screens")
 public class screen_pojo {
     @Id
-    ObjectId id;
-    String name;
+    public ObjectId id;
+    public   String name;
     @NonNull
-    Integer TotalSeats;
-    List<Boolean> seatsList = new ArrayList<>(TotalSeats);
-
+    public int TotalSeats;
+    public List<Boolean> seatsList = new ArrayList<>(Collections.nCopies(TotalSeats,false));
     // screen type , screen ratio, timing
 
 }
