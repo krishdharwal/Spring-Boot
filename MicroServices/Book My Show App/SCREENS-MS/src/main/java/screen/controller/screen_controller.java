@@ -3,6 +3,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import screen.Dto.bookSeat_bool_list__DTO;
 import screen.Dto.screen_DTO;
 import screen.service.screen_service;
 
@@ -18,9 +19,9 @@ public class screen_controller {
     private screen_service service;
 
     @GetMapping("/book")
-    public List<Integer> Book_Seats(List<Boolean> seats){
+    public List<Integer> Book_Seats(@RequestBody bookSeat_bool_list__DTO list__dto){
         try{
-           return service.Book_Seats(seats);
+           return service.Book_Seats(list__dto.getSeats());
         }catch (Exception e){
             log.error(" -- error in Book seatsList in screen_controller -- ");
             return null;

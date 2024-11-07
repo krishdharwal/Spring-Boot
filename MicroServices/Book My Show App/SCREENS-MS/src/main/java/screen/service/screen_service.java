@@ -10,6 +10,7 @@ import screen.pojo.screen_pojo;
 import screen.repo.screen_repo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,31 +24,38 @@ public class screen_service {
     @Autowired
     private ModelMapper mapper;
 
-
-    public List<Integer> Book_Seats(List<Boolean> Current_Seats){
+    public static List<Integer> Book_Seats(List<Boolean> Current_Seats) {
         System.out.println("<--- ENTER SEAT'S NUMBER TO BOOK & ENTER -1 TO CONFIRM --->");
         Scanner in = new Scanner(System.in);
 
-        List<Integer> seatNo_List = new ArrayList<>(Current_Seats.size());
-        int sno = 0;
+        List<Integer> seatNo_List = new ArrayList<>();
 
-        // display current seets
-        System.out.println(Current_Seats);
+        // Display current seats
+        System.out.println("Current Seats Status: " + Current_Seats);
 
-        while (!(sno < 0)) {
-            sno = in.nextInt();
-            if (Current_Seats.get(sno)) {
-                seatNo_List.add(sno);
-            } else if (sno >= Current_Seats.size()) {
-                System.out.println("<--- PLEASE ENTER A VALID SEAT NUMBER --->");
-            }else {
-                System.out.println("<--- SORRY THIS SEAT IS RESERVED --->");
+        while (true) {
+            int sno = in.nextInt();
+
+            if (sno == -1) {
+                break; // Confirm booking and exit loop
+            }
+
+            if (sno >= 0 && sno < Current_Seats.size()) { // Check for valid seat number
+                if (!Current_Seats.get(sno)) {
+                    seatNo_List.add(sno);
+                    Current_Seats.set(sno, true); // Mark seat as booked (true)
+                    System.out.println("-- Seat added -> " + sno);
+                } else {
+                    System.out.println("<--- SORRY, THIS SEAT IS NOT AVAILABLE --->");
+                }
+            } else {
+                System.out.println("<--- INVALID SEAT NUMBER, PLEASE TRY AGAIN --->");
             }
         }
+
+        in.close();
         return seatNo_List;
     }
-
-
 
     //  update_Reserved_seets_of_hall algo
     public List<Boolean> update_Reserved_seets_of_hall(ObjectId hall_Id, List<Integer> bookedSeets) {
@@ -78,5 +86,12 @@ public class screen_service {
         assert screenDto != null;
         return mapper.map(screenDto,screen_pojo.class);
     }
+
+
+    public static void main(String[] args) {
+      List<Boolean> bool = Arrays.asList(true, false, false, false);
+        System.out.println(Book_Seats(bool));
+    }
+
 
 }
