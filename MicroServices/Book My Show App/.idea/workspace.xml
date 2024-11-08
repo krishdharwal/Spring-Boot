@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Movies_START.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Movies_START.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/screen_client.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/screen_client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/controller/screen_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/controller/screen_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/service/screen_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/service/screen_service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,29 +41,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Movies_START.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Screen_START.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SpringCloudApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.movie_service.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.screen_service.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.MoviesMs-MicroService [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.MoviesMs-MicroService [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.MoviesMs-MicroService [verify].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;springboot&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/jarvis/Documents/Spring-Boot/MicroServices/Book My Show App/Spring-Cloud&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;service.view.auto.scroll.from.source&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Movies_START.executor": "Run",
+    "Application.Screen_START.executor": "Run",
+    "Application.SpringCloudApplication.executor": "Run",
+    "Application.movie_service.executor": "Run",
+    "Application.screen_service.executor": "Run",
+    "Maven.MoviesMs-MicroService [clean].executor": "Run",
+    "Maven.MoviesMs-MicroService [package].executor": "Run",
+    "Maven.MoviesMs-MicroService [verify].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "springboot",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/jarvis/Documents/Spring-Boot/MicroServices/Book My Show App/Spring-Cloud",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "service.view.auto.scroll.from.source": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/SCREENS-MS/src/main/resources" />
@@ -102,7 +96,7 @@
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Movies_START">
+  <component name="RunManager" selected="Application.movie_service">
     <configuration name="Movies_START" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="movies.Movies_START" />
       <module name="MoviesMs-MicroService" />
@@ -171,10 +165,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Movies_START" />
+        <item itemvalue="Application.movie_service" />
         <item itemvalue="Application.SpringCloudApplication" />
         <item itemvalue="Application.screen_service" />
         <item itemvalue="Application.Screen_START" />
-        <item itemvalue="Application.movie_service" />
       </list>
     </recent_temporary>
   </component>
@@ -218,6 +212,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java</url>
+          <line>233</line>
+          <properties class="movies.service.movie_service" method="update_Movie_Hall_Seets">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
