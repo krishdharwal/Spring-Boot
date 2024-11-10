@@ -1,5 +1,6 @@
 package movies.pojo;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -13,8 +14,8 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @Document("Movies")
+@Builder
 public class movie_pojo {
     @Id
     ObjectId id;

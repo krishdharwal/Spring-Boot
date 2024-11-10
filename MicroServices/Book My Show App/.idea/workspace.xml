@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_pojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/Movie_Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/Movie_Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/test/java/demo/MoviesSTARTTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/test/java/Movie_Test/Movie_Tests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +54,8 @@
     "Application.SpringCloudApplication.executor": "Run",
     "Application.movie_service.executor": "Run",
     "Application.screen_service.executor": "Run",
+    "JUnit.movieMockitoTests.Book_Seats_of_the_hall_Test.executor": "Run",
+    "JUnit.movieMockitoTests.SearchForMovie.executor": "Run",
     "Maven.MoviesMs-MicroService [clean].executor": "Run",
     "Maven.MoviesMs-MicroService [package].executor": "Run",
     "Maven.MoviesMs-MicroService [verify].executor": "Run",
@@ -56,8 +63,8 @@
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "springboot",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/jarvis/Documents/Spring-Boot/MicroServices/Book My Show App/Spring-Cloud",
-    "project.structure.last.edited": "SDKs",
+    "last_opened_file_path": "/home/dusty-dragon/Documents/Spring-Boot/Spring-Boot/MicroServices/Book My Show App",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "service.view.auto.scroll.from.source": "true",
@@ -89,33 +96,19 @@
           <value>
             <set>
               <option value="movie_service" />
-              <option value="screen_service" />
             </set>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Application.movie_service">
+  <component name="RunManager" selected="JUnit.movieMockitoTests.Book_Seats_of_the_hall_Test">
     <configuration name="Movies_START" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="movies.Movies_START" />
       <module name="MoviesMs-MicroService" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="movies.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Screen_START" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="screen.Screen_START" />
-      <module name="ScreenMS-MicroService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="screen.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -149,26 +142,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="screen_service" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="screen.service.screen_service" />
-      <module name="ScreenMS-MicroService" />
+    <configuration name="movieMockitoTests.Book_Seats_of_the_hall_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MoviesMs-MicroService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="screen.service.*" />
+          <option name="PATTERN" value="Movie_Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="Movie_Test" />
+      <option name="MAIN_CLASS_NAME" value="Movie_Test.movieMockitoTests" />
+      <option name="METHOD_NAME" value="Book_Seats_of_the_hall_Test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="movieMockitoTests.SearchForMovie" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MoviesMs-MicroService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Movie_Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
+      <option name="PACKAGE_NAME" value="Movie_Test" />
+      <option name="MAIN_CLASS_NAME" value="Movie_Test.movieMockitoTests" />
+      <option name="METHOD_NAME" value="SearchForMovie" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.movieMockitoTests.Book_Seats_of_the_hall_Test" />
+        <item itemvalue="JUnit.movieMockitoTests.SearchForMovie" />
         <item itemvalue="Application.Movies_START" />
         <item itemvalue="Application.movie_service" />
         <item itemvalue="Application.SpringCloudApplication" />
-        <item itemvalue="Application.screen_service" />
-        <item itemvalue="Application.Screen_START" />
       </list>
     </recent_temporary>
   </component>
