@@ -289,8 +289,6 @@ public void Cancle_Ticket(){
         }
 
         System.out.println(movie_Hall_seat_DB);
-
-
     }
 
 }

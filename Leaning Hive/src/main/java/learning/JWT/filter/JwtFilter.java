@@ -1,6 +1,6 @@
-package learning.filter;
+package learning.JWT.filter;
 
-import learning.utilis.JwtUtil;
+import learning.JWT.utilis.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

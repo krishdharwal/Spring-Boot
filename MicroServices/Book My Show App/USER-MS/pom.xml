@@ -8,11 +8,11 @@
 		<version>3.3.4</version>
 		<relativePath/>
 	</parent>
-	<groupId>org.UserMS</groupId>
-	<artifactId>UserMS-MicroService</artifactId>
+	<groupId>org.UserMs</groupId>
+	<artifactId>UserMs-MicroService</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>UserMS-MicroService</name>
-	<description> UserMS-MicroService description</description>
+	<name>UserMs-MicroService</name>
+	<description> UserMs-MicroService description</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
@@ -56,10 +56,10 @@
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 
-		<!--		<dependency>-->
-		<!--			<groupId>org.springframework.boot</groupId>-->
-		<!--			<artifactId>spring-boot-starter-security</artifactId>-->
-		<!--		</dependency>-->
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-security</artifactId>
+				</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -132,16 +132,10 @@
 
 
 
-<!--		-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
-
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--		</dependency>-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-data-redis</artifactId>-->
+		<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -150,8 +144,18 @@
 		</dependency>
 
 
-		<!--		-->
 
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.MoviesMs</groupId>
+			<artifactId>MoviesMs-MicroService</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
 
 
 	</dependencies>
@@ -177,7 +181,7 @@
 
 				<configuration>
 					<image>
-						<name>UserMS</name>
+						<name>UserMs</name>
 					</image>
 				</configuration>
 

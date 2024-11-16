@@ -1,4 +1,4 @@
-package learning.utilis;
+package learning.JWT.utilis;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

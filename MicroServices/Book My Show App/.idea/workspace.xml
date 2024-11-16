@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/Configuration/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/Configuration/SpringSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/Controllers/public_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/Controllers/public_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/filter/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/JWT/filter/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/utilis/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/JWT/utilis/JwtUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_pojo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/Movie_Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/Movie_Query.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/test/java/demo/MoviesSTARTTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/test/java/Movie_Test/Movie_Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Movies_START.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Movies_START.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/user_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/user_DTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/user_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/user_pojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/resources/application.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,13 +33,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -58,12 +57,13 @@
     "JUnit.movieMockitoTests.SearchForMovie.executor": "Run",
     "Maven.MoviesMs-MicroService [clean].executor": "Run",
     "Maven.MoviesMs-MicroService [package].executor": "Run",
+    "Maven.MoviesMs-MicroService [validate].executor": "Run",
     "Maven.MoviesMs-MicroService [verify].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "springboot",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/dusty-dragon/Documents/Spring-Boot/Spring-Boot/MicroServices/Book My Show App",
+    "last_opened_file_path": "/home/dusty-dragon/Documents/Spring-Boot/MicroServices/Book My Show App/USER-MS/src/main/resources",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -73,13 +73,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/USER-MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/SCREENS-MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/CINEMA-HALL-MS/src/main/java/cinema" />
       <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies" />
-      <recent name="$PROJECT_DIR$/PLACES-MS/src/main/java/places" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="user.config" />
       <recent name="screen.Dto" />
       <recent name="movies.Dto" />
     </key>
@@ -176,6 +177,70 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MoviesMs-MicroService [validate]" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings">
+          <MavenGeneralSettings>
+            <option name="alwaysUpdateSnapshots" value="false" />
+            <option name="checksumPolicy" value="NOT_SET" />
+            <option name="customMavenHome" />
+            <option name="emulateTerminal" value="false" />
+            <option name="failureBehavior" value="NOT_SET" />
+            <option name="localRepository" value="" />
+            <option name="mavenHome" value="Bundled (Maven 3)" />
+            <option name="mavenHomeTypeForPersistence" value="BUNDLED3" />
+            <option name="nonRecursive" value="false" />
+            <option name="outputLevel" value="INFO" />
+            <option name="printErrorStackTraces" value="false" />
+            <option name="showDialogWithAdvancedSettings" value="false" />
+            <option name="threads" />
+            <option name="useMavenConfig" value="true" />
+            <option name="userSettingsFile" value="" />
+            <option name="workOffline" value="false" />
+          </MavenGeneralSettings>
+        </option>
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="delegateBuildToMaven" value="false" />
+            <option name="environmentProperties">
+              <map />
+            </option>
+            <option name="jreName" value="#USE_PROJECT_JDK" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="passParentEnv" value="true" />
+            <option name="runMavenInBackground" value="true" />
+            <option name="skipTests" value="false" />
+            <option name="vmOptions" value="" />
+          </MavenRunnerSettings>
+        </option>
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="validate" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/MOVIES-MS" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.movieMockitoTests.Book_Seats_of_the_hall_Test" />
@@ -217,24 +282,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java</url>
-          <line>43</line>
-          <properties class="movies.controller.movie_controller" method="book_Ticket">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java</url>
-          <line>233</line>
-          <properties class="movies.service.movie_service" method="update_Movie_Hall_Seets">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

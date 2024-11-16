@@ -4,7 +4,7 @@ import learning.POJO.user;
 import learning.Services.UserDetailsServiceImpl;
 import learning.Services.user_info_service;
 import learning.Services.user_service;
-import learning.utilis.JwtUtil;
+import learning.JWT.utilis.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,6 +40,7 @@ public class public_controller {
         service_user.save(body);
         return "--data -- added--";
     }
+
 
     @PostMapping("/getToken")
     public ResponseEntity<String> token(@RequestBody user body){

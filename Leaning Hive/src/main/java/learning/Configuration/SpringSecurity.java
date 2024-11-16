@@ -1,7 +1,7 @@
 package learning.Configuration;
 
 import learning.Services.UserDetailsServiceImpl;
-import learning.filter.JwtFilter;
+import learning.JWT.filter.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
