@@ -1,20 +1,16 @@
-package user.pojo;
+package movies.Dto;
 
 
-import lombok.Builder;
 import lombok.Data;
-import nonapi.io.github.classgraph.json.Id;
+import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Document("User_Reserved_seets")
 @Data
-@Builder
-public class movie_reserve_pojo {
-    @Id
+@NoArgsConstructor
+public class movie_reserve_dto {
     ObjectId id;
     String movie;
     float Total_Price;

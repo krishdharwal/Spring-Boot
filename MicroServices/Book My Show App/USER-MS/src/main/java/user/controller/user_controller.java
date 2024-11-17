@@ -2,6 +2,7 @@ package user.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,5 +41,11 @@ public class user_controller {
     }
 
 
+    @GetMapping("/book_reserved/{id}")
+    public void Book_seats_that_are_reserved(@PathVariable ObjectId id){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        service.Book_seats_that_are_reserved(auth.getName() , id);
+
+    }
 
 }

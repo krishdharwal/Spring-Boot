@@ -13,5 +13,7 @@ import java.util.List;
 public class movie_reserve_dto {
     ObjectId id;
     String movie;
+    float Total_Price;
+    int Hall_Number;
     List<Integer> reserved_seets = new ArrayList<>();
 }

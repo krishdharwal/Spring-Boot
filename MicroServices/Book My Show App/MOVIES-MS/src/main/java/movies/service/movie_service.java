@@ -7,8 +7,10 @@ import movies.Dto.user_DTO;
 import movies.clients.screen_client;
 import movies.clients.user_client;
 import movies.pojo.movie_pojo;
+import movies.pojo.movie_reserve_pojo;
 import movies.pojo.user_pojo;
 import movies.repo.movie_repo;
+import org.bson.types.ObjectId;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -90,7 +92,6 @@ public class movie_service {
                         "\n RELEASE DATE : " + movie.getReleaseDate()+
                         "\n DESCRIPTION : " + movie.getDescription() +
                         "\n PRICE OF TICKET : " + movie.getPrice();
-
     }
 
     // Movie Search Algo
@@ -208,7 +209,7 @@ public class movie_service {
         case 1: Booking_confirmation(user,booked_Seats_Integer_List,total_price,moviePojo, Hall_number);
             break;
 
-        case 2: Reserve_Ticket(user,booked_Seats_Integer_List,total_price,moviePojo);
+        case 2: Reserve_Ticket(user,booked_Seats_Integer_List,total_price,moviePojo, Hall_number);
             break;
 
         case 3: Cancle_Ticket();
@@ -216,7 +217,6 @@ public class movie_service {
 
         default:
             System.out.println("  -- Enter a valid number -- ");
-
     }
 }
 
@@ -224,7 +224,6 @@ public class movie_service {
     // confirm algo -> payment gateway , user auth , book seatsList and save it , send mail , update seats in db
 
     // authentication
-
 
     // updation part -> in movie and not in screens (Movie Hall)
     update_Movie_Hall_Seets(moviePojo, booked_Seats_Integer_List ,hall_number - 1);
@@ -254,24 +253,31 @@ public class movie_service {
         }
 }
 
-
-public void Reserve_Ticket(user_pojo user, List<Integer> bookedSeats, float total_price, movie_pojo moviePojo) throws JsonProcessingException {
+public void Reserve_Ticket(user_pojo user, List<Integer> bookedSeats, float total_price, movie_pojo moviePojo, int hall_number) throws JsonProcessingException {
     // reserve algo -> send mail_address about the reservstion for 5 minutes
     // reserve the ticket
-    // send the username and reserved seats
+    // set the user reserved seats for future
+    movie_reserve_pojo movieReservePojo = new movie_reserve_pojo();
 
+    movieReservePojo.setMovie(moviePojo.getName());
+    movieReservePojo.setReserved_seets(bookedSeats);
+    movieReservePojo.setTotal_Price(total_price);
+    movieReservePojo.setHall_Number(hall_number);
 
-
+    user.getReservedMovies().add(movieReservePojo);
+    // send user to being update
+      ObjectId Ticket_Id = userClient.update(toUserDto(user));
+      // send this id to book the reserved seets
 
     //  send mail of reservation
     Send_Mail(user.getMail(),
             "-- TICKET RESERVATION --",
             "-- YOUR TICKET HAVE BEEN SUCCESSFULLY RESERVED FOR 5 MINUTES --" +
+                    "\n Ticket Id -> " + Ticket_Id +
                     "\n Total tickets -> " + bookedSeats.size() +
                     "\n And Total price is -> " + total_price +
                     "\n" + Print_Movie_Details(moviePojo)
     );
-
     System.out.println(" -- Seat Reserved -- ");
 }
 
@@ -287,7 +293,6 @@ public void Cancle_Ticket(){
     message.setText(Message);
     mailSender.send(message);
 }
-
 
     public user_pojo toUser(user_DTO userDto){
         try {
@@ -308,4 +313,17 @@ public void Cancle_Ticket(){
             return null;
         }
     }
+
+    // Book the seets that are reserved
+    public void Book_seats_that_are_reserved( user_pojo userPojo , movie_reserve_pojo movieReservePojo) {
+        try {
+            movie_pojo moviePojo = movieQuery.find_Movie_By_Name(movieReservePojo.getMovie());
+            assert moviePojo != null;
+            Booking_confirmation(userPojo, movieReservePojo.getReserved_seets(), movieReservePojo.getTotal_Price(), moviePojo , movieReservePojo.getHall_Number() );
+        } catch (Exception e) {
+            log.error(" -- error in Book_seats_that_are_reserved in service --");
+        }
+    }
+
+
 }

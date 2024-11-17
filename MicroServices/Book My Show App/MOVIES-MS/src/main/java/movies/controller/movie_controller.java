@@ -1,12 +1,16 @@
 package movies.controller;
 
 import movies.Dto.movie_DTO;
+import movies.pojo.movie_reserve_pojo;
+import movies.pojo.user_pojo;
 import movies.service.movie_service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import screen.Dto.screen_DTO;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/movie")
@@ -50,6 +54,17 @@ public class movie_controller {
         }
     }
 
+
+    // client request
+
+    @GetMapping("book_reserved")
+    void Book_seats_that_are_reserved(@RequestBody movie_reserve_pojo movieReservePojo,@RequestBody user_pojo userPojo){
+        try {
+            service.Book_seats_that_are_reserved(userPojo, movieReservePojo);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }

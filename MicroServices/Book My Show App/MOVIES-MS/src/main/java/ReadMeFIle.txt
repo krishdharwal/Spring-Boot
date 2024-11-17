@@ -6,5 +6,7 @@ pending work
 4. payment gateway
 5. caching
 6. Send mail when there is half hour left to the movie
+7. add a list of watched movies in user
+8. spring security
 
 ...
