@@ -37,7 +37,4 @@ public class public_controller {
         }
     }
 
-
-
-
 }

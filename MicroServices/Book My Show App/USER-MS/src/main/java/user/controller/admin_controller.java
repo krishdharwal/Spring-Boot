@@ -42,7 +42,7 @@ public class admin_controller {
 
 
     @GetMapping("/find/{name}")
-    public List<user_pojo> findByName(@PathVariable String name){
+    public user_pojo findByName(@PathVariable String name){
         try {
             return userQueries.findByName(name);
         }catch (Exception e){
@@ -52,12 +52,14 @@ public class admin_controller {
     }
 
     @GetMapping("/show-users")
-    public ResponseEntity<?> showAll(){
-        List<user_pojo> users = service.findAll();
-        assert users != null;
+    public ResponseEntity<?> showAll() {
+        try {
+            List<user_pojo> users = service.findAll();
+            assert users != null;
             return new ResponseEntity<>(users, HttpStatus.OK);
-
-        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+        }
     }
 
 }

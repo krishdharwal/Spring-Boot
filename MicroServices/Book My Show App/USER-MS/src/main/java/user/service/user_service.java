@@ -23,6 +23,10 @@ public class user_service {
     private user_repo repo;
 
 
+    @Autowired
+    private User_Queries userQueries;
+
+
     public void save_user(user_DTO user_dto) {
         try{
             user_pojo user = toUser(user_dto);
@@ -72,4 +76,21 @@ public class user_service {
         }
     }
 
+    public void update_User(String name, user_DTO userDto) {
+        user_pojo user = userQueries.findByName(name);
+        assert user != null;
+        user.setName(userDto.getName());
+        user.setPassword(userDto.getPassword());
+
+    }
+
+    public user_DTO findByName(String name) {
+        try {
+            user_pojo user = userQueries.findByName(name);
+            assert user != null;
+            return toUserDto(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

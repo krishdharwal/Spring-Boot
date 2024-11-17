@@ -19,10 +19,10 @@ spring:
 
 
 
-#  security:
-#    user:
-#      name: kd
-#      password: kd
+  security:
+    user:
+      name: kd
+      password: kd
 
 #Eureka
 eureka:
@@ -52,6 +52,6 @@ server:
 FeignClient:
   screen:
     url: http://localhost:9092/screen
-  review:
-    url: http://localhost:8093/reviews
+  user:
+    url: http://localhost:9093/user_client
 

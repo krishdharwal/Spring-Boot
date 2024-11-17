@@ -1,21 +1,23 @@
 package movies.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import movies.Dto.movie_DTO;
+import movies.Dto.user_DTO;
 import movies.clients.screen_client;
+import movies.clients.user_client;
 import movies.pojo.movie_pojo;
+import movies.pojo.user_pojo;
 import movies.repo.movie_repo;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import screen.Dto.screen_DTO;
 import screen.pojo.screen_pojo;
-
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.*;
 
 @Service
@@ -35,6 +37,9 @@ public class movie_service {
 
     @Autowired
     private Movie_Query movieQuery;
+
+    @Autowired
+    private user_client userClient;
 
     // scanner
     Scanner in = new Scanner(System.in);
@@ -103,7 +108,7 @@ public class movie_service {
         if (next == 1){
 
             // if user enter one do user auth and get his place info
-            show_movie_halls("knightkrishcoc3@gmail.com",movie);
+            show_movie_halls(movie);
 
         }else if (next == 2){
             System.out.println("-- THANKS VISIT AGAIN --");
@@ -113,7 +118,7 @@ public class movie_service {
     }
 
     // Booking algo
-    public void show_movie_halls(String mail_address, movie_pojo moviePojo) throws JsonProcessingException {
+    public void show_movie_halls( movie_pojo moviePojo) throws JsonProcessingException {
         float movie_price = moviePojo.getPrice();
 
         // firstly show all the cinema halls
@@ -139,14 +144,13 @@ public class movie_service {
 
             // Next Step What user want confirmation , reservation , canclation ----->
             assert !booked_Seats_Integer_list.isEmpty();
-            Select_for_Confirm_Reserve_Cancle(booked_Seats_Integer_list, movie_price , moviePojo, Hall_number, mail_address, in);
+            Select_for_Confirm_Reserve_Cancle(booked_Seats_Integer_list, movie_price , moviePojo, Hall_number,  in);
 
         } else {
             System.out.println("-- ENTER VALID HALL NUMBER --");
         }
 
     }
-
 
 
     public List<Integer> Book_Seats_of_the_hall(List<Boolean> Current_Seats_Bool_List) {
@@ -184,7 +188,7 @@ public class movie_service {
         return Selected_seats_by_user_Integer_list;
     }
 
-    public void Select_for_Confirm_Reserve_Cancle(List<Integer> booked_Seats_Integer_List, float movie_price, movie_pojo moviePojo, int Hall_number, String mail_address, Scanner in ) throws JsonProcessingException {
+    public void Select_for_Confirm_Reserve_Cancle(List<Integer> booked_Seats_Integer_List, float movie_price, movie_pojo moviePojo, int Hall_number, Scanner in ) throws JsonProcessingException {
     // confirmation , reservation , canclation
 
     float total_price = booked_Seats_Integer_List.size() * movie_price;
@@ -194,11 +198,17 @@ public class movie_service {
             "\n ENTER 3 TO CANCLE ");
 
     int Next_Number = in.nextInt();
-    switch (Next_Number){
-        case 1: Booking_confirmation(mail_address,booked_Seats_Integer_List,total_price,moviePojo, Hall_number);
+
+    // find the user and get him
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        user_pojo user = toUser(userClient.findByName(auth.getName()));
+        assert user != null;
+
+        switch (Next_Number){
+        case 1: Booking_confirmation(user,booked_Seats_Integer_List,total_price,moviePojo, Hall_number);
             break;
 
-        case 2: Reserve_Ticket(mail_address,booked_Seats_Integer_List,total_price,moviePojo);
+        case 2: Reserve_Ticket(user,booked_Seats_Integer_List,total_price,moviePojo);
             break;
 
         case 3: Cancle_Ticket();
@@ -206,21 +216,21 @@ public class movie_service {
 
         default:
             System.out.println("  -- Enter a valid number -- ");
+
     }
-// scanner close
-//    in.close();
 }
 
-    public void Booking_confirmation(String mail_address, List<Integer> booked_Seats_Integer_List, float total_price, movie_pojo moviePojo, int hall_number) throws JsonProcessingException {
+    public void Booking_confirmation(user_pojo user, List<Integer> booked_Seats_Integer_List, float total_price, movie_pojo moviePojo, int hall_number) throws JsonProcessingException {
     // confirm algo -> payment gateway , user auth , book seatsList and save it , send mail , update seats in db
 
     // authentication
+
 
     // updation part -> in movie and not in screens (Movie Hall)
     update_Movie_Hall_Seets(moviePojo, booked_Seats_Integer_List ,hall_number - 1);
 
     // At last send mail_address
-    Send_Mail(mail_address,
+    Send_Mail(user.getMail(),
             "-- TICKET BOOKING CONFIRMED --",
             "-- Hooray! your ticket is booked " +
                     "\n Total tickets -> " + booked_Seats_Integer_List.size() +
@@ -245,13 +255,16 @@ public class movie_service {
 }
 
 
-public void Reserve_Ticket(String mail_address, List<Integer> bookedSeats, float total_price, movie_pojo moviePojo) throws JsonProcessingException {
+public void Reserve_Ticket(user_pojo user, List<Integer> bookedSeats, float total_price, movie_pojo moviePojo) throws JsonProcessingException {
     // reserve algo -> send mail_address about the reservstion for 5 minutes
-
     // reserve the ticket
+    // send the username and reserved seats
+
+
+
 
     //  send mail of reservation
-    Send_Mail(mail_address,
+    Send_Mail(user.getMail(),
             "-- TICKET RESERVATION --",
             "-- YOUR TICKET HAVE BEEN SUCCESSFULLY RESERVED FOR 5 MINUTES --" +
                     "\n Total tickets -> " + bookedSeats.size() +
@@ -276,19 +289,23 @@ public void Cancle_Ticket(){
 }
 
 
-// Testing
-    public static void main(String[] args) {
-
-        movie_service obj = new movie_service();
-        List<Integer> booked_Seats_Integer_list = Arrays.asList(1,3);
-        List<Boolean> movie_Hall_seat_DB = Arrays.asList(false, false , false);
-
-        for (int i = 0; i < booked_Seats_Integer_list.size() ; i++) {
-            int idx = booked_Seats_Integer_list.get(i);
-            movie_Hall_seat_DB.set(idx , true);
+    public user_pojo toUser(user_DTO userDto){
+        try {
+            assert userDto != null;
+            return mapper.map(userDto, user_pojo.class);
+        }catch (Exception e){
+            log.error(" -- error in toUser in service --");
+            return null;
         }
-
-        System.out.println(movie_Hall_seat_DB);
     }
 
+    public user_DTO toUserDto(user_pojo userPojo){
+        try {
+            assert userPojo != null;
+            return mapper.map(userPojo, user_DTO.class);
+        }catch (Exception e){
+            log.error(" -- error in toUser_Dto in service --");
+            return null;
+        }
+    }
 }
