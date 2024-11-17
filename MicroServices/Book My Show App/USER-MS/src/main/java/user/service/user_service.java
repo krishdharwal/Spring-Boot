@@ -11,9 +11,7 @@ import user.Dto.user_DTO;
 import user.Enum.Roles_enum;
 import user.pojo.user_pojo;
 import user.repo.user_repo;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -25,13 +23,11 @@ public class user_service {
     @Autowired
     private user_repo repo;
 
-
     @Autowired
     private User_Queries userQueries;
 
     @Autowired
     private movie_client movieClient;
-
 
     public void save_user(user_DTO user_dto) {
         try{
@@ -123,6 +119,17 @@ public class user_service {
             );
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+
+    public void update_User_Movies(user_DTO userDto) {
+        try{
+            user_pojo user = userQueries.findByName(userDto.getName());
+            user.setMyMovies(userDto.getMyMovies());
+            repo.save(user);
+        }catch (Exception e){
+            log.error(" -- error in update_User_Movies in user service -- ");
         }
     }
 }

@@ -14,7 +14,7 @@ public interface screen_client {
     @GetMapping("/book")
     List<Integer> Book_Seats(@RequestBody bookSeat_bool_list__DTO list__dto);
 
-    @PutMapping("/update-hall-seatsList")
+    @PutMapping("/update_reserved_seats-hall-seatsList")
     List<Boolean> updateSeats(@RequestBody updateSeat_DTO body);
 
     @PostMapping("/save")

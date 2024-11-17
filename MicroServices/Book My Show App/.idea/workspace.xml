@@ -5,19 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/Configuration/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/Configuration/SpringSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/Controllers/public_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/Controllers/public_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/filter/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/JWT/filter/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/utilis/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Leaning Hive/src/main/java/learning/JWT/utilis/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Movies_START.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Movies_START.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/ReadMeFIle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/ReadMeFIle.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/user_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/user_DTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/screen_client.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/screen_client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/user_client.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/user_client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_reserve_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_reserve_pojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/user_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/user_pojo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Clients/movie_client.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/Clients/movie_client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/user_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/user_DTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/client_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/client_Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/user_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/user_pojo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/resources/application.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -63,26 +64,27 @@
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "springboot",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/dusty-dragon/Documents/Spring-Boot/MicroServices/Book My Show App/USER-MS/src/main/resources",
+    "last_opened_file_path": "/home/dusty-dragon/Documents/Spring-Boot/MicroServices/Book My Show App/MOVIES-MS/src/main/java/movies",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "service.view.auto.scroll.from.source": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies" />
       <recent name="$PROJECT_DIR$/USER-MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/SCREENS-MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/CINEMA-HALL-MS/src/main/java/cinema" />
-      <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="movies.pojo" />
+      <recent name="movies.Dto" />
       <recent name="user.config" />
       <recent name="screen.Dto" />
-      <recent name="movies.Dto" />
     </key>
   </component>
   <component name="RunDashboard">

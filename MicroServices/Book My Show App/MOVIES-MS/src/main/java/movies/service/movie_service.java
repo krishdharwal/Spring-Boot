@@ -6,6 +6,7 @@ import movies.Dto.movie_DTO;
 import movies.Dto.user_DTO;
 import movies.clients.screen_client;
 import movies.clients.user_client;
+import movies.pojo.Current_Movies_pojo;
 import movies.pojo.movie_pojo;
 import movies.pojo.movie_reserve_pojo;
 import movies.pojo.user_pojo;
@@ -83,7 +84,7 @@ public class movie_service {
 
     // print the Movie Details
     public String Print_Movie_Details(movie_pojo movie){
-       return
+        return
                 "MOVIE NAME : " + movie.getName() +
                         "\n LANGUAGE : " +movie.getLanguage() +
                         "\n GENERA : " + movie.getGenre() +
@@ -190,56 +191,65 @@ public class movie_service {
     }
 
     public void Select_for_Confirm_Reserve_Cancle(List<Integer> booked_Seats_Integer_List, float movie_price, movie_pojo moviePojo, int Hall_number, Scanner in ) throws JsonProcessingException {
-    // confirmation , reservation , canclation
+        // confirmation , reservation , canclation
 
-    float total_price = booked_Seats_Integer_List.size() * movie_price;
-    System.out.println("YOUR TOTAL PRICE FOR [ " + booked_Seats_Integer_List.size() + " Tickets ] IS -> " + total_price);
-    System.out.println("   ENTER 1 TO CONFIRM" +
-            "\n ENTER 2 TO RESERVE FOR 5 MINUTE" +
-            "\n ENTER 3 TO CANCLE ");
+        float total_price = booked_Seats_Integer_List.size() * movie_price;
+        System.out.println("YOUR TOTAL PRICE FOR [ " + booked_Seats_Integer_List.size() + " Tickets ] IS -> " + total_price);
+        System.out.println("   ENTER 1 TO CONFIRM" +
+                "\n ENTER 2 TO RESERVE FOR 5 MINUTE" +
+                "\n ENTER 3 TO CANCLE ");
 
-    int Next_Number = in.nextInt();
+        int Next_Number = in.nextInt();
 
-    // find the user and get him
+        // find the user and get him
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         user_pojo user = toUser(userClient.findByName(auth.getName()));
         assert user != null;
 
         switch (Next_Number){
-        case 1: Booking_confirmation(user,booked_Seats_Integer_List,total_price,moviePojo, Hall_number);
-            break;
+            case 1: Booking_confirmation(user,booked_Seats_Integer_List,total_price,moviePojo, Hall_number);
+                break;
 
-        case 2: Reserve_Ticket(user,booked_Seats_Integer_List,total_price,moviePojo, Hall_number);
-            break;
+            case 2: Reserve_Ticket(user,booked_Seats_Integer_List,total_price,moviePojo, Hall_number);
+                break;
 
-        case 3: Cancle_Ticket();
-            break;
+            case 3: Cancle_Ticket();
+                break;
 
-        default:
-            System.out.println("  -- Enter a valid number -- ");
+            default:
+                System.out.println("  -- Enter a valid number -- ");
+        }
     }
-}
 
     public void Booking_confirmation(user_pojo user, List<Integer> booked_Seats_Integer_List, float total_price, movie_pojo moviePojo, int hall_number) throws JsonProcessingException {
-    // confirm algo -> payment gateway , user auth , book seatsList and save it , send mail , update seats in db
+        // confirm algo -> payment gateway , user auth , book seatsList and save it , send mail , update_reserved_seats seats in db
 
-    // authentication
+        // authentication
 
-    // updation part -> in movie and not in screens (Movie Hall)
-    update_Movie_Hall_Seets(moviePojo, booked_Seats_Integer_List ,hall_number - 1);
+        // updation part -> in movie and not in screens (Movie Hall)
+        update_Movie_Hall_Seets(moviePojo, booked_Seats_Integer_List ,hall_number - 1);
 
-    // At last send mail_address
-    Send_Mail(user.getMail(),
-            "-- TICKET BOOKING CONFIRMED --",
-            "-- Hooray! your ticket is booked " +
-                    "\n Total tickets -> " + booked_Seats_Integer_List.size() +
-                    "\n And Total price is -> " + total_price +
-                    "\n" + Print_Movie_Details(moviePojo)
-    );
-    System.out.println(" -- Seat Booked -- ");
-}
+        // save the booked movie in the user
+        Current_Movies_pojo currentMoviesPojo = new Current_Movies_pojo();
 
-// update the movie Hall seats
+        currentMoviesPojo.setMovie(moviePojo);
+        currentMoviesPojo.setBookedSeats(booked_Seats_Integer_List);
+
+        user.getMyMovies().add(currentMoviesPojo);
+        Update_User_Movie(user);
+
+        // At last send mail_address
+        Send_Mail(user.getMail(),
+                "-- TICKET BOOKING CONFIRMED --",
+                "-- Hooray! your ticket is booked " +
+                        "\n Total tickets -> " + booked_Seats_Integer_List.size() +
+                        "\n And Total price is -> " + total_price +
+                        "\n" + Print_Movie_Details(moviePojo)
+        );
+        System.out.println(" -- Seat Booked -- ");
+    }
+
+    // update_reserved_seats the movie Hall seats
     private void update_Movie_Hall_Seets(movie_pojo moviePojo,List<Integer> booked_Seats_Integer_List, int Hall_number) {
         try{
             List<Boolean>  movie_Hall_seat_DB = moviePojo.getHall().get(Hall_number).getSeatsList();
@@ -251,48 +261,48 @@ public class movie_service {
         } catch (Exception e) {
             log.error(" -- errror in update_Movie_Hall_Seets -- ");
         }
-}
+    }
 
-public void Reserve_Ticket(user_pojo user, List<Integer> bookedSeats, float total_price, movie_pojo moviePojo, int hall_number) throws JsonProcessingException {
-    // reserve algo -> send mail_address about the reservstion for 5 minutes
-    // reserve the ticket
-    // set the user reserved seats for future
-    movie_reserve_pojo movieReservePojo = new movie_reserve_pojo();
+    public void Reserve_Ticket(user_pojo user, List<Integer> bookedSeats, float total_price, movie_pojo moviePojo, int hall_number) throws JsonProcessingException {
+        // reserve algo -> send mail_address about the reservstion for 5 minutes
+        // reserve the ticket
+        // set the user reserved seats for future
+        movie_reserve_pojo movieReservePojo = new movie_reserve_pojo();
 
-    movieReservePojo.setMovie(moviePojo.getName());
-    movieReservePojo.setReserved_seets(bookedSeats);
-    movieReservePojo.setTotal_Price(total_price);
-    movieReservePojo.setHall_Number(hall_number);
+        movieReservePojo.setMovie(moviePojo.getName());
+        movieReservePojo.setReserved_seets(bookedSeats);
+        movieReservePojo.setTotal_Price(total_price);
+        movieReservePojo.setHall_Number(hall_number);
 
-    user.getReservedMovies().add(movieReservePojo);
-    // send user to being update
-      ObjectId Ticket_Id = userClient.update(toUserDto(user));
-      // send this id to book the reserved seets
+        user.getReservedMovies().add(movieReservePojo);
+        // send user to being updated
+        ObjectId Ticket_Id = Update_User_Reserved_Movie(user);
+        // send this id to book the reserved seets
 
-    //  send mail of reservation
-    Send_Mail(user.getMail(),
-            "-- TICKET RESERVATION --",
-            "-- YOUR TICKET HAVE BEEN SUCCESSFULLY RESERVED FOR 5 MINUTES --" +
-                    "\n Ticket Id -> " + Ticket_Id +
-                    "\n Total tickets -> " + bookedSeats.size() +
-                    "\n And Total price is -> " + total_price +
-                    "\n" + Print_Movie_Details(moviePojo)
-    );
-    System.out.println(" -- Seat Reserved -- ");
-}
+        //  send mail of reservation
+        Send_Mail(user.getMail(),
+                "-- TICKET RESERVATION --",
+                "-- YOUR TICKET HAVE BEEN SUCCESSFULLY RESERVED FOR 5 MINUTES --" +
+                        "\n Ticket Id -> " + Ticket_Id +
+                        "\n Total tickets -> " + bookedSeats.size() +
+                        "\n And Total price is -> " + total_price +
+                        "\n" + Print_Movie_Details(moviePojo)
+        );
+        System.out.println(" -- Seat Reserved -- ");
+    }
 
-public void Cancle_Ticket(){
-    System.out.println("-- CANCLATION ACCEPTED --");
-}
+    public void Cancle_Ticket(){
+        System.out.println("-- CANCLATION ACCEPTED --");
+    }
 
     // send  mail
     public void Send_Mail(String to , String subject , String Message){
-    SimpleMailMessage message  = new SimpleMailMessage();
-    message.setTo(to);
-    message.setSubject(subject);
-    message.setText(Message);
-    mailSender.send(message);
-}
+        SimpleMailMessage message  = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(Message);
+        mailSender.send(message);
+    }
 
     public user_pojo toUser(user_DTO userDto){
         try {
@@ -325,5 +335,19 @@ public void Cancle_Ticket(){
         }
     }
 
+    public void Update_User_Movie(user_pojo user){
+        try {
+            userClient.update_User_Movies(toUserDto(user));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    public ObjectId Update_User_Reserved_Movie(user_pojo user){
+        try {
+           return userClient.update_reserved_seats(toUserDto(user));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import user.pojo.movie_reserve_pojo;
 import user.pojo.user_pojo;
 
-import java.util.List;
-
 @FeignClient(name = "movieClient" , url = "${FeignClient.movie.url}")
 public interface movie_client {
 

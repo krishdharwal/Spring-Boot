@@ -2,19 +2,17 @@ package movies.pojo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import nonapi.io.github.classgraph.json.Id;
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class movie_reserve_pojo {
+public class Current_Movies_pojo {
     @Id
     ObjectId id;
-    String movie;
-    float Total_Price;
-    int Hall_Number;
-    List<Integer> reserved_seets = new ArrayList<>();
+    movie_pojo movie;
+    List<Integer> BookedSeats = new ArrayList<>();
 }

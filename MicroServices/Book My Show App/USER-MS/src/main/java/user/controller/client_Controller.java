@@ -2,6 +2,8 @@ package user.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import user.Dto.user_DTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +31,24 @@ public class client_Controller {
         }
     }
 
-    @PutMapping("/update-reserved-seats")
-    public ObjectId update(@RequestBody user_DTO user){
+    @PutMapping("/update_reserved_seats")
+    public ObjectId update_reserved_seats(@RequestBody user_DTO user){
         try {
             return service.update_User_Reserved_seats(user);
         }catch (Exception e){
-            log.error(" -- error in update in client_Controller ");
+            log.error(" -- error in update_reserved_seats in client_Controller ");
             return null;
         }
     }
 
-
+    @PutMapping("/update-user")
+    void update_User_Movies(@RequestBody user_DTO user){
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            service.update_User_Movies(user);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
