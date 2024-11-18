@@ -100,9 +100,9 @@ public class user_service {
             // set the reserved movie and seats
             user_pojo userPojo = userQueries.findByName(user.getName());
             userPojo.setReservedMovies(user.getReservedMovies());
-            user_pojo userPojo2 = repo.save(userPojo);
+            userPojo = repo.save(userPojo);
             //  return the id to book the reserved seets and to send the id in mail
-            return userPojo2.getReservedMovies().get(0).getId();
+            return userPojo.getReservedMovies().get(0).getId();
 
         }catch (Exception e){
             log.error("-- error in update_User_Reserved_seats in user service --");
@@ -110,10 +110,12 @@ public class user_service {
         }
     }
 
+    // book the seats that are reserved
     public void Book_seats_that_are_reserved(String name, ObjectId id) {
         try {
             user_pojo user = userQueries.findByName(name);
             assert user != null;
+            // send the request to movie MS to book the reserved one
             movieClient.Book_seats_that_are_reserved(
                     user.getReservedMovies().stream().filter(x -> x.getId().equals(id)).toList().get(0), user
             );
@@ -122,11 +124,10 @@ public class user_service {
         }
     }
 
-
     public void update_User_Movies(user_DTO userDto) {
         try{
             user_pojo user = userQueries.findByName(userDto.getName());
-            user.setMyMovies(userDto.getMyMovies());
+            user.setReservedMovies(userDto.getReservedMovies());
             repo.save(user);
         }catch (Exception e){
             log.error(" -- error in update_User_Movies in user service -- ");

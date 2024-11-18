@@ -55,7 +55,7 @@ public class movie_controller {
     }
 
 
-    // client request
+    // client request to book the reserved seats
     @GetMapping("book_reserved")
     void Book_seats_that_are_reserved(@RequestBody movie_reserve_pojo movieReservePojo,@RequestBody user_pojo userPojo){
         try {

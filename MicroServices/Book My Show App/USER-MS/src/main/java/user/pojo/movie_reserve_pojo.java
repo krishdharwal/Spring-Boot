@@ -5,12 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import nonapi.io.github.classgraph.json.Id;
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Document("User_Reserved_seets")
 @Data
 @Builder
 public class movie_reserve_pojo {
@@ -19,5 +17,5 @@ public class movie_reserve_pojo {
     String movie;
     float Total_Price;
     int Hall_Number;
-    List<Integer> reserved_seets = new ArrayList<>();
+    List<Integer> reserved_seats = new ArrayList<>();
 }

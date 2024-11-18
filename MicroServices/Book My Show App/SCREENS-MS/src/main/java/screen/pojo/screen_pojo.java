@@ -6,6 +6,7 @@ import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import screen.Enum.Ticket_Status;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +21,7 @@ public class screen_pojo {
     public   String name;
     @NonNull
     public int TotalSeats;
-    public List<Boolean> seatsList = new ArrayList<>(Collections.nCopies(TotalSeats,false));
+    public List<Ticket_Status> seatsList = new ArrayList<>(Collections.nCopies(TotalSeats,Ticket_Status.OPENED));
     // screen type , screen ratio, timing
 
 }

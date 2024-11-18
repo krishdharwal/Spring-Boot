@@ -13,7 +13,7 @@ import user.service.user_service;
 @RestController
 @RequestMapping("/user_client")
 @Slf4j
-public class client_Controller {
+public class user_client_Controller {
 
     @Autowired
     private user_service service;
@@ -44,7 +44,6 @@ public class client_Controller {
     @PutMapping("/update-user")
     void update_User_Movies(@RequestBody user_DTO user){
         try {
-            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             service.update_User_Movies(user);
         } catch (Exception e) {
             throw new RuntimeException(e);

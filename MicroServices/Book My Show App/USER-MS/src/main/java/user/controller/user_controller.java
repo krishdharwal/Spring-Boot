@@ -41,11 +41,10 @@ public class user_controller {
     }
 
 
-    @GetMapping("/book_reserved/{id}")
+    @GetMapping("/book-reserved/{id}")
     public void Book_seats_that_are_reserved(@PathVariable ObjectId id){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         service.Book_seats_that_are_reserved(auth.getName() , id);
-
     }
 
 }

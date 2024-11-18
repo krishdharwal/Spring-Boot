@@ -23,5 +23,4 @@ public class user_pojo {
     String place;
     Roles_enum Role;
     List<movie_reserve_pojo> reservedMovies = new ArrayList<>();
-    List<Current_Movies_pojo> MyMovies = new ArrayList<>();
 }
