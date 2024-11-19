@@ -4,7 +4,7 @@ import movies.Dto.bookSeat_bool_list__DTO;
 import movies.Dto.updateSeat_DTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
-import screen.Dto.screen_DTO;
+import movies.Dto.screen_DTO;
 
 import java.util.List;
 

@@ -2,12 +2,11 @@ package movies.pojo;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import screen.pojo.screen_pojo;
+import movies.pojo.screen_pojo;
 
 import java.util.ArrayList;
 import java.util.Date;

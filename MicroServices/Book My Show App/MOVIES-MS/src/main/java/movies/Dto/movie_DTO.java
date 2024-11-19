@@ -3,7 +3,7 @@ package movies.Dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
-import screen.pojo.screen_pojo;
+import movies.pojo.screen_pojo;
 
 import java.util.ArrayList;
 import java.util.Date;

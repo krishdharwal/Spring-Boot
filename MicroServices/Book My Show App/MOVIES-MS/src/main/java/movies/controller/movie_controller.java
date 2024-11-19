@@ -1,16 +1,16 @@
 package movies.controller;
 
+
 import movies.Dto.movie_DTO;
+import movies.Dto.movie_reserve_dto;
+import movies.Dto.user_DTO;
 import movies.pojo.movie_reserve_pojo;
-import movies.pojo.user_pojo;
 import movies.service.movie_service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import screen.Dto.screen_DTO;
-
-import java.util.List;
+import movies.Dto.screen_DTO;
 
 @RestController
 @RequestMapping("/movie")
@@ -56,14 +56,22 @@ public class movie_controller {
 
 
     // client request to book the reserved seats
-    @GetMapping("book_reserved")
-    void Book_seats_that_are_reserved(@RequestBody movie_reserve_pojo movieReservePojo,@RequestBody user_pojo userPojo){
+    @PutMapping("/book-reserved")
+    public void Book_seats_that_are_reserved(@RequestBody movie_reserve_pojo movieReservePojo,@RequestBody user_DTO userDto){
         try {
-            service.Book_seats_that_are_reserved(userPojo, movieReservePojo);
+            service.Book_seats_that_are_reserved(userDto, movieReservePojo);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
+    @DeleteMapping("/cancel-booked/{id}")
+    public void Delete_Booked_ticket(@RequestBody movie_reserve_dto movieReserveDto){
+        try{
+            service.Delete_Booked_ticket(movieReserveDto);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
+    }
 }

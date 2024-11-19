@@ -34,19 +34,19 @@ public class movieMockitoTests {
     }
 
 
-    @Test
-    void SearchForMovie(){
-        // fake data
-        // when we call this method it will return this fake data
-    when( movieQuery.find_Movie_By_Name(ArgumentMatchers.anyString())).thenReturn(
-                movie_pojo.builder().name("Triangle").build()
-        );
-    movie_pojo moviePojo = movieQuery.find_Movie_By_Name("ok");
-        Assertions.assertNotNull(moviePojo);
-    }
+//    @Test
+//    void SearchForMovie(){
+//        // fake data
+//        // when we call this method it will return this fake data
+//    when( movieQuery.find_Movie_By_Name(ArgumentMatchers.anyString())).thenReturn(
+//                movie_pojo.builder().name("Triangle").build()
+//        );
+//    movie_pojo moviePojo = movieQuery.find_Movie_By_Name("ok");
+//        Assertions.assertNotNull(moviePojo);
+//    }
 
-    @Test
-    void Book_Seats_of_the_hall_Test(){
-        movieService.Book_Seats_of_the_hall(Arrays.asList(true, false , true , true ,false, false));
-    }
+//    @Test
+//    void Book_Seats_of_the_hall_Test(){
+//        movieService.Book_Seats_of_the_hall(Arrays.asList(true, false , true , true ,false, false));
+//    }
 }

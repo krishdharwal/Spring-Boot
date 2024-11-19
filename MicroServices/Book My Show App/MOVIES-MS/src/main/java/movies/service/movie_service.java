@@ -3,6 +3,7 @@ package movies.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import movies.Dto.movie_DTO;
+import movies.Dto.movie_reserve_dto;
 import movies.Dto.user_DTO;
 import movies.Enum.Ticket_Status;
 import movies.clients.screen_client;
@@ -19,8 +20,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import screen.Dto.screen_DTO;
-import screen.pojo.screen_pojo;
+import movies.Dto.screen_DTO;
+import movies.pojo.screen_pojo;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -131,7 +132,7 @@ public class movie_service {
         int Hall_number = in.nextInt();
 
         List<Integer> booked_Seats_Integer_list = new ArrayList<>();
-        List<screen.Enum.Ticket_Status> booked_Seats_Bool_list;
+        List<Ticket_Status> booked_Seats_Bool_list;
 
         if (Hall_number > 0 && Hall_number <= moviePojo.getHall().size()) {
 
@@ -151,7 +152,7 @@ public class movie_service {
     }
 
 
-    public List<Integer> Book_Seats_of_the_hall(List<screen.Enum.Ticket_Status> Current_Seats) {
+    public List<Integer> Book_Seats_of_the_hall(List<Ticket_Status> Current_Seats) {
         System.out.println("<--- ENTER SEAT'S NUMBER TO BOOK & ENTER -1 TO CONFIRM --->" +
                 " \n False -> Un-Booked | True -> Booked ");
 
@@ -170,10 +171,10 @@ public class movie_service {
             if (sno > 0 && sno <= Current_Seats.size()) {
                 // Check for valid seat number
                 int idx = sno - 1;
-                if (Current_Seats.get(idx).equals(screen.Enum.Ticket_Status.OPENED)) {
+                if (Current_Seats.get(idx).equals(Ticket_Status.OPENED)) {
 
                     Selected_seats_by_user_Integer_list.add(idx);
-                    Current_Seats.set(idx, screen.Enum.Ticket_Status.RESERVED); // Mark seat as booked (true)
+                    Current_Seats.set(idx, Ticket_Status.RESERVED); // Mark seat as booked (true)
                     System.out.println("-- Seat added -> " + sno);
 
                 } else {
@@ -226,7 +227,7 @@ public class movie_service {
         // authentication
 
         // updation part -> in movie and not in screens (Movie Hall)
-        update_Movie_Hall_Seats_After_Confirmation(moviePojo, bookedSeats, hall_number - 1);
+        update_Movie_Hall_Seats_After_Confirmation(moviePojo, bookedSeats, hall_number - 1, Ticket_Status.BOOKED);
 
         // save the booked movie in the user
         movie_reserve_pojo movieReservePojo =  Set_movie_reserve_pojo_Details(
@@ -248,15 +249,17 @@ public class movie_service {
     }
 
     // update_reserved_seats the movie Hall seats
-    private void update_Movie_Hall_Seats_After_Confirmation(movie_pojo moviePojo, List<Integer> booked_Seats_Integer_List, int Hall_number) {
+    private void update_Movie_Hall_Seats_After_Confirmation(movie_pojo moviePojo, List<Integer> booked_Seats_Integer_List, int Hall_number, Ticket_Status status) {
         try {
             // updation part -> in movie and not in screens (Movie Hall)
-            List<screen.Enum.Ticket_Status> movie_Hall_seat_DB = moviePojo.getHall().get(Hall_number).getSeatsList();
+            List<Ticket_Status> movie_Hall_seat_DB = moviePojo.getHall().get(Hall_number).getSeatsList();
             for (int i = 0; i < booked_Seats_Integer_List.size(); i++) {
                 int idx = booked_Seats_Integer_List.get(i);
-                movie_Hall_seat_DB.set(idx, screen.Enum.Ticket_Status.BOOKED);
+                movie_Hall_seat_DB.set(idx, status);
             }
             repo.save(moviePojo);
+
+
         } catch (Exception e) {
             log.error(" -- error in update_Movie_Hall_Seats_After_Confirmation -- ");
         }
@@ -333,11 +336,11 @@ public class movie_service {
     }
 
     // Book the seats that are reserved
-    public void Book_seats_that_are_reserved(user_pojo userPojo, movie_reserve_pojo movieReservePojo) {
+    public void Book_seats_that_are_reserved(user_DTO userPojo, movie_reserve_pojo movieReservePojo) {
         try {
             movie_pojo moviePojo = movieQuery.find_Movie_By_Name(movieReservePojo.getMovie());
             assert moviePojo != null;
-            Booking_confirmation(userPojo, movieReservePojo.getReserved_seats(), movieReservePojo.getTotal_Price(), moviePojo, movieReservePojo.getHall_Number());
+            Booking_confirmation(toUser(userPojo), movieReservePojo.getReserved_seats(), movieReservePojo.getTotal_Price(), moviePojo, movieReservePojo.getHall_Number());
         } catch (Exception e) {
             log.error(" -- error in Book_seats_that_are_reserved in service --");
         }
@@ -372,5 +375,18 @@ public class movie_service {
         movieReservePojo.setStatus(status);
 
         return movieReservePojo;
+    }
+
+
+    public void Delete_Booked_ticket(movie_reserve_dto movieReserveDto) {
+        try {
+            movie_pojo movie = movieQuery.find_Movie_By_Name(movieReserveDto.getMovie());
+            assert movie != null;
+            screen_pojo screen = movie.getHall().get(movieReserveDto.getHall_Number());
+            update_Movie_Hall_Seats_After_Confirmation(movie, movieReserveDto.getReserved_seats(), movieReserveDto.getHall_Number() - 1, Ticket_Status.OPENED);
+
+        } catch (Exception e) {
+            log.error(" -- error in Delete_Booked_ticket in movie service -- ");
+        }
     }
 }

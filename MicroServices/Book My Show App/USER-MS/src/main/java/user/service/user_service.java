@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 import user.Clients.movie_client;
+import user.Dto.movie_reserve_dto;
 import user.Dto.user_DTO;
 import user.Enum.Roles_enum;
+import user.pojo.movie_reserve_pojo;
 import user.pojo.user_pojo;
 import user.repo.user_repo;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -69,6 +73,11 @@ public class user_service {
         }
     }
 
+    public movie_reserve_dto toMovieReserveDto(movie_reserve_pojo data){
+        assert data != null;
+        return mapper.map(data, movie_reserve_dto.class);
+    }
+
     public List<user_pojo> findAll() {
         try {
             return repo.findAll();
@@ -117,7 +126,7 @@ public class user_service {
             assert user != null;
             // send the request to movie MS to book the reserved one
             movieClient.Book_seats_that_are_reserved(
-                    user.getReservedMovies().stream().filter(x -> x.getId().equals(id)).toList().get(0), user
+                    user.getReservedMovies().stream().filter(x -> x.getId().equals(id)).toList().get(0), toUserDto(user)
             );
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -131,6 +140,29 @@ public class user_service {
             repo.save(user);
         }catch (Exception e){
             log.error(" -- error in update_User_Movies in user service -- ");
+        }
+    }
+
+    public void Delete_Booked_ticket(String name, ObjectId id) {
+        try{
+            user_pojo user = userQueries.findByName(name);
+            assert  user != null;
+            movie_reserve_pojo Booked_ticket = user.getReservedMovies().stream().filter(x -> x.getId().equals(id)).toList().get(0);
+            // check  for the time and is the time is not gone to cancel the ticket
+            // now setted for 1 hour and can be change in future via adding time to movie play in screen
+            boolean check_for_time = Booked_ticket.getReservedAt().plusHours(1L).isBefore(LocalDateTime.now());
+
+            if (check_for_time ) {
+                user.getReservedMovies().removeIf(x -> x.getId().equals(id));
+                repo.save(user);
+                // update the movie list to again open the booked seats
+                movieClient.Delete_Booked_ticket(toMovieReserveDto(Booked_ticket));
+            }
+            else {
+                System.out.println(" -- You Cannot Cancel The Ticket Cause Time Get Out -- ");
+            }
+        }catch (Exception e){
+            log.error(" -- error in Delete_Booked_ticket in user service -- ");
         }
     }
 }

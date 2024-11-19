@@ -33,18 +33,24 @@ public class user_controller {
     public void Update(@RequestBody user_DTO userDto){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         service.update_User(auth.getName(), userDto);
-
     }
 
-    @DeleteMapping
-    public void delete(){
-    }
-
-
-    @GetMapping("/book-reserved/{id}")
+    @PutMapping("/book-reserved/{id}")
     public void Book_seats_that_are_reserved(@PathVariable ObjectId id){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         service.Book_seats_that_are_reserved(auth.getName() , id);
     }
+
+
+    @DeleteMapping("/cancel-booked/{id}")
+    public void Delete_Booked_ticket(@PathVariable ObjectId id) {
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            service.Delete_Booked_ticket(auth.getName(), id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

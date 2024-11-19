@@ -6,21 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/movie_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/movie_DTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/movie_reserve_dto.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/movie_reserve_dto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/user_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Dto/user_DTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Enum/Ticket_Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/Enum/Ticket_Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/screen_client.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/clients/screen_client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/Current_Movies_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_reserve_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_reserve_pojo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/user_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/user_pojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/movie_pojo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/Scheduling_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/Scheduling_service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/pojo/screen_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/pojo/screen_pojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/test/java/Movie_Test/movieMockitoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/test/java/Movie_Test/movieMockitoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Clients/movie_client.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/Clients/movie_client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/movie_reserve_dto.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/movie_reserve_dto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/user_DTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/user_DTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/client_Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_client_Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Enum/Ticket_Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/Enum/Ticket_Status.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/movie_reserve_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/movie_reserve_pojo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/user_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/user_pojo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,6 +62,7 @@
     "JUnit.movieMockitoTests.Book_Seats_of_the_hall_Test.executor": "Run",
     "JUnit.movieMockitoTests.SearchForMovie.executor": "Run",
     "Maven.MoviesMs-MicroService [clean].executor": "Run",
+    "Maven.MoviesMs-MicroService [install].executor": "Run",
     "Maven.MoviesMs-MicroService [package].executor": "Run",
     "Maven.MoviesMs-MicroService [validate].executor": "Run",
     "Maven.MoviesMs-MicroService [verify].executor": "Run",
@@ -74,7 +75,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "service.view.auto.scroll.from.source": "true",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -86,8 +87,8 @@
       <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="movies.Enum" />
       <recent name="movies.pojo" />
+      <recent name="movies.Enum" />
       <recent name="movies.Dto" />
       <recent name="user.config" />
       <recent name="screen.Dto" />

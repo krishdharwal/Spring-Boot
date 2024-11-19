@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class movie_reserve_dto {
-    @Id
     ObjectId id;
     String movie;
     float Total_Price;

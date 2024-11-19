@@ -69,10 +69,5 @@ public class Scheduling_service {
         }
     }
 
-    public void Schedule_BOOK_Ticket(){
-      // Book the Reserved Seats
-
-
-    }
 
 }
