@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import screen.Dto.screen_DTO;
+import screen.Enum.Ticket_Status;
 import screen.pojo.screen_pojo;
 import screen.repo.screen_repo;
 
@@ -58,13 +59,13 @@ public class screen_service {
     }
 
     //  update_Reserved_seets_of_hall algo
-    public List<Boolean> update_Reserved_seets_of_hall(ObjectId hall_Id, List<Integer> bookedSeets) {
+    public List<Ticket_Status> update_Reserved_seets_of_hall(ObjectId hall_Id, List<Integer> bookedSeets) {
         try{
             screen_pojo hall_from_db = repo.findById(hall_Id).orElse(null);
             assert hall_from_db != null;
 
             for(int i : bookedSeets){
-                hall_from_db.getSeatsList().set(i , false);
+                hall_from_db.getSeatsList().set(i , Ticket_Status.BOOKED);
             }
             repo.save(hall_from_db);
             return hall_from_db.getSeatsList();

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import screen.Dto.bookSeat_bool_list__DTO;
 import screen.Dto.screen_DTO;
+import screen.Enum.Ticket_Status;
 import screen.service.screen_service;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class screen_controller {
     }
 
     @PutMapping("/update-hall-seatsList")
-    public List<Boolean> updateSeats(ObjectId hall_id, List<Integer> booked_seets){
+    public List<Ticket_Status> updateSeats(ObjectId hall_id, List<Integer> booked_seets){
         try{
            return service.update_Reserved_seets_of_hall(hall_id,booked_seets);
         } catch (Exception e) {

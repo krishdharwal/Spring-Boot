@@ -7,7 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="UserMS-MicroService" />
+        <module name="USER2" />
         <module name="ScreenMicroService" />
         <module name="Places-MicroService" />
         <module name="Spring-Cloud" />
@@ -16,6 +16,9 @@
         <module name="MoviesMs-MicroService" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="UserMS-MicroService" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -25,6 +28,7 @@
       <module name="ScreenMS-MicroService" options="-parameters" />
       <module name="ScreenMicroService" options="-parameters" />
       <module name="Spring-Cloud" options="-parameters" />
+      <module name="USER2" options="-parameters" />
       <module name="UserMS-MicroService" options="-parameters" />
     </option>
   </component>
