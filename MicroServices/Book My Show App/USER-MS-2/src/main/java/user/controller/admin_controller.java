@@ -29,7 +29,7 @@ public class admin_controller {
         return new ResponseEntity<>( " -- ADMIN Logined Successfully --",HttpStatus.OK);
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/add")
     public ResponseEntity<?> save_ADMIN(@RequestBody user_DTO user){
         try{
             service.save_admin(user);

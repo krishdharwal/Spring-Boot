@@ -13,7 +13,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import user.Enum.Roles_enum;
 import user.impl.user_Impl;
+
+import static user.Enum.Roles_enum.ADMIN;
 
 @Configuration
 @EnableWebSecurity
@@ -22,13 +25,12 @@ public class SpringSecurity extends WebSecurityConfigurerAdapter {
     @Autowired
     private user_Impl Service;
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/user/**","/Admin_controller/**","/info/**").authenticated()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().permitAll()
+                .antMatchers("/public/**").permitAll()
+                .antMatchers("/admin/**").hasRole(ADMIN.toString())
+                .anyRequest().authenticated()
                         .and().httpBasic();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .csrf().disable();

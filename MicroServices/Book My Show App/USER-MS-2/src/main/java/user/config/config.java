@@ -1,10 +1,17 @@
 package user.config;
 
+
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
+import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.transaction.PlatformTransactionManager;
+
+
 
 @Configuration
 public class config {
@@ -14,23 +21,20 @@ public class config {
         return new MongoTemplate(mongoDatabaseFactory);
     }
 
-//    @Bean
-//    public PlatformTransactionManager transactionManager(MongoDatabaseFactory factory){
-//        return new MongoTransactionManager(factory);
-//    }
+    @Bean
+    public PlatformTransactionManager transactionManager(MongoDatabaseFactory factory){
+        return new MongoTransactionManager(factory);
+    }
 
     @Bean
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
 
-//    @Bean
-//    public HttpMessageConverters messageConverters() {
-//        return new HttpMessageConverters(new MappingJackson2HttpMessageConverter());
-//    }
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    public HttpMessageConverters messageConverters() {
+        return new HttpMessageConverters(new MappingJackson2HttpMessageConverter());
+    }
+
 
 }

@@ -5,10 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/USER-MS-2/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS-2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/controller/movie_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/user_pojo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/pojo/user_pojo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies/service/movie_service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MOVIES-MS/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/MOVIES-MS/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Cloud/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring-Cloud/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring-Cloud/src/main/java/Eureka/Spring/Cloud/AppCOnfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/Clients/movie_client.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/Clients/movie_client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/config/SpringSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/config/config.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/config/config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/controller/admin_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/controller/admin_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/controller/user_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/controller/user_controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/impl/userPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/service/user_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/service/user_service.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,60 +49,60 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Movies_START.executor": "Run",
-    "Application.Screen_START.executor": "Run",
-    "Application.SpringCloudApplication.executor": "Run",
-    "Application.User_START.executor": "Run",
-    "Application.User_START_2.executor": "Run",
-    "Application.movie_service.executor": "Run",
-    "Application.screen_service.executor": "Run",
-    "JUnit.movieMockitoTests.Book_Seats_of_the_hall_Test.executor": "Run",
-    "JUnit.movieMockitoTests.SearchForMovie.executor": "Run",
-    "Maven.MoviesMs-MicroService [clean].executor": "Run",
-    "Maven.MoviesMs-MicroService [install].executor": "Run",
-    "Maven.MoviesMs-MicroService [package].executor": "Run",
-    "Maven.MoviesMs-MicroService [validate].executor": "Run",
-    "Maven.MoviesMs-MicroService [verify].executor": "Run",
-    "Maven.USER2 [install].executor": "Run",
-    "Maven.USER2 [validate].executor": "Run",
-    "Maven.UserMs-MicroService [clean].executor": "Run",
-    "Maven.UserMs-MicroService [install].executor": "Run",
-    "Maven.UserMs-MicroService [package].executor": "Run",
-    "Maven.UserMs-MicroService [validate].executor": "Run",
-    "Maven.UserMs-MicroService [verify].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "springboot",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/dusty-dragon/Documents/Spring-Boot/MicroServices/Book My Show App/USER-MS-2",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "service.view.auto.scroll.from.source": "true",
-    "settings.editor.selected.configurable": "advanced.settings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Movies_START.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Screen_START.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SpringCloudApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Application.User_START.executor&quot;: &quot;Run&quot;,
+    &quot;Application.User_START_2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.movie_service.executor&quot;: &quot;Run&quot;,
+    &quot;Application.screen_service.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.movieMockitoTests.Book_Seats_of_the_hall_Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.movieMockitoTests.SearchForMovie.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.MoviesMs-MicroService [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.MoviesMs-MicroService [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.MoviesMs-MicroService [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.MoviesMs-MicroService [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.MoviesMs-MicroService [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.USER2 [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.USER2 [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.UserMs-MicroService [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.UserMs-MicroService [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.UserMs-MicroService [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.UserMs-MicroService [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.UserMs-MicroService [verify].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;springboot&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/dusty-dragon/Documents/Spring-Boot/MicroServices/Book My Show App/Spring-Cloud/src/main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;service.view.auto.scroll.from.source&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen" />
+      <recent name="$PROJECT_DIR$/Spring-Cloud/src/main" />
       <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/java/movies" />
+      <recent name="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen" />
       <recent name="$PROJECT_DIR$/USER-MS/src/main/resources" />
       <recent name="$PROJECT_DIR$/SCREENS-MS/src/main/resources" />
-      <recent name="$PROJECT_DIR$/MOVIES-MS/src/main/resources" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="user.impl" />
       <recent name="user.config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="movies.service" />
+      <recent name="movies.repo" />
       <recent name="movies.pojo" />
       <recent name="movies.Enum" />
       <recent name="movies.Dto" />
-      <recent name="user.config" />
-      <recent name="screen.Dto" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -100,19 +111,8 @@
         <option value="Application" />
       </set>
     </option>
-    <option name="hiddenConfigurations">
-      <map>
-        <entry key="Application">
-          <value>
-            <set>
-              <option value="movie_service" />
-            </set>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
-  <component name="RunManager" selected="Application.User_START_2">
+  <component name="RunManager" selected="Application.Movies_START">
     <configuration name="Movies_START" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="movies.Movies_START" />
       <module name="MoviesMs-MicroService" />
@@ -126,12 +126,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="User_START_2" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="user.User_START_2" />
-      <module name="USER2" />
+    <configuration name="SpringCloudApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Eureka.Spring.Cloud.SpringCloudApplication" />
+      <module name="Spring-Cloud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="user.*" />
+          <option name="PATTERN" value="Eureka.Spring.Cloud.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -139,12 +139,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="movie_service" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="movies.service.movie_service" />
-      <module name="MoviesMs-MicroService" />
+    <configuration name="User_START_2" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="user.User_START_2" />
+      <module name="USER2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="movies.service.*" />
+          <option name="PATTERN" value="user.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -253,10 +253,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.User_START_2" />
+        <item itemvalue="Application.SpringCloudApplication" />
         <item itemvalue="Application.Movies_START" />
         <item itemvalue="JUnit.movieMockitoTests.Book_Seats_of_the_hall_Test" />
         <item itemvalue="JUnit.movieMockitoTests.SearchForMovie" />
-        <item itemvalue="Application.movie_service" />
       </list>
     </recent_temporary>
   </component>
@@ -291,6 +291,11 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/USER-MS-2/src/main/java/user/controller/user_controller.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -9,10 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import user.Clients.movie_client;
 import user.Dto.user_DTO;
 import user.pojo.user_pojo;
 import user.service.User_Queries;
 import user.service.user_service;
+import user.service.user_service_2;
 
 @Slf4j
 @RestController
@@ -20,10 +22,16 @@ import user.service.user_service;
 public class user_controller {
 
     @Autowired
+    private movie_client  movieClientl;
+
+    @Autowired
     private user_service service;
 
     @Autowired
     private User_Queries userQueries;
+
+    @Autowired
+    private user_service_2 service2;
 
     @GetMapping
     public ResponseEntity<?> Login(){
@@ -59,5 +67,18 @@ public class user_controller {
         }
     }
 
+
+
+    // movie
+
+    @GetMapping("/mh")
+    public String movie_health(){
+        try {
+            String str = movieClientl.health();
+            return str;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

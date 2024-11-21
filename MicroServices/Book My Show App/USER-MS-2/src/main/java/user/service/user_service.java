@@ -18,6 +18,7 @@ import user.repo.user_repo;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static user.Enum.Roles_enum.ADMIN;
 import static user.Enum.Roles_enum.USER;
 
 @Slf4j
@@ -54,7 +55,7 @@ public class user_service {
     public void save_admin(user_DTO user_dto) {
         try{
             user_pojo admin = toUser(user_dto);
-            admin.setRole(Roles_enum.ADMIN);
+            admin.setRole(ADMIN);
             admin.setPassword(encoder.encode(admin.getPassword()));
             repo.save(admin);
         } catch (Exception e) {

@@ -21,7 +21,8 @@ public class movie_controller {
 
     @GetMapping("/health")
     public String health(){
-        return "--- Movie-MS is UP ---";
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return "--- Movie-MS is UP ---" ;
     }
 
     @PostMapping("/save")
@@ -45,15 +46,14 @@ public class movie_controller {
     }
 
     @GetMapping("/book/{movieName}")
-    public ResponseEntity<?> book_Ticket(@PathVariable("movieName") String movieName){
+    ResponseEntity<?> book_Ticket(@PathVariable("movieName") String movieName , @RequestBody user_DTO user){
         try{
-            service.Search_Movie(movieName);
+            service.Search_Movie(movieName, user);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
 
     // client request to book the reserved seats
     @PutMapping("/book-reserved")
@@ -65,13 +65,12 @@ public class movie_controller {
         }
     }
 
-    @DeleteMapping("/cancel-booked/{id}")
+    @DeleteMapping("/cancel-booked")
     public void Delete_Booked_ticket(@RequestBody movie_reserve_dto movieReserveDto){
         try{
             service.Delete_Booked_ticket(movieReserveDto);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 }
