@@ -5,37 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4eb835d3-191a-4ad3-a86a-22098b019ad1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/controller/screen_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/controller/screen_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/service/screen_service.java" beforeDir="false" afterPath="$PROJECT_DIR$/SCREENS-MS/src/main/java/screen/service/screen_service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Clients/movie_client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/movie_reserve_dto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Dto/user_DTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Enum/Roles_enum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/Enum/Ticket_Status.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/User_START.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/config/SpringSecurity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/admin_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/public_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_client_Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/controller/user_controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/movie_reserve_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/pojo/user_pojo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/repo/user_repo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/User_Queries.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/java/user/service/user_service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/USER-MS/src/test/java/demo/UserSTARTTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Project Hive/Link Downloader App/src/main/java/YT/controller/DownloadController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Project Hive/Link Downloader App/src/main/java/YT/controller/DownloadController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/java/user/config/SpringSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/USER-MS-2/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/USER-MS-2/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

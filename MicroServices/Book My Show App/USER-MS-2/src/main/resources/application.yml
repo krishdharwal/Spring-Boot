@@ -19,7 +19,13 @@ spring:
 
 
 
-#  security:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23libSijU6WPXeLp6z
+            client-secret: cb39821fb9abac8102eaa19ee5e408085f9f4b70
 #    user:
 #      name: kd
 #      password: kd
@@ -39,3 +45,4 @@ server:
 FeignClient:
   movie:
     url: http://localhost:9091/movie
+
