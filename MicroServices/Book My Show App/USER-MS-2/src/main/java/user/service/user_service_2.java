@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import user.Clients.movie_client;
 import user.Dto.user_DTO;
 import user.pojo.user_pojo;
@@ -13,6 +14,7 @@ import user.repo.user_repo;
 
 @Service
 @Slf4j
+@CrossOrigin(origins = "http://localhost:3000")
 public class user_service_2 {
 
     @Autowired

@@ -55,3 +55,9 @@ FeignClient:
   user:
     url: http://localhost:9093/user_client
 
+
+  mvc:
+    cors:
+      allowed-origins: http://localhost:3000
+      allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+      allowed-headers: /**

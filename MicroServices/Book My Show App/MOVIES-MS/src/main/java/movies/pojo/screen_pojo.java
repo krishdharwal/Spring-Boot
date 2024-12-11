@@ -17,7 +17,7 @@ import java.util.List;
 public class screen_pojo {
     @Id
     public ObjectId id;
-    public   String name;
+    public String name;
     @NonNull
     public int TotalSeats;
     public List<Ticket_Status> seatsList = new ArrayList<>(Collections.nCopies(TotalSeats,Ticket_Status.OPENED));

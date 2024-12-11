@@ -19,6 +19,7 @@ import user.service.user_service_2;
 @Slf4j
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:3000")
 public class user_controller {
 
     @Autowired
@@ -68,9 +69,7 @@ public class user_controller {
     }
 
 
-
     // movie
-
     @GetMapping("/mh")
     public String movie_health(){
         try {
@@ -80,5 +79,6 @@ public class user_controller {
             throw new RuntimeException(e);
         }
     }
+
 
 }

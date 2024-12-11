@@ -2,6 +2,7 @@ package movies.pojo;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Data
 @Document("Movies")
-@Builder
+@NoArgsConstructor
 public class movie_pojo {
     @Id
     ObjectId id;
@@ -29,3 +30,5 @@ public class movie_pojo {
     float price;
     List<screen_pojo> hall = new ArrayList<>();
 }
+
+

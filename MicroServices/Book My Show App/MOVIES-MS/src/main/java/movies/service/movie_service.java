@@ -50,298 +50,153 @@ public class movie_service {
     @Autowired
     private user_client userClient;
 
-    // scanner
-    Scanner in = new Scanner(System.in);
-
-    // save movie
-    public void save(movie_DTO movieData) {
+    // Save a movie
+    public Map<String, String> save(movie_DTO movieData) {
         try {
+            // dummy data
+            movieData.setPrice(199.9f);
+            movieData.setLanguage(" hindi / english ");
+
             repo.save(toMovie(movieData));
+            return Map.of("message", "Movie saved successfully");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            log.error("Error saving movie: {}", e.getMessage());
+            throw new RuntimeException("Failed to save movie");
         }
     }
 
-    // set_hall_in_movie
-    public void set_hall_in_movie(screen_DTO screen, String movieName) {
+    private movie_pojo toMovie(movie_DTO movieData) {
+        assert movieData != null;
+        return mapper.map(movieData, movie_pojo.class);
+    }
+
+    private screen_pojo toScreen(screen_DTO screen) {
+        assert screen != null;
+        return mapper.map(screen, screen_pojo.class);
+    }
+
+
+    // Assign a hall to a movie
+    public Map<String, String> set_hall_in_movie(screen_DTO screen, String movieName) {
         try {
-            assert screen != null;
-            screen.setSeatsList(Collections.nCopies(screen.getTotalSeats(), false));
+            if (screen != null) {
+
+                //dummy data
+                screen.setName("hall");
+
+                screen.setSeatsList(Collections.nCopies(screen.getTotalSeats(), Ticket_Status.OPENED));
+                movie_pojo movie = movieQuery.find_Movie_By_Name(movieName);
+                if (movie != null) {
+//                    screenClient.Save_Hall(screen);
+                    movie.getHall().add(toScreen(screen));
+                    repo.save(movie);
+                    return Map.of("message", "Hall added successfully to the movie");
+                } else {
+                    return Map.of("error", "Movie not found");
+                }
+            }
+            return Map.of("error", "Invalid screen data");
+        } catch (Exception e) {
+            log.error("Error in set_hall_in_movie: {}", e.getMessage());
+            throw new RuntimeException("Failed to assign hall to movie");
+        }
+    }
+
+
+
+    // Get movie details
+    public movie_pojo get_movie_details(String movieName) {
+        try {
             movie_pojo movie = movieQuery.find_Movie_By_Name(movieName);
-            assert movie != null;
-            screenClient.Save_Hall(screen);
-            movie.getHall().add(toScreen(screen));
+            if (movie != null) {
+                return movie;
+            } else {
+                throw new RuntimeException("Movie not found");
+            }
+        } catch (Exception e) {
+            log.error("Error fetching movie details: {}", e.getMessage());
+            throw new RuntimeException("Failed to fetch movie details");
+        }
+    }
+
+    // Book movie tickets
+    public Map<String, Object> book_movie_hall(String movieName, user_DTO userDTO, int hallNumber, List<Integer> seatNumbers) {
+        try {
+            movie_pojo movie = movieQuery.find_Movie_By_Name(movieName);
+            if (movie == null) {
+                return Map.of("error", "Movie not found");
+            }
+
+            if (hallNumber <= 0 || hallNumber > movie.getHall().size()) {
+                return Map.of("error", "Invalid hall number");
+            }
+
+            screen_pojo selectedHall = movie.getHall().get(hallNumber - 1);
+            List<Ticket_Status> seatsList = selectedHall.getSeatsList();
+            List<Integer> bookedSeats = new ArrayList<>();
+
+            for (int seat : seatNumbers) {
+                if (seat > 0 && seat <= seatsList.size() && seatsList.get(seat - 1).equals(Ticket_Status.OPENED)) {
+                    seatsList.set(seat - 1, Ticket_Status.BOOKED);
+                    bookedSeats.add(seat);
+                } else {
+                    return Map.of("error", "Seat " + seat + " is not available");
+                }
+            }
+
+            float totalPrice = bookedSeats.size() * movie.getPrice();
+            movie_reserve_pojo reservation = Set_movie_reserve_pojo_Details(
+                    movie.getName(), bookedSeats, totalPrice, hallNumber, Ticket_Status.BOOKED);
+
+            user_pojo user = toUser(userDTO);
+            user.getReservedMovies().add(reservation);
+            Update_User_Movie(user);
+            update_Movie_Hall_Seats_After_Confirmation(movie, bookedSeats, hallNumber - 1, Ticket_Status.BOOKED);
+
+            return Map.of(
+                    "message", "Booking successful",
+                    "totalPrice", totalPrice,
+                    "bookedSeats", bookedSeats
+            );
+
+        } catch (Exception e) {
+            log.error("Error booking movie hall: {}", e.getMessage());
+            throw new RuntimeException("Failed to book movie tickets");
+        }
+    }
+
+    // Helper methods and utilities
+
+    private void update_Movie_Hall_Seats_After_Confirmation(movie_pojo movie, List<Integer> bookedSeats, int hallNumber, Ticket_Status status) {
+        try {
+            List<Ticket_Status> seats = movie.getHall().get(hallNumber).getSeatsList();
+            for (int seat : bookedSeats) {
+                seats.set(seat - 1, status);
+            }
             repo.save(movie);
         } catch (Exception e) {
-            log.error(" -- error in set_hall_in_movie -- ;");
+            log.error("Error updating hall seats: {}", e.getMessage());
+            throw new RuntimeException("Failed to update movie hall seats");
         }
     }
 
-
-    // print the Movie Details
-    public String Print_Movie_Details(movie_pojo movie) {
-        return
-                "MOVIE NAME : " + movie.getName() +
-                        "\n LANGUAGE : " + movie.getLanguage() +
-                        "\n GENERA : " + movie.getGenre() +
-                        "\n DURATION : " + movie.getDuration() +
-                        "\n RATING : " + movie.getRating() +
-                        "\n RELEASE DATE : " + movie.getReleaseDate() +
-                        "\n DESCRIPTION : " + movie.getDescription() +
-                        "\n PRICE OF TICKET : " + movie.getPrice();
-    }
-
-    // Movie Search Algo
-    public void Search_Movie(String movieName, user_DTO user) throws JsonProcessingException {
-
-        movie_pojo movie = movieQuery.find_Movie_By_Name(movieName);
-        assert movie != null;
-
-        System.out.println(Print_Movie_Details(movie));
-        System.out.println("-- DO YOU WANT TO BOOK THIS MOVIE --");
-        System.out.println("ENTER 1 TO WATCH THIS MOVIE NEARBY " +
-                "\n ENTER 2 TO CANCLE");
-
-        int next = in.nextInt();
-        if (next == 1) {
-
-            // if user enter one do user auth and get his place info
-            show_movie_halls(movie, user);
-
-        } else if (next == 2) {
-            System.out.println("-- THANKS VISIT AGAIN --");
-        } else {
-            System.out.println("-- ENTER VALID NUMBER --");
-        }
-    }
-
-    // Booking algo
-    public void show_movie_halls(movie_pojo moviePojo, user_DTO user) throws JsonProcessingException {
-        float movie_price = moviePojo.getPrice();
-
-        // firstly show all the cinema halls
-        System.out.println("-- CHOOSE CINEMA HALL & AND ENTER THE HALL NUMBER --");
-
-        int i = 1;
-        for (screen_pojo screenPojo : moviePojo.getHall()) {
-            System.out.println(i + " -> " + moviePojo.getHall());
-            i++;
-        }
-
-        int Hall_number = in.nextInt();
-
-        List<Integer> booked_Seats_Integer_list = new ArrayList<>();
-        List<Ticket_Status> booked_Seats_Bool_list;
-
-        if (Hall_number > 0 && Hall_number <= moviePojo.getHall().size()) {
-
-            booked_Seats_Bool_list = moviePojo.getHall().get(Hall_number - 1).getSeatsList();
-
-            // Book the seats
-            booked_Seats_Integer_list = Book_Seats_of_the_hall(booked_Seats_Bool_list);
-
-            // Next Step What user want confirmation , reservation , canclation ----->
-            assert !booked_Seats_Integer_list.isEmpty();
-            Select_for_Confirm_Reserve_Cancle(booked_Seats_Integer_list, movie_price, moviePojo, Hall_number, in, user);
-
-        } else {
-            System.out.println("-- ENTER VALID HALL NUMBER --");
-        }
-
-    }
-
-
-    public List<Integer> Book_Seats_of_the_hall(List<Ticket_Status> Current_Seats) {
-        System.out.println("<--- ENTER SEAT'S NUMBER TO BOOK & ENTER -1 TO CONFIRM --->" +
-                " \n False -> Un-Booked | True -> Booked ");
-
-        List<Integer> Selected_seats_by_user_Integer_list = new ArrayList<>();
-
-        // Display current seats
-        System.out.println("Current Seats Status: " + Current_Seats);
-
-        while (true) {
-            int sno = in.nextInt();
-
-            if (sno == -1) {
-                break; // Confirm booking and exit loop
-            }
-
-            if (sno > 0 && sno <= Current_Seats.size()) {
-                // Check for valid seat number
-                int idx = sno - 1;
-                if (Current_Seats.get(idx).equals(Ticket_Status.OPENED)) {
-
-                    Selected_seats_by_user_Integer_list.add(idx);
-                    Current_Seats.set(idx, Ticket_Status.RESERVED); // Mark seat as booked (true)
-                    System.out.println("-- Seat added -> " + sno);
-
-                } else {
-                    System.out.println("<--- SORRY, THIS SEAT IS NOT AVAILABLE --->");
-                }
-            } else {
-                System.out.println("<--- INVALID SEAT NUMBER, PLEASE TRY AGAIN --->");
-            }
-        }
-        return Selected_seats_by_user_Integer_list;
-    }
-
-    public void Select_for_Confirm_Reserve_Cancle(List<Integer> booked_Seats_Integer_List, float movie_price, movie_pojo moviePojo, int Hall_number, Scanner in, user_DTO userDTO) throws JsonProcessingException {
-        // confirmation , reservation , canclation
-
-        float total_price = booked_Seats_Integer_List.size() * movie_price;
-        System.out.println("YOUR TOTAL PRICE FOR [ " + booked_Seats_Integer_List.size() + " Tickets ] IS -> " + total_price);
-        System.out.println("   ENTER 1 TO CONFIRM" +
-                "\n ENTER 2 TO RESERVE FOR 5 MINUTE" +
-                "\n ENTER 3 TO CANCLE ");
-
-        int Next_Number = in.nextInt();
-
-        // find the user and get him
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        user_pojo user = toUser(userDTO);
-        assert user != null;
-
-        switch (Next_Number) {
-            case 1:
-                Booking_confirmation(user, booked_Seats_Integer_List, total_price, moviePojo, Hall_number);
-                break;
-
-            case 2:
-                Reserve_Ticket(user, booked_Seats_Integer_List, total_price, moviePojo, Hall_number);
-                break;
-
-            case 3:
-                Cancle_Ticket();
-                break;
-
-            default:
-                System.out.println("  -- Enter a valid number -- ");
-        }
-    }
-
-    public void Booking_confirmation(user_pojo user, List<Integer> bookedSeats, float total_price, movie_pojo moviePojo, int hall_number) throws JsonProcessingException {
-        // confirm algo -> payment gateway , user auth , book seatsList and save it , send mail , update_reserved_seats seats in db
-
-        // authentication
-
-        // updation part -> in movie and not in screens (Movie Hall)
-        update_Movie_Hall_Seats_After_Confirmation(moviePojo, bookedSeats, hall_number - 1, Ticket_Status.BOOKED);
-
-        // save the booked movie in the user
-        movie_reserve_pojo movieReservePojo =  Set_movie_reserve_pojo_Details(
-                moviePojo.getName(),bookedSeats,total_price,hall_number,Ticket_Status.BOOKED
-        );
-
-        user.getReservedMovies().add(movieReservePojo);
-        Update_User_Movie(user);
-
-        // At last send mail_address
-        Send_Mail(user.getMail(),
-                "-- TICKET BOOKING CONFIRMED --",
-                "-- Hooray! your ticket is booked " +
-                        "\n Total tickets -> " + bookedSeats.size() +
-                        "\n And Total price is -> " + total_price +
-                        "\n" + Print_Movie_Details(moviePojo)
-        );
-        System.out.println(" -- Seat Booked -- ");
-    }
-
-    // update_reserved_seats the movie Hall seats
-    private void update_Movie_Hall_Seats_After_Confirmation(movie_pojo moviePojo, List<Integer> booked_Seats_Integer_List, int Hall_number, Ticket_Status status) {
-        try {
-            // updation part -> in movie and not in screens (Movie Hall)
-            List<Ticket_Status> movie_Hall_seat_DB = moviePojo.getHall().get(Hall_number).getSeatsList();
-            for (int i = 0; i < booked_Seats_Integer_List.size(); i++) {
-                int idx = booked_Seats_Integer_List.get(i);
-                movie_Hall_seat_DB.set(idx, status);
-            }
-            repo.save(moviePojo);
-
-
-        } catch (Exception e) {
-            log.error(" -- error in update_Movie_Hall_Seats_After_Confirmation -- ");
-        }
-    }
-
-    public void Reserve_Ticket(user_pojo user, List<Integer> bookedSeats, float total_price, movie_pojo moviePojo, int hall_number) throws JsonProcessingException {
-        // reserve algo -> send mail_address about the reservstion for 5 minutes
-
-        // set the user reserved seats for future
-        movie_reserve_pojo movieReservePojo =   Set_movie_reserve_pojo_Details(
-                moviePojo.getName(),bookedSeats,total_price,hall_number,Ticket_Status.RESERVED
-        );
-        // reserve the ticket
-        // user things
-        user.getReservedMovies().add(movieReservePojo);
-        // send user to being updated
-        // send this id to book the reserved seats
-        ObjectId Ticket_Id = schedulingService.Schedule_Reserve_Ticket(toUserDto(user) , movieReservePojo);
-
-        //  send mail of reservation
-        Send_Mail(user.getMail(),
-                "-- TICKET RESERVATION --",
-                "-- YOUR TICKET HAVE BEEN SUCCESSFULLY RESERVED FOR 5 MINUTES --" +
-                        "\n Ticket Id -> " + Ticket_Id +
-                        "\n Total tickets -> " + bookedSeats.size() +
-                        "\n And Total price is -> " + total_price +
-                        "\n" + Print_Movie_Details(moviePojo)
-        );
-        System.out.println(" -- Seat Reserved -- ");
-    }
-
-    public void Cancle_Ticket() {
-        System.out.println("-- CANCELATION ACCEPTED --");
-    }
-
-    // send  mail
-    public void Send_Mail(String to, String subject, String Message) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(Message);
-        mailSender.send(message);
-    }
-
-    // mapper
-    private movie_pojo toMovie(movie_DTO movieDto) {
-        assert movieDto != null;
-        return mapper.map(movieDto, movie_pojo.class);
-    }
-
-    private screen_pojo toScreen(screen_DTO screenDto) {
-        assert screenDto != null;
-        return mapper.map(screenDto, screen_pojo.class);
+    public movie_reserve_pojo Set_movie_reserve_pojo_Details(String movieName, List<Integer> seats, float price, int hallNumber, Ticket_Status status) {
+        movie_reserve_pojo reservation = new movie_reserve_pojo();
+        reservation.setMovie(movieName);
+        reservation.setReserved_seats(seats);
+        reservation.setTotal_Price(price);
+        reservation.setHall_Number(hallNumber);
+        reservation.setReservedAt(LocalDateTime.now());
+        reservation.setStatus(status);
+        return reservation;
     }
 
     public user_pojo toUser(user_DTO userDto) {
         try {
-            assert userDto != null;
             return mapper.map(userDto, user_pojo.class);
         } catch (Exception e) {
-            log.error(" -- error in toUser in service --");
+            log.error("Error converting user_DTO to user_pojo: {}", e.getMessage());
             return null;
-        }
-    }
-
-    public user_DTO toUserDto(user_pojo userPojo) {
-        try {
-            assert userPojo != null;
-            return mapper.map(userPojo, user_DTO.class);
-        } catch (Exception e) {
-            log.error(" -- error in toUser_Dto in service --");
-            return null;
-        }
-    }
-
-    // Book the seats that are reserved
-    public void Book_seats_that_are_reserved(user_DTO userPojo, movie_reserve_pojo movieReservePojo) {
-        try {
-            movie_pojo moviePojo = movieQuery.find_Movie_By_Name(movieReservePojo.getMovie());
-            assert moviePojo != null;
-            Booking_confirmation(toUser(userPojo), movieReservePojo.getReserved_seats(), movieReservePojo.getTotal_Price(), moviePojo, movieReservePojo.getHall_Number());
-        } catch (Exception e) {
-            log.error(" -- error in Book_seats_that_are_reserved in service --");
         }
     }
 
@@ -349,43 +204,17 @@ public class movie_service {
         try {
             userClient.update_User_Movies(toUserDto(user));
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            log.error("Error updating user movies: {}", e.getMessage());
+            throw new RuntimeException("Failed to update user movie data");
         }
     }
 
-    public ObjectId Update_User_Reserved_Movie(user_pojo user) {
+    public user_DTO toUserDto(user_pojo userPojo) {
         try {
-            return userClient.update_reserved_seats(toUserDto(user));
+            return mapper.map(userPojo, user_DTO.class);
         } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public movie_reserve_pojo Set_movie_reserve_pojo_Details(
-            String movie_name, List<Integer> bookedSeats , float total_price, int hall_number, Ticket_Status status
-    ){
-        movie_reserve_pojo movieReservePojo = new movie_reserve_pojo();
-
-        movieReservePojo.setMovie(movie_name);
-        movieReservePojo.setReserved_seats(bookedSeats);
-        movieReservePojo.setTotal_Price(total_price);
-        movieReservePojo.setHall_Number(hall_number);
-        movieReservePojo.setReservedAt(LocalDateTime.now());
-        movieReservePojo.setStatus(status);
-
-        return movieReservePojo;
-    }
-
-
-    public void Delete_Booked_ticket(movie_reserve_dto movieReserveDto) {
-        try {
-            movie_pojo movie = movieQuery.find_Movie_By_Name(movieReserveDto.getMovie());
-            assert movie != null;
-            screen_pojo screen = movie.getHall().get(movieReserveDto.getHall_Number());
-            update_Movie_Hall_Seats_After_Confirmation(movie, movieReserveDto.getReserved_seats(), movieReserveDto.getHall_Number() - 1, Ticket_Status.OPENED);
-
-        } catch (Exception e) {
-            log.error(" -- error in Delete_Booked_ticket in movie service -- ");
+            log.error("Error converting user_pojo to user_DTO: {}", e.getMessage());
+            return null;
         }
     }
 }

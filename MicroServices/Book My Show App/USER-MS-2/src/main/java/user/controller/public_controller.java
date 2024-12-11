@@ -21,7 +21,7 @@ public class public_controller {
     private User_Queries userQueries;
 
 
-    @GetMapping
+    @GetMapping("/up")
     public String status(){
         return " -- user service layer is up and running -- ";
     }
@@ -33,7 +33,7 @@ public class public_controller {
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             log.error(" -- error  in save in user controller --");
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

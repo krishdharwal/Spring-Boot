@@ -1,18 +1,19 @@
 package movies.controller;
 
-
 import movies.Dto.movie_DTO;
-import movies.Dto.movie_reserve_dto;
+import movies.Dto.screen_DTO;
 import movies.Dto.user_DTO;
-import movies.pojo.movie_reserve_pojo;
+import movies.pojo.movie_pojo;
 import movies.service.movie_service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import movies.Dto.screen_DTO;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/movie")
 public class movie_controller {
 
@@ -20,57 +21,64 @@ public class movie_controller {
     private movie_service service;
 
     @GetMapping("/health")
-    public String health(){
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        return "--- Movie-MS is UP ---" ;
+    public ResponseEntity<Map<String, String>> health() {
+        return ResponseEntity.ok(Map.of("status", "--- Movie-MS is UP ---"));
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody movie_DTO movie_data){
+    public ResponseEntity<Map<String, String>> saveMovie(@RequestBody movie_DTO movieData) {
         try {
-            service.save(movie_data);
-            return new ResponseEntity<>(HttpStatus.OK);
+            Map<String, String> response = service.save(movieData);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
 
     @PostMapping("/InHall/{movieName}")
-    public ResponseEntity<?> setHAll(@RequestBody screen_DTO screen,@PathVariable("movieName") String movieName){
+    public ResponseEntity<Map<String, String>> setHallForMovie(@RequestBody screen_DTO screen, @PathVariable("movieName") String movieName) {
         try {
-            service.set_hall_in_movie(screen,movieName);
-            return new ResponseEntity<>(HttpStatus.OK);
+            Map<String, String> response = service.set_hall_in_movie(screen, movieName);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
 
-    @GetMapping("/book/{movieName}")
-    ResponseEntity<?> book_Ticket(@PathVariable("movieName") String movieName , @RequestBody user_DTO user){
-        try{
-            service.Search_Movie(movieName, user);
-            return new ResponseEntity<>(HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    // client request to book the reserved seats
-    @PutMapping("/book-reserved")
-    public void Book_seats_that_are_reserved(@RequestBody movie_reserve_pojo movieReservePojo,@RequestBody user_DTO userDto){
+    @GetMapping("/details/{movieName}")
+    public ResponseEntity<?> getMovieDetails(@PathVariable("movieName") String movieName) {
         try {
-            service.Book_seats_that_are_reserved(userDto, movieReservePojo);
+            movie_pojo movie = service.get_movie_details(movieName);
+            return ResponseEntity.ok(movie);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
 
-    @DeleteMapping("/cancel-booked")
-    public void Delete_Booked_ticket(@RequestBody movie_reserve_dto movieReserveDto){
-        try{
-            service.Delete_Booked_ticket(movieReserveDto);
+    @PostMapping("/book")
+    public ResponseEntity<?> bookTickets(@RequestBody Map<String, Object> bookingData) {
+        try {
+            String movieName = (String) bookingData.get("movieName");
+            int hallNumber = (int) bookingData.get("hallNumber");
+            List<Integer> seatNumbers = (List<Integer>) bookingData.get("seatNumbers");
+            user_DTO user = (user_DTO) bookingData.get("user");
+
+            Map<String, Object> response = service.book_movie_hall(movieName, user, hallNumber, seatNumbers);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
     }
+
+//    @GetMapping("/book/{movieName}")
+//    ResponseEntity<?> book_Ticket(@PathVariable("movieName") String movieName , @RequestBody user_DTO user){
+//        try{
+//            service.Search_Movie(movieName, user);
+//            return new ResponseEntity<>(HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//    }
+
+
 }

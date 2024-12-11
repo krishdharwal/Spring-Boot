@@ -2,6 +2,7 @@ package movies.Dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import movies.Enum.Ticket_Status;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
@@ -16,5 +17,5 @@ public class screen_DTO {
     public ObjectId id;
     public String name;
     public int TotalSeats;
-    public List<Boolean> seatsList = new ArrayList<>(Collections.nCopies(TotalSeats,false));
+    public List<Ticket_Status> seatsList = new ArrayList<>(Collections.nCopies(TotalSeats,Ticket_Status.OPENED));
 }
